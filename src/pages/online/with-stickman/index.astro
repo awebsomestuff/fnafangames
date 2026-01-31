@@ -6,7 +6,7 @@ import Layout from '../../../layouts/Layout.astro';
 <div class="game-container">
 <div class="border-white top"></div>
 <div class="border-white bottom"></div>
-<p><img loading="lazy" class="poster-img" src="/uploads/2024/05/Five-Night-at-Freddys-with-Stickman.webp" alt="Five Night at Freddy's with Stickman" /></p>
+<img class="poster-img" src="/uploads/2024/05/Five-Night-at-Freddys-with-Stickman.webp" alt="Five Night at Freddy's with Stickman" />
 <div class="game-box"><button id="play">Five Night at Freddy's with Stickman Online Unblocked</button></div>
 </div>
 <strong>The famous Five Nights at Freddy's adventure returns to our website</strong> with a special twist: the protagonists have changed. This time, the well-known Stickman will be in charge of monitoring the security cameras and avoiding scares. Your task is to control the cameras and doors, manage energy, and survive through the five nights in this unique version of Five Nights at Freddy's with Stickman. Play Five Nights at Freddy's with Stickman for free directly from this post, without needing to download anything, and enjoy it alone or with friends.
@@ -33,19 +33,4 @@ Simply use the embedded game player here to start playing immediately. The game 
 Playing in the browser also ensures that you automatically receive any updates or patches, keeping the game current without any extra effort. <strong>This seamless experience</strong>, combined with the unique twist of playing as Stickman, makes this version of Five Nights at Freddy's a must-try for fans and newcomers alike.
 
 <strong>Five Nights at Freddy's with Stickman offers</strong> a fresh and engaging twist on the classic horror game series. With easy mouse controls and the ability to play directly from this post, it provides an enjoyable and accessible gaming experience. Monitor the cameras, control the doors, manage your energy, and help Stickman survive the five nights. Whether you’re playing alone or with friends, this game promises hours of suspenseful fun. Dive into this new adventure today and see if you have what it takes to keep Stickman safe!
-<script>
-const btnPlay = document.querySelector('#play');
-const boxGame = document.querySelector('.game-box');
-const containerGame = document.querySelector('.game-container');
-const posterImg = document.querySelector('.poster-img');
-const codeGame = '<iframe id="game-player" seamless="seamless" scrolling="no" src="https://www.fanfreegames.com/game.php?id_juego=21447&id_dominio=2&code=v187v8919269vvve4b1v6c4vv18vdvc4&ads=1" width="960" height="340" allow="autoplay; fullscreen; camera" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>'
-
-btnPlay.addEventListener('click', () => {
-    boxGame.remove();
-    posterImg.remove();
-    containerGame.innerHTML += codeGame;
-    const iframeGame = document.querySelector('#game-player');
-    iframeGame.height = containerGame.clientHeight;
-})
-</script>
 </Layout>
