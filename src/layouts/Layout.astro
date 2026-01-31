@@ -1,0 +1,254 @@
+---
+const { title, description, lang = "en" } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang={lang}>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/webp" href="/uploads/2024/04/cropped-fnaf-icon-32x32.webp" sizes="32x32" />
+    <link rel="icon" type="image/webp" href="/uploads/2024/04/cropped-fnaf-icon-192x192.webp" sizes="192x192" />
+    <link rel="apple-touch-icon" href="/uploads/2024/04/cropped-fnaf-icon-180x180.webp" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <style is:global>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+            color: #222;
+            background: #fff;
+            line-height: 1.6;
+        }
+        a { color: #1e73be; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        img { max-width: 100%; height: auto; }
+        h1 { text-align: center; margin: 30px 0; font-size: 2.2em; font-family: Georgia, "Times New Roman", serif; color: #333; }
+        h2 { margin: 20px 0 10px; font-size: 1.5em; }
+        h3 { margin: 15px 0 10px; font-size: 1.25em; }
+        p { margin: 10px 0; }
+        ul, ol { margin: 10px 0 10px 20px; }
+        li { margin: 5px 0; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+
+        /* Header */
+        .site-header {
+            background-color: #470000;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .site-header-wrapper {
+            background-color: #470000;
+        }
+        .site-logo { display: flex; align-items: center; }
+        .site-logo img { height: 40px; margin-right: 10px; }
+        .site-logo a { color: #fff; font-size: 1.2em; font-weight: bold; text-decoration: none; }
+
+        .main-nav { display: flex; gap: 0; flex-wrap: wrap; }
+        .main-nav a {
+            color: #fff;
+            padding: 10px 18px;
+            text-decoration: none;
+            font-size: 15px;
+            transition: background 0.2s;
+        }
+        .main-nav a:hover { background: rgba(255,255,255,0.1); text-decoration: none; }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Main content */
+        .site-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px 40px;
+        }
+
+        /* Footer */
+        .site-footer {
+            background-color: #470000;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            font-size: 14px;
+        }
+        .site-footer a { color: #ccc; }
+        .site-footer a:hover { color: #fff; }
+        .footer-links { margin-bottom: 10px; }
+        .footer-links a { margin: 0 10px; }
+
+        /* Shortcode styles */
+        .su-row { display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start; margin: 20px 0; }
+        .su-column { flex: 1; min-width: 200px; }
+        .su-column-1-3 { flex: 0 0 30%; }
+        .su-column-2-3 { flex: 0 0 65%; }
+        .su-column-1-2 { flex: 0 0 48%; }
+        .su-column-1-4 { flex: 0 0 23%; }
+        .su-button { margin: 10px 0; }
+
+        /* Custom CSS from WordPress */
+        .custom-gallery { display: flex; flex-wrap: wrap; gap: 20px; }
+        .gallery-item { width: 200px; text-align: center; transition: transform 0.3s ease; }
+        .gallery-item img { width: 150px; height: 150px; border-radius: 8px; transition: transform 0.3s ease; }
+        .gallery-item a { text-decoration: none; color: #333; transition: color 0.3s ease; }
+        .gallery-item h4 { margin-top: 10px; transition: color 0.3s ease; }
+        .gallery-item:hover { transform: scale(1.05); }
+        .gallery-item:hover img { transform: scale(1.1); }
+        .gallery-item:hover h4 { color: #007bff; }
+        .gallery-item:hover a { color: #007bff; }
+
+        .game-container {
+            display: flex; align-items: center; justify-content: center;
+            width: 100%; margin: 0 auto; position: relative;
+            padding-bottom: 69.25%; height: 0px; overflow: hidden;
+        }
+        .game-container p {
+            position: absolute; left: 0; top: 0; width: 100%; height: 100%;
+            display: flex; align-items: center; justify-content: center; margin-bottom: 0;
+        }
+        .game-container iframe {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+        }
+
+        .contenedor { display: flex; flex-wrap: wrap; justify-content: space-around; padding: 0px; gap: 10px; }
+        .columna {
+            flex: 1; max-width: 23%; min-width: 200px; padding: 2px;
+            box-sizing: border-box; transition: transform 0.3s ease;
+        }
+        .imagen-redondeada {
+            width: 100%; height: auto; min-height: 130px; max-height: 130px;
+            object-fit: cover; border-radius: 10px; display: block;
+            transition: transform 0.3s ease;
+        }
+        .columna:hover .imagen-redondeada { transform: scale(1.05); }
+
+        @media screen and (max-width: 800px) {
+            .columna { min-width: 135px; min-height: 0px; max-width: 40%; flex: 1 0 40%; }
+            .imagen-redondeada { min-height: 100px; max-height: 100px; }
+            .su-column-1-3, .su-column-2-3 { flex: 0 0 100%; }
+        }
+        @media screen and (max-width: 600px) {
+            .contenedor { justify-content: space-around; }
+            .main-nav { display: none; flex-direction: column; width: 100%; }
+            .main-nav.active { display: flex; }
+            .menu-toggle { display: block; }
+        }
+
+        .texto-imagen { text-align: center; margin-top: 8px; font-size: 16px; }
+
+        .stats-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 1.2em; text-align: left; background-color: #f2f2f2; }
+        .stats-table thead tr { background-color: #7E4955; color: #ffffff; text-align: left; font-weight: bold; }
+        .stats-table th, .stats-table td { padding: 12px 15px; border: 1px solid #ffffff; }
+        .stats-table tbody tr { border-bottom: 1px solid #ff0000; }
+        .stats-table tbody tr:nth-of-type(even) { background-color: #f3f3f3; }
+        .stats-table tbody tr:last-of-type { border-bottom: 2px solid #7E4955; }
+
+        .menu-column { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+        .menu-column img {
+            display: block; width: 100%; height: auto; max-width: 100%;
+            border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+        }
+        .menu-column img:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+            filter: brightness(1.1) contrast(1.2);
+        }
+
+        .skills-section { background-color: #ffffff; padding: 20px; border-radius: 8px; max-width: 1200px; margin: auto; }
+        .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .skill { background-color: #fff; padding: 30px; border: 3px solid #7E4955; border-radius: 8px; text-align: center; }
+        .skill-steps {
+            background-color: #fff; padding: 15px; border: 3px solid #7E4955;
+            border-radius: 8px; position: relative; counter-increment: step-counter;
+        }
+        .skill-steps::before {
+            content: counter(step-counter); position: absolute; top: -15px; left: -15px;
+            background-color: #7E4955; color: #fff; width: 25px; height: 25px;
+            border-radius: 50%; display: flex; justify-content: center; align-items: center;
+            font-size: 1em; font-weight: bold;
+        }
+        .skill-steps strong { color: #7E4955; }
+
+        .description-section {
+            background-color: #f9f9f9; padding: 20px; border-radius: 8px;
+            max-width: 1200px; margin: 20px auto; font-family: Arial, sans-serif; text-align: center;
+        }
+        .description-section h2 { color: #d9153c; margin-bottom: 15px; }
+        .description-section p { color: #555; line-height: 1.6; }
+
+        .container-iframe { position: relative; overflow: hidden; width: 100%; padding-top: 56.25%; }
+        .responsive-iframe { position: absolute; top: 0; left: 0; bottom: 0; right: 0; width: 100%; height: 100%; }
+
+        .features-section { width: 100%; max-width: 1200px; margin: 0 auto; padding: 20px; box-sizing: border-box; }
+        .features-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px; justify-content: center; align-items: stretch;
+        }
+        .feature-item {
+            background-color: #fff; padding: 20px; border: 1px solid #ddd; border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
+        }
+        .feature-item:hover { transform: translateY(-5px); box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
+
+        .aligncenter { display: block; margin: 0 auto; text-align: center; }
+        .wp-image-111 { max-width: 200px; }
+
+        /* Language switcher */
+        .lang-switcher { display: flex; gap: 10px; justify-content: center; margin: 20px 0; }
+        .lang-switcher a { padding: 5px 10px; border: 1px solid #ddd; border-radius: 4px; }
+        .lang-switcher a:hover { background: #f0f0f0; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <div class="site-header-wrapper">
+    <header class="site-header">
+        <div class="site-logo">
+            <a href="/">
+                <img src="/uploads/2024/04/cropped-fnaf-logo-300x169.webp" alt="FNAF Fan Games" />
+            </a>
+        </div>
+        <button class="menu-toggle" aria-label="Menu">&#9776;</button>
+        <nav class="main-nav">
+            <a href="/online/">Online</a>
+            <a href="/candys-4/">Candy's 4</a>
+            <a href="/world/">FNaF World</a>
+            <a href="/jolly-4/">Jolly 4</a>
+            <a href="/scp-the-endurance/">SCP: The Endurance</a>
+            <a href="/tyke-and-sons-lumber-co/">Tyke and Sons Lumber</a>
+            <a href="/ultimate-custom-night/">Ultimate Custom Night</a>
+        </nav>
+    </header>
+    </div>
+    <main class="site-content">
+        <slot />
+    </main>
+    <footer class="site-footer">
+        <div class="footer-links">
+            <a href="/privacy-policy/">Privacy Policy</a>
+            <a href="/terms-of-service/">Terms of Service</a>
+        </div>
+        <p>&copy; 2026 fnafangames.com | This website hosts community-created video games as fan games, all of which are open source. We are committed to not infringing any copyright or intellectual property rights.</p>
+    </footer>
+    <script>
+        document.querySelector('.menu-toggle')?.addEventListener('click', () => {
+            document.querySelector('.main-nav')?.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
