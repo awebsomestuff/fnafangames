@@ -50,4 +50,19 @@ Simply use the embedded game player right here. <strong>The game is optimized</s
 Playing directly in the browser also means that any updates or patches are automatically applied, ensuring you always have the latest version of the game. <strong>This convenience, combined with the chilling gameplay</strong>, makes Bizarre Custom Night an ideal choice for FNAF fans looking for a new challenge.
 
 Bizarre Custom Night offers a fresh and spine-tingling experience for fans of the Five Nights at Freddy's series. With simple yet effective controls and the ability to play directly from this post on any device, the game provides a perfect mix of horror and excitement. Guide the security guard through the night, manage the animatronic threats, and ensure your survival until morning. Whether playing alone or with friends, Bizarre Custom Night promises hours of terrifying fun. <strong>Dive into this new horror adventure</strong> today and see if you have what it takes to make it through the night!
+<script>
+const btnPlay = document.querySelector('#play');
+const boxGame = document.querySelector('.game-box');
+const containerGame = document.querySelector('.game-container');
+const posterImg = document.querySelector('.poster-img');
+const codeGame = '<iframe id="game-player" seamless="seamless" scrolling="no" src="https://www.fanfreegames.com/game.php?id_juego=21405&id_dominio=2&code=v187v8919269vvve4b1v6c4vv18vdvc4&ads=1" width="960" height="340" allow="autoplay; fullscreen; camera" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>'
+
+btnPlay.addEventListener('click', () => {
+    boxGame.remove();
+    posterImg.remove();
+    containerGame.innerHTML += codeGame;
+    const iframeGame = document.querySelector('#game-player');
+    iframeGame.height = containerGame.clientHeight;
+})
+</script>
 </Layout>

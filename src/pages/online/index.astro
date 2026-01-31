@@ -73,4 +73,19 @@ We understand how frustrating it can be to find games blocked on certain devices
 In addition to playing, you can also join our community of <strong>FNAF</strong> fans at fnafangames.com. Share your experiences, participate in discussion forums, and stay updated with the latest news and updates about Five Nights at Freddy's. The thrill never ends!
 
 Whether you are a longtime fan or just discovering the terrifying world of Five Nights at Freddy's, fnafangames.com has everything you need for an unforgettable gaming experience. <strong>Play FNAF Online</strong>, enjoy FNAF Unblocked, and join the horror. Come on, the world of FNAF awaits you!
+<script>
+const btnPlay = document.querySelector('#play');
+const boxGame = document.querySelector('.game-box');
+const containerGame = document.querySelector('.game-container');
+const posterImg = document.querySelector('.poster-img');
+const codeGame = '<iframe id="game-player" seamless="seamless" scrolling="no" src="https://lagged.com/games/fnaf/?mp_assets=https%3A%2F%2Fs2.minijuegosgratis.com%2F&mp_embed=0&mp_game_id=209606&mp_game_uid=five-nights-at-freddys&mp_game_url=https%3A%2F%2Fwww.minijuegos.com%2Fembed%2Ffive-nights-at-freddys&mp_int=1&mp_locale=es_ES&mp_player_type=IFRAME&mp_site_https_url=https%3A%2F%2Fwww.minijuegos.com%2F&mp_site_name=minijuegos.com&mp_site_url=https%3A%2F%2Fwww.minijuegos.com%2F&mp_timezone=Europe%2FMadrid&mp_view_type=" width="960" height="340" allow="autoplay; fullscreen; camera" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>'
+
+btnPlay.addEventListener('click', () => {
+    boxGame.remove();
+    posterImg.remove();
+    containerGame.innerHTML += codeGame;
+    const iframeGame = document.querySelector('#game-player');
+    iframeGame.height = containerGame.clientHeight;
+})
+</script>
 </Layout>

@@ -34,4 +34,19 @@ One of the standout features of Five Nights at Freddy's: Sister Location is its 
 Playing directly in the browser also ensures you receive automatic updates and patches, keeping the game current without any extra effort. <strong>This seamless</strong> experience, paired with the suspenseful and puzzle-filled gameplay, makes FNaF: Sister Location a must-try for horror game enthusiasts and FNAF fans alike.
 
 Five Nights at Freddy's: Sister Location delivers a fresh and terrifying twist on the beloved horror game series. With easy-to-use mouse controls and the ability to play directly from this post on any device, it offers an accessible and engaging gaming experience. Monitor security cameras, solve puzzles, and navigate through ventilation chambers to survive the animatronics' attacks. Whether you’re playing alone or with friends, <strong>FNaF: Sister Location promises hours of spine-chilling fun</strong>. Start your adventure today and see if you can survive the night at Freddy's Pizza!
+<script>
+const btnPlay = document.querySelector('#play');
+const boxGame = document.querySelector('.game-box');
+const containerGame = document.querySelector('.game-container');
+const posterImg = document.querySelector('.poster-img');
+const codeGame = '<iframe id="game-player" seamless="seamless" scrolling="no" src="https://www.fanfreegames.com/game.php?id_juego=20800&id_dominio=2&code=v187v8919269vvve4b1v6c4vv18vdvc4&ads=1" width="960" height="340" allow="autoplay; fullscreen; camera" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>'
+
+btnPlay.addEventListener('click', () => {
+    boxGame.remove();
+    posterImg.remove();
+    containerGame.innerHTML += codeGame;
+    const iframeGame = document.querySelector('#game-player');
+    iframeGame.height = containerGame.clientHeight;
+})
+</script>
 </Layout>
