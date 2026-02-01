@@ -281,6 +281,28 @@ const { title, description, lang = "en" } = Astro.props;
         document.querySelector('.menu-toggle')?.addEventListener('click', () => {
             document.querySelector('.main-nav')?.classList.toggle('active');
         });
+        const playBtn = document.getElementById('play');
+        if (playBtn) {
+            playBtn.addEventListener('click', () => {
+                const container = document.querySelector('.game-container');
+                const gameUrl = container?.getAttribute('data-game-url');
+                if (!container || !gameUrl) return;
+                const posterImg = container.querySelector('.poster-img');
+                const gameBox = container.querySelector('.game-box');
+                if (posterImg) posterImg.remove();
+                if (gameBox) gameBox.remove();
+                const iframe = document.createElement('iframe');
+                iframe.id = 'game-player';
+                iframe.src = gameUrl;
+                iframe.width = '960';
+                iframe.height = '340';
+                iframe.setAttribute('seamless', 'seamless');
+                iframe.setAttribute('scrolling', 'no');
+                iframe.setAttribute('allow', 'autoplay; fullscreen; camera');
+                iframe.setAttribute('allowfullscreen', '');
+                container.appendChild(iframe);
+            });
+        }
         document.querySelectorAll('.yt-facade').forEach(el => {
             el.addEventListener('click', () => {
                 const vid = el.dataset.vid;
