@@ -132,7 +132,7 @@ const { title, description, lang = "en" } = Astro.props;
         }
         .border-white.top { height: 0px; top: 0; }
         .border-white.bottom { height: 0px; bottom: 0; }
-        .poster-img { width: 80%; }
+        .poster-img { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80%; height: auto; }
         #play {
             margin: auto; background: #470000; color: white; border-radius: 6px;
             border: none; font-size: 18px; font-weight: 600; padding: 10px 20px;
