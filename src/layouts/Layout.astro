@@ -295,8 +295,8 @@ const { title, description, lang = "en" } = Astro.props;
         </nav>
     </header>
     </div>
-    <!-- Ad Slot 1: Below header, above content -->
-    <div class="ad-slot ad-slot-header">
+    <!-- Ad Slot 1: Below header, above content (hidden on legal pages) -->
+    <div class="ad-slot ad-slot-header" id="ad-slot-1-wrapper">
         <div class="ad-slot-inner" id="ad-slot-1">
             <!-- Se insertará el <ins> de AdSense aquí -->
         </div>
@@ -337,16 +337,28 @@ const { title, description, lang = "en" } = Astro.props;
                 container.appendChild(iframe);
             });
         }
-        // Ad Slot 2: After first <p> in .site-content
+        // Hide ads on legal pages
         (function() {
+            var path = window.location.pathname;
+            var isLegal = /\/(privacy-policy|terms-of-service)(\/|$)/.test(path);
+            if (isLegal) {
+                var ad1 = document.getElementById('ad-slot-1-wrapper');
+                if (ad1) ad1.style.display = 'none';
+                return; // skip Ad 2 injection too
+            }
+            // Ad Slot 2: After first <p> (skip .texto-imagen), or before first <h2> as fallback
             var content = document.querySelector('.site-content');
             if (!content) return;
-            var firstP = content.querySelector(':scope > p');
-            if (!firstP) return;
             var adSlot = document.createElement('div');
             adSlot.className = 'ad-slot ad-slot-content';
             adSlot.innerHTML = '<div class="ad-slot-inner" id="ad-slot-2"><!-- Se insertará el <ins> aquí --></div>';
-            firstP.parentNode.insertBefore(adSlot, firstP.nextSibling);
+            var firstP = content.querySelector('p:not(.texto-imagen)');
+            if (firstP) {
+                firstP.parentNode.insertBefore(adSlot, firstP.nextSibling);
+            } else {
+                var firstH2 = content.querySelector('h2');
+                if (firstH2) firstH2.parentNode.insertBefore(adSlot, firstH2);
+            }
         })();
 
         // Deferred AdSense load
