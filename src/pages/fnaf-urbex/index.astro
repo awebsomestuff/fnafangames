@@ -1,0 +1,703 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+<Layout title="FNAF Urbex - Download Free FNAF Fan Game" description="Download FNAF Urbex, a stealth-based FNAF fan game in Fazbear's Fright where Springtrap hears your real microphone. VHS-style free-roam horror. Free for PC." lang="en">
+
+<style is:global>
+.site-content {
+    max-width: 1200px !important;
+    padding: 30px 40px !important;
+    box-sizing: content-box !important;
+}
+.post-video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+.post-lightbox-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.85);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: zoom-out;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+}
+.post-lightbox-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+.post-lightbox-overlay img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 8px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+}
+</style>
+
+<style>
+.post-title {
+    text-align: center;
+    font-size: 2.8em;
+    font-weight: 800;
+    color: #470000;
+    margin: 20px 0 5px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    letter-spacing: -0.5px;
+}
+.post-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: #470000;
+    margin: 12px auto 0;
+    border-radius: 2px;
+}
+.post-description {
+    position: relative;
+    padding: 16px 20px;
+    border-radius: 16px;
+    margin: 30px auto;
+    max-width: 1200px;
+    background: linear-gradient(135deg, #f5e6e8, #ffffff);
+    color: #333;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: 0.4s;
+}
+.post-intro-layout {
+    display: flex;
+    align-items: stretch;
+    gap: 24px;
+    margin-bottom: 0;
+}
+.post-intro-layout img {
+    flex-shrink: 0;
+    align-self: flex-start;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    max-width: 330px;
+    width: 100%;
+    height: auto;
+}
+.post-intro-text {
+    flex: 1;
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+}
+.post-intro-text > p {
+    font-size: 1em;
+    line-height: 1.5;
+    margin: 0;
+    text-align: left;
+    flex: 1;
+}
+.post-intro-text > p strong:first-child {
+    color: #470000;
+    font-size: 1.05em;
+}
+.post-download-cta {
+    display: block;
+    text-align: center;
+    padding: 15px;
+    background: #470000;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 8px 0 0;
+    transition: background 0.2s;
+    color: #fff !important;
+}
+.post-download-cta:hover {
+    background: #5a0000;
+    text-decoration: none;
+}
+.post-stats-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 24px 0;
+    font-size: 1em;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    border: 1px solid #e0e0e0;
+}
+.post-stats-table thead tr {
+    background: #7E4955;
+}
+.post-stats-table th {
+    color: #fff;
+    font-weight: 700;
+    padding: 14px 18px;
+    text-align: left;
+    font-size: 0.95em;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.post-stats-table td {
+    padding: 12px 18px;
+    border-bottom: 1px solid #f0f0f0;
+}
+.post-stats-table td:first-child {
+    font-weight: 600;
+    color: #470000;
+    width: 35%;
+}
+.post-stats-table tbody tr:nth-child(even) {
+    background: #faf5f6;
+}
+.post-stats-table tbody tr:last-child td {
+    border-bottom: none;
+}
+.post-stats-table tbody tr:hover {
+    background: #f5e6e8;
+}
+.post-screenshot-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin: 24px 0;
+}
+.post-screenshot-gallery.gallery-2 {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 66%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.post-screenshot-gallery.gallery-1 {
+    grid-template-columns: 1fr;
+    max-width: 33%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.post-screenshot-gallery a {
+    display: block;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+}
+.post-screenshot-gallery a:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.18);
+}
+.post-screenshot-gallery img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+}
+.post-download-section {
+    background: linear-gradient(135deg, #470000, #6b1a1a);
+    border-radius: 16px;
+    padding: 30px 24px;
+    text-align: center;
+    margin: 30px 0;
+    color: #fff;
+    box-shadow: 0 4px 16px rgba(71,0,0,0.25);
+}
+.post-download-section h2 {
+    color: #fff;
+    margin: 0 0 8px;
+    font-size: 1.6em;
+}
+.post-download-section .version-info {
+    color: rgba(255,255,255,0.85);
+    margin: 0 0 20px;
+    font-size: 0.95em;
+}
+.post-download-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+.post-download-btn {
+    display: inline-block;
+    padding: 12px 28px;
+    background: #fff;
+    color: #470000 !important;
+    font-weight: 700;
+    border-radius: 8px;
+    text-decoration: none !important;
+    font-size: 1em;
+    transition: all 0.2s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+.post-download-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    background: #f5e6e8;
+}
+.post-install-section {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 24px auto;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.post-install-section h3 {
+    margin: 0 0 12px;
+    font-size: 1.3em;
+    color: #470000;
+}
+.post-install-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    align-items: start;
+}
+.post-install-grid details {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+.post-install-grid details:only-child {
+    grid-column: 1 / -1;
+}
+.post-install-grid summary {
+    padding: 12px 16px;
+    font-weight: 600;
+    cursor: pointer;
+    background: #faf5f6;
+    border-bottom: 1px solid #e0e0e0;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #470000;
+}
+.post-install-grid summary::before {
+    content: '▸';
+    transition: transform 0.2s;
+    font-size: 0.9em;
+}
+.post-install-grid details[open] summary::before {
+    transform: rotate(90deg);
+}
+.post-install-grid details div {
+    padding: 12px 16px;
+}
+.post-content h2 {
+    color: #470000;
+    font-size: 1.5em;
+    margin: 30px 0 12px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid #f0e0e2;
+}
+.post-content h3 {
+    color: #5a1a1a;
+    font-size: 1.2em;
+    margin: 20px 0 8px;
+}
+.post-content p {
+    margin: 10px 0;
+    line-height: 1.7;
+}
+.post-content ul {
+    margin: 10px 0 10px 20px;
+}
+.post-content li {
+    margin: 6px 0;
+    line-height: 1.6;
+}
+.post-content li strong {
+    color: #470000;
+}
+.post-details-box {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 24px auto;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.post-details-box h3 {
+    margin: 0 0 12px;
+    font-size: 1.4em;
+    border-bottom: none;
+    padding-bottom: 0;
+}
+.post-faq details {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    margin: 8px 0;
+    overflow: hidden;
+}
+.post-faq summary {
+    padding: 14px 18px;
+    font-weight: 600;
+    cursor: pointer;
+    background: #faf5f6;
+    color: #470000;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.post-faq summary::before {
+    content: '▸';
+    transition: transform 0.2s;
+}
+.post-faq details[open] summary::before {
+    transform: rotate(90deg);
+}
+.post-faq details div {
+    padding: 14px 18px;
+    line-height: 1.6;
+}
+.post-video-section {
+    margin: 24px 0;
+}
+.post-video-section h2 {
+    color: #470000;
+    font-size: 1.5em;
+    margin: 30px 0 12px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid #f0e0e2;
+}
+.post-video-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    padding-top: 56.25%;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    margin-top: 12px;
+}
+.post-yt-facade {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    background: #000;
+}
+.post-yt-facade img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.post-yt-play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0,0,0,0.7);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 68px;
+    height: 68px;
+    font-size: 28px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+}
+.post-yt-facade:hover .post-yt-play {
+    background: #ff0000;
+}
+.post-related-games {
+    margin: 30px 0;
+}
+.post-related-games h2 {
+    text-align: center;
+    border-bottom: none;
+}
+.post-related-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-top: 16px;
+}
+.post-related-grid a {
+    display: block;
+    text-decoration: none;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    background: #fff;
+}
+.post-related-grid a:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.18);
+    text-decoration: none;
+}
+.post-related-grid img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+.post-related-grid span {
+    display: block;
+    padding: 10px;
+    font-weight: 600;
+    text-align: center;
+    color: #333;
+    font-size: 0.9em;
+}
+@media (max-width: 768px) {
+    .post-title { font-size: 2em; }
+    .post-intro-layout { flex-direction: column; align-items: center; }
+    .post-intro-layout img { max-width: 280px; }
+    .post-screenshot-gallery { grid-template-columns: 1fr 1fr; }
+    .post-screenshot-gallery.gallery-2 { max-width: 100%; }
+    .post-screenshot-gallery.gallery-1 { max-width: 50%; }
+    .post-install-grid { grid-template-columns: 1fr; }
+    .post-related-grid { grid-template-columns: repeat(2, 1fr); }
+    .post-download-section { padding: 20px 16px; }
+}
+@media (max-width: 480px) {
+    .post-title { font-size: 1.7em; }
+    .post-screenshot-gallery { grid-template-columns: 1fr; }
+    .post-screenshot-gallery.gallery-2 { max-width: 100%; }
+    .post-screenshot-gallery.gallery-1 { max-width: 100%; }
+    .post-related-grid { grid-template-columns: 1fr 1fr; }
+}
+</style>
+
+<!-- ========== POST CONTENT START ========== -->
+
+<h1 class="post-title">FNAF Urbex</h1>
+
+<!-- Hero / Intro Section -->
+<div class="post-description">
+    <div class="post-intro-layout">
+        <img src="/uploads/overhaul/fnaf-urbex/urbex-thumb.webp" alt="FNAF Urbex cover art featuring Springtrap with glowing red eyes in VHS style" width="330" height="207" loading="eager" />
+        <div class="post-intro-text">
+            <p>
+                <strong>FNAF Urbex</strong> drops you inside the abandoned halls of Fazbear's Fright with nothing but a flashlight and a ghost detector. Instead of watching cameras from an office, you explore the decaying attraction in first person — searching for five hidden animatronic masks while Springtrap stalks you through the darkness. The twist? He can hear your real microphone. Speak too loudly and he'll find you. Built by Zombieguy with a striking VHS-style visual filter, this short but intense experience delivers some of the most genuinely unsettling moments in the FNAF fan game scene.
+            </p>
+            <a class="post-download-cta" href="#download">Download FNAF Urbex Free</a>
+        </div>
+    </div>
+</div>
+
+<!-- Stats Table -->
+<table class="post-stats-table">
+    <thead>
+        <tr>
+            <th>Feature</th>
+            <th>Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr><td>Developer</td><td>Zombieguy (@ZombieGuyDevelopment)</td></tr>
+        <tr><td>Platforms</td><td>Windows PC</td></tr>
+        <tr><td>Genre</td><td>Stealth / Survival Horror</td></tr>
+        <tr><td>Perspective</td><td>First Person, Free Roam</td></tr>
+        <tr><td>Version</td><td>1.0.1</td></tr>
+        <tr><td>Price</td><td>Free</td></tr>
+    </tbody>
+</table>
+
+<!-- Screenshot Gallery #1 -->
+<div class="post-screenshot-gallery" data-lightbox-gallery>
+    <a href="/uploads/overhaul/fnaf-urbex/screenshot-1214-rxmrhznq.webp" data-lightbox>
+        <img src="/uploads/overhaul/fnaf-urbex/screenshot-1214-rxmrhznq-thumb.webp" alt="Dark hallway in FNAF Urbex with checkered floor and EMF detector in hand" loading="lazy" />
+    </a>
+    <a href="/uploads/overhaul/fnaf-urbex/screenshot-1216-sc7vdwqs.webp" data-lightbox>
+        <img src="/uploads/overhaul/fnaf-urbex/screenshot-1216-sc7vdwqs-thumb.webp" alt="Springtrap visible behind a metal grate in FNAF Urbex" loading="lazy" />
+    </a>
+    <a href="/uploads/overhaul/fnaf-urbex/screenshot-1217-tgbqfwpw.webp" data-lightbox>
+        <img src="/uploads/overhaul/fnaf-urbex/screenshot-1217-tgbqfwpw-thumb.webp" alt="FNAF 3 office recreation in FNAF Urbex with CRT monitor and children's drawings" loading="lazy" />
+    </a>
+</div>
+
+<!-- Download Section -->
+<div id="download" class="post-download-section">
+    <h2>Download FNAF Urbex</h2>
+    <p class="version-info">FNAF Urbex is available as a free download for <strong>Windows PC</strong> (v1.0.1, ~2 GB).</p>
+    <div class="post-download-buttons">
+        <a class="post-download-btn" href="https://mega.nz/file/2RAWXK4Q#t5vEttLNHrpJaY5618KYX9r6aQMUjQrWhqRxkNA3pPA" target="_blank" rel="nofollow noopener">Download for PC (Mega)</a>
+    </div>
+</div>
+
+<!-- Install Instructions -->
+<div class="post-install-section">
+    <h3>How to Install FNAF Urbex</h3>
+    <div class="post-install-grid">
+        <details>
+            <summary>Windows</summary>
+            <div>
+                <ol>
+                    <li>Download the file from the link above (~2 GB)</li>
+                    <li>Extract the contents to a folder of your choice</li>
+                    <li>Run the .exe file to start the game</li>
+                    <li>If Windows SmartScreen blocks it, click "More info" then "Run anyway"</li>
+                    <li>Make sure your microphone is connected for the full experience</li>
+                </ol>
+            </div>
+        </details>
+    </div>
+</div>
+
+<div class="post-content">
+
+<h2>What Makes FNAF Urbex Different</h2>
+<p>Most FNAF fan games put you in a room and dare you to survive until 6 AM. FNAF Urbex throws that formula out entirely. You're on your feet, walking through the corridors of Fazbear's Fright — the horror attraction from Five Nights at Freddy's 3 — recreated with hyperrealistic detail and drenched in a VHS analog horror filter that makes every shadow feel alive.</p>
+
+<p>The core mechanic is what sets this apart from anything else in the fan game scene: Springtrap listens to your real microphone. If you talk, cough, or make noise in your room, he hears it and moves toward your position. This creates a layer of tension that goes beyond the screen — you're not just playing the game, you're physically part of it. Content creators have called it one of the most unique mechanics they've ever seen in a FNAF fan game.</p>
+
+</div>
+
+<!-- Video Section -->
+<div class="post-video-section">
+    <h2>FNAF Urbex Gameplay</h2>
+    <div class="post-video-container">
+        <div class="post-yt-facade" data-vid="m_5lHkwPMIc">
+            <img src="https://i.ytimg.com/vi/m_5lHkwPMIc/hqdefault.jpg" alt="FNAF Urbex gameplay video" loading="lazy" />
+            <button class="post-yt-play" aria-label="Play video">&#9654;</button>
+        </div>
+    </div>
+</div>
+
+<div class="post-content">
+
+<h2>Gameplay and Mechanics</h2>
+<p>Your objective is straightforward: locate five ghost signals — represented by animatronic masks of Freddy, Bonnie, Chica, Foxy, and a fifth hidden one — using a handheld detector, then escape. The detector guides you toward each signal, but getting to them means navigating dark hallways where Springtrap could be lurking around any corner.</p>
+
+<h3>Controls and Tools</h3>
+<ul>
+    <li><strong>Movement:</strong> WASD to walk, Shift to run (generates noise that attracts Springtrap), Ctrl to crouch</li>
+    <li><strong>Flashlight (F):</strong> Essential for seeing in the darkest areas, but use it wisely</li>
+    <li><strong>Ghost Detector (Right Click):</strong> Points you toward the next signal/mask to collect</li>
+    <li><strong>Lean (Q/E):</strong> Peek around corners to check if the coast is clear</li>
+    <li><strong>Zoom (Left Click):</strong> Focus on distant objects or movements</li>
+</ul>
+
+<h3>Springtrap's Behavior</h3>
+<p>Springtrap actively patrols the building and reacts to sound. Your real-world microphone feeds directly into his detection system — the louder you are, the faster he finds you. Running also generates noise, forcing a constant risk-reward decision: sprint to your next objective and risk alerting him, or creep slowly and hope he doesn't stumble into you. When he spots you, he gives chase. Your only options are to run, hide, or break line of sight. A stress system makes your character breathe heavier when Springtrap is close, which can create a feedback loop of detection if you're not careful.</p>
+
+</div>
+
+<!-- Screenshot Gallery #2 -->
+<div class="post-screenshot-gallery gallery-2" data-lightbox-gallery>
+    <a href="/uploads/overhaul/fnaf-urbex/screenshot-1215-pf7xg4kr.webp" data-lightbox>
+        <img src="/uploads/overhaul/fnaf-urbex/screenshot-1215-pf7xg4kr-thumb.webp" alt="First person view of a dark doorway with EMF detector in FNAF Urbex" loading="lazy" />
+    </a>
+    <a href="/uploads/overhaul/fnaf-urbex/screenshot-1218-y6ueqhvb.webp" data-lightbox>
+        <img src="/uploads/overhaul/fnaf-urbex/screenshot-1218-y6ueqhvb-thumb.webp" alt="Room with checkered floor and metal fences in FNAF Urbex" loading="lazy" />
+    </a>
+</div>
+
+<div class="post-content">
+
+<h2>What the Community Says</h2>
+<p>FNAF Urbex has appeared in multiple "best FNAF fan games" rankings and earned consistently positive feedback from reviewers. The two elements that get the most praise are the microphone mechanic and the visual presentation.</p>
+
+<p>One reviewer called the microphone detection <em>"by far one of my favorites I've seen in a FNAF fan game. It's unique and I don't think it's ever been done before."</em> The VHS analog horror aesthetic has been described as something that <em>"scares your mind"</em> — creating an atmosphere of dread that goes beyond jumpscares.</p>
+
+<p>The main criticism is the game's length. At roughly 20 minutes to complete, several reviewers wished it were longer to fully explore the potential of its mechanics. Even so, the intensity of those 20 minutes has left a strong impression on the community, and the game has gained significant visibility — including a playthrough by Markiplier.</p>
+
+</div>
+
+<div class="post-content">
+<h2>Frequently Asked Questions</h2>
+</div>
+
+<div class="post-faq">
+    <details>
+        <summary>Is FNAF Urbex free?</summary>
+        <div>Yes, FNAF Urbex is completely free to download and play on Windows PC.</div>
+    </details>
+    <details>
+        <summary>How long does it take to beat?</summary>
+        <div>A full playthrough takes roughly 20 minutes. It's a short but intense experience designed to deliver maximum tension in a compact package.</div>
+    </details>
+    <details>
+        <summary>Does the microphone mechanic actually work?</summary>
+        <div>Yes. The game uses your real microphone input to detect sound. Springtrap reacts to noise picked up by your mic, so speaking, coughing, or any ambient noise can attract him to your location. For the best experience, play with a microphone connected.</div>
+    </details>
+    <details>
+        <summary>Is there an Android version?</summary>
+        <div>No, FNAF Urbex is currently only available for Windows PC. There is no Android or mobile version.</div>
+    </details>
+</div>
+
+<!-- Related FNAF Fan Games -->
+<h2 class="il-heading">More FNAF Fan Games</h2>
+<div class="il-grid">
+<div class="il-card"><a href="/shadows-awaken/">
+<img class="il-img" src="/uploads/overhaul/shadows-awaken/portada-thumb.webp" alt="Shadows Awaken" loading="lazy" />
+<p class="il-title">Shadows Awaken</p></a>
+</div>
+<div class="il-card"><a href="/final-nights-4/">
+<img class="il-img" src="/uploads/overhaul/final-nights-4/teaser9-gw3wxexd-thumb.webp" alt="Final Nights 4" loading="lazy" />
+<p class="il-title">Final Nights 4</p></a>
+</div>
+<div class="il-card"><a href="/five-nights-at-freddys-blood-and-gears/">
+<img class="il-img" src="/uploads/overhaul/five-nights-at-freddys-blood-and-gears/idka-uppi3gdn-thumb.webp" alt="FNAF: Blood and Gears" loading="lazy" />
+<p class="il-title">FNAF: Blood and Gears</p></a>
+</div>
+<div class="il-card"><a href="/next-week-at-freddys/">
+<img class="il-img" src="/uploads/overhaul/next-week-at-freddys/portada-thumb.webp" alt="Next Week at Freddy's" loading="lazy" />
+<p class="il-title">Next Week at Freddy's</p></a>
+</div>
+</div>
+
+<!-- Lightbox Script -->
+<script>
+    const overlay = document.createElement('div');
+    overlay.className = 'post-lightbox-overlay';
+    document.body.appendChild(overlay);
+
+    document.querySelectorAll('[data-lightbox]').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const img = document.createElement('img');
+            img.src = link.href;
+            img.alt = link.querySelector('img')?.alt || '';
+            overlay.innerHTML = '';
+            overlay.appendChild(img);
+            overlay.classList.add('active');
+        });
+    });
+
+    overlay.addEventListener('click', () => {
+        overlay.classList.remove('active');
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            overlay.classList.remove('active');
+        }
+    });
+
+    document.querySelectorAll('.post-yt-facade').forEach(el => {
+        el.addEventListener('click', () => {
+            const vid = el.dataset.vid;
+            const container = el.parentElement;
+            const iframe = document.createElement('iframe');
+            iframe.src = 'https://www.youtube-nocookie.com/embed/' + vid + '?autoplay=1';
+            iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+            iframe.setAttribute('allowfullscreen', '');
+            el.remove();
+            container.appendChild(iframe);
+        });
+    });
+</script>
+
+</Layout>

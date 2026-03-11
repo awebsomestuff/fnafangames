@@ -1,0 +1,752 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+<Layout title="Showman's: The Awakening - Download Free FNAF Fan Game" description="Download Showman's: The Awakening, a fully 3D FNAF fan game with real-time animatronic movement, deep lore, VHS tapes, and a Night 6 boss fight. Free for PC." lang="en">
+
+<style is:global>
+.site-content {
+    max-width: 1200px !important;
+    padding: 30px 40px !important;
+    box-sizing: content-box !important;
+}
+.post-video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+.post-lightbox-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.85);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: zoom-out;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+}
+.post-lightbox-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+.post-lightbox-overlay img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 8px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+}
+</style>
+
+<style>
+/* ========== INTERLINKING SECTION ========== */
+.il-heading { font-size: 24px; font-weight: 800; color: #470000; margin: 48px 0 16px; }
+.il-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 0 0 40px; }
+.il-card { background: #fff5f5; border: 1px solid #e0c8c8; border-radius: 12px; padding: 6px; text-align: center; }
+.il-card a { text-decoration: none; color: inherit; display: block; }
+.il-card a:hover { text-decoration: none; }
+.il-card:hover { border-color: #470000; }
+.il-img { width: 100%; height: 150px; object-fit: cover; border-radius: 10px; display: block; }
+.il-title { font-size: 14px; font-weight: 600; color: #1a1d2e; margin: 6px 0 2px; line-height: 1.4; }
+@media (max-width: 768px) { .il-grid { grid-template-columns: repeat(2, 1fr); } }
+
+.post-title {
+    text-align: center;
+    font-size: 2.8em;
+    font-weight: 800;
+    color: #470000;
+    margin: 20px 0 5px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    letter-spacing: -0.5px;
+}
+.post-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: #470000;
+    margin: 12px auto 0;
+    border-radius: 2px;
+}
+.post-description {
+    position: relative;
+    padding: 16px 20px;
+    border-radius: 16px;
+    margin: 30px auto;
+    max-width: 1200px;
+    background: linear-gradient(135deg, #f5e6e8, #ffffff);
+    color: #333;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: 0.4s;
+}
+.post-intro-layout {
+    display: flex;
+    align-items: stretch;
+    gap: 24px;
+    margin-bottom: 0;
+}
+.post-intro-layout img {
+    flex-shrink: 0;
+    align-self: flex-start;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    max-width: 330px;
+    width: 100%;
+    height: auto;
+}
+.post-intro-text {
+    flex: 1;
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+}
+.post-intro-text > p {
+    font-size: 1em;
+    line-height: 1.5;
+    margin: 0;
+    text-align: left;
+    flex: 1;
+}
+.post-intro-text > p strong:first-child {
+    color: #470000;
+    font-size: 1.05em;
+}
+.post-download-cta {
+    display: block;
+    text-align: center;
+    padding: 15px;
+    background: #470000;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 8px 0 0;
+    transition: background 0.2s;
+    color: #fff !important;
+}
+.post-download-cta:hover {
+    background: #5a0000;
+    text-decoration: none;
+}
+.post-stats-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 24px 0;
+    font-size: 1em;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    border: 1px solid #e0e0e0;
+}
+.post-stats-table thead tr {
+    background: #7E4955;
+}
+.post-stats-table th {
+    color: #fff;
+    font-weight: 700;
+    padding: 14px 18px;
+    text-align: left;
+    font-size: 0.95em;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.post-stats-table td {
+    padding: 12px 18px;
+    border-bottom: 1px solid #f0f0f0;
+}
+.post-stats-table td:first-child {
+    font-weight: 600;
+    color: #470000;
+    width: 35%;
+}
+.post-stats-table tbody tr:nth-child(even) {
+    background: #faf5f6;
+}
+.post-stats-table tbody tr:last-child td {
+    border-bottom: none;
+}
+.post-stats-table tbody tr:hover {
+    background: #f5e6e8;
+}
+.post-screenshot-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin: 24px 0;
+}
+.post-screenshot-gallery.gallery-2 {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 66%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.post-screenshot-gallery.gallery-1 {
+    grid-template-columns: 1fr;
+    max-width: 33%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.post-screenshot-gallery a {
+    display: block;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+}
+.post-screenshot-gallery a:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.18);
+}
+.post-screenshot-gallery img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+}
+.post-download-section {
+    background: linear-gradient(135deg, #470000, #6b1a1a);
+    border-radius: 16px;
+    padding: 30px 24px;
+    text-align: center;
+    margin: 30px 0;
+    color: #fff;
+    box-shadow: 0 4px 16px rgba(71,0,0,0.25);
+}
+.post-download-section h2 {
+    color: #fff;
+    margin: 0 0 8px;
+    font-size: 1.6em;
+}
+.post-download-section .version-info {
+    color: rgba(255,255,255,0.85);
+    margin: 0 0 20px;
+    font-size: 0.95em;
+}
+.post-download-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+.post-download-btn {
+    display: inline-block;
+    padding: 12px 28px;
+    background: #fff;
+    color: #470000 !important;
+    font-weight: 700;
+    border-radius: 8px;
+    text-decoration: none !important;
+    font-size: 1em;
+    transition: all 0.2s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+.post-download-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    background: #f5e6e8;
+}
+.post-install-section {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 24px auto;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.post-install-section h3 {
+    margin: 0 0 12px;
+    font-size: 1.3em;
+    color: #470000;
+}
+.post-install-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    align-items: start;
+}
+.post-install-grid details {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+.post-install-grid details:only-child {
+    grid-column: 1 / -1;
+}
+.post-install-grid summary {
+    padding: 12px 16px;
+    font-weight: 600;
+    cursor: pointer;
+    background: #faf5f6;
+    border-bottom: 1px solid #e0e0e0;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #470000;
+}
+.post-install-grid summary::before {
+    content: '▸';
+    transition: transform 0.2s;
+    font-size: 0.9em;
+}
+.post-install-grid details[open] summary::before {
+    transform: rotate(90deg);
+}
+.post-install-grid details div {
+    padding: 12px 16px;
+}
+.post-content h2 {
+    color: #470000;
+    font-size: 1.5em;
+    margin: 30px 0 12px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid #f0e0e2;
+}
+.post-content h3 {
+    color: #5a1a1a;
+    font-size: 1.2em;
+    margin: 20px 0 8px;
+}
+.post-content p {
+    margin: 10px 0;
+    line-height: 1.7;
+}
+.post-content ul {
+    margin: 10px 0 10px 20px;
+}
+.post-content li {
+    margin: 6px 0;
+    line-height: 1.6;
+}
+.post-content li strong {
+    color: #470000;
+}
+.post-details-box {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 24px auto;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.post-details-box h3 {
+    margin: 0 0 12px;
+    font-size: 1.4em;
+    border-bottom: none;
+    padding-bottom: 0;
+}
+.post-faq details {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    margin: 8px 0;
+    overflow: hidden;
+}
+.post-faq summary {
+    padding: 14px 18px;
+    font-weight: 600;
+    cursor: pointer;
+    background: #faf5f6;
+    color: #470000;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.post-faq summary::before {
+    content: '▸';
+    transition: transform 0.2s;
+}
+.post-faq details[open] summary::before {
+    transform: rotate(90deg);
+}
+.post-faq details div {
+    padding: 14px 18px;
+    line-height: 1.6;
+}
+.post-video-section {
+    margin: 24px 0;
+}
+.post-video-section h2 {
+    color: #470000;
+    font-size: 1.5em;
+    margin: 30px 0 12px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid #f0e0e2;
+}
+.post-video-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    padding-top: 56.25%;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    margin-top: 12px;
+}
+.post-yt-facade {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    background: #000;
+}
+.post-yt-facade img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.post-yt-play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0,0,0,0.7);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 68px;
+    height: 68px;
+    font-size: 28px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+}
+.post-yt-facade:hover .post-yt-play {
+    background: #ff0000;
+}
+.post-related-games {
+    margin: 30px 0;
+}
+.post-related-games h2 {
+    text-align: center;
+    border-bottom: none;
+}
+.post-related-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-top: 16px;
+}
+.post-related-grid a {
+    display: block;
+    text-decoration: none;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    background: #fff;
+}
+.post-related-grid a:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.18);
+    text-decoration: none;
+}
+.post-related-grid img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+.post-related-grid span {
+    display: block;
+    padding: 10px;
+    font-weight: 600;
+    text-align: center;
+    color: #333;
+    font-size: 0.9em;
+}
+@media (max-width: 768px) {
+    .post-title { font-size: 2em; }
+    .post-intro-layout { flex-direction: column; align-items: center; }
+    .post-intro-layout img { max-width: 280px; }
+    .post-screenshot-gallery { grid-template-columns: 1fr 1fr; }
+    .post-screenshot-gallery.gallery-2 { max-width: 100%; }
+    .post-screenshot-gallery.gallery-1 { max-width: 50%; }
+    .post-install-grid { grid-template-columns: 1fr; }
+    .post-related-grid { grid-template-columns: repeat(2, 1fr); }
+    .post-download-section { padding: 20px 16px; }
+}
+@media (max-width: 480px) {
+    .post-title { font-size: 1.7em; }
+    .post-screenshot-gallery { grid-template-columns: 1fr; }
+    .post-screenshot-gallery.gallery-2 { max-width: 100%; }
+    .post-screenshot-gallery.gallery-1 { max-width: 100%; }
+    .post-related-grid { grid-template-columns: 1fr 1fr; }
+}
+</style>
+
+<!-- ========== POST CONTENT START ========== -->
+
+<h1 class="post-title">Showman's: The Awakening</h1>
+
+<!-- Hero / Intro Section -->
+<div class="post-description">
+    <div class="post-intro-layout">
+        <img src="/uploads/overhaul/showman-the-awakening/coverch1_5-9iercv37-thumb.webp" alt="Showman's: The Awakening cover art featuring Showman illuminated in red with other animatronics in blue shadows" width="330" height="207" loading="eager" />
+        <div class="post-intro-text">
+            <p>
+                <strong>Showman's: The Awakening</strong> is a fully 3D FNAF fan game built entirely in Blender's game engine — not Clickteam Fusion, not Unreal, but Blender. You play as Mark Ward, a night security guard stationed in a storage warehouse full of decommissioned animatronics from the now-closed Showman's Pizza Place chain. Across 6 increasingly intense nights, you'll manage hallway lights, a mask, electrical discharges, camera systems, and vent seals while six distinct animatronics close in from every direction. With real-time 3D rendering, in-engine cinematics, directional audio design, and a story that culminates in one of the most memorable twists in FNAF fan game history, this first chapter of the Showman's series has been called a masterpiece by multiple reviewers.
+            </p>
+            <a class="post-download-cta" href="#download">Download Showman's: The Awakening Free</a>
+        </div>
+    </div>
+</div>
+
+<!-- Stats Table -->
+<table class="post-stats-table">
+    <thead>
+        <tr>
+            <th>Feature</th>
+            <th>Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr><td>Developer</td><td>Iz (@itsizsgames)</td></tr>
+        <tr><td>Engine</td><td>Blender (real-time 3D)</td></tr>
+        <tr><td>Platforms</td><td>Windows PC (64-bit)</td></tr>
+        <tr><td>Genre</td><td>Survival Horror / Strategy</td></tr>
+        <tr><td>Structure</td><td>6 Nights + Secret Ending + Gallery</td></tr>
+        <tr><td>Version</td><td>1.0.0 (2 GB)</td></tr>
+        <tr><td>Price</td><td>Free</td></tr>
+    </tbody>
+</table>
+
+<!-- Screenshot Gallery #1 -->
+<div class="post-screenshot-gallery" data-lightbox-gallery>
+    <a href="/uploads/overhaul/showman-the-awakening/gameplayscreenshot15-zdjpfkmq.webp" data-lightbox>
+        <img src="/uploads/overhaul/showman-the-awakening/gameplayscreenshot15-zdjpfkmq-thumb.webp" alt="Showman's: The Awakening camera view showing animatronics on the show stage with date stamp 9/24/2007" loading="lazy" />
+    </a>
+    <a href="/uploads/overhaul/showman-the-awakening/screenshot-3-8xkrmbb8.webp" data-lightbox>
+        <img src="/uploads/overhaul/showman-the-awakening/screenshot-3-8xkrmbb8-thumb.webp" alt="Dark hallway in Showman's: The Awakening with shelves and a single light bulb illuminating the corridor" loading="lazy" />
+    </a>
+    <a href="/uploads/overhaul/showman-the-awakening/screenshot-15-brxp4bbj.webp" data-lightbox>
+        <img src="/uploads/overhaul/showman-the-awakening/screenshot-15-brxp4bbj-thumb.webp" alt="Peggy animatronic close-up in the office with her porcelain face and pearl necklace in Showman's: The Awakening" loading="lazy" />
+    </a>
+</div>
+
+<!-- Download Section -->
+<div id="download" class="post-download-section">
+    <h2>Download Showman's: The Awakening</h2>
+    <p class="version-info">Available as a free download for <strong>Windows PC</strong> (64-bit, ~2 GB).</p>
+    <div class="post-download-buttons">
+        <a class="post-download-btn" href="https://mega.nz/file/iRISRBYS#UqFtdlsW4a_6xeK6Wfw-iy417BQPBgErFn7i8awJTCY" target="_blank" rel="nofollow noopener">Download for PC (Mega)</a>
+    </div>
+</div>
+
+<!-- Install Instructions -->
+<div class="post-install-section">
+    <h3>How to Install Showman's: The Awakening</h3>
+    <div class="post-install-grid">
+        <details>
+            <summary>Windows</summary>
+            <div>
+                <ol>
+                    <li>Download the file from the link above (~2 GB)</li>
+                    <li>Extract the contents to a folder of your choice</li>
+                    <li>Run the .exe file to start the game</li>
+                    <li>If Windows SmartScreen blocks it, click "More info" then "Run anyway"</li>
+                </ol>
+            </div>
+        </details>
+    </div>
+</div>
+
+<div class="post-content">
+
+<h2>What Makes Showman's Special</h2>
+<p>Most FNAF fan games are built in Clickteam Fusion with pre-rendered static images. Showman's: The Awakening throws that convention out entirely. Built in Blender's real-time engine, every single frame is rendered in full 3D — you can look up, down, left, right, and even spin around to check the clock mounted behind you. When an animatronic walks down the hallway toward your office, you see it physically moving through 3D space. According to reviewer Dexter, watching them approach is <em>"the most unsettling thing I've ever seen in my life."</em></p>
+
+<p>The game is also a complete reimagining of Phobia: The Awakening, an earlier project by the same developer that used characters inspired by The Wiggles. Showman's replaces those with entirely original animatronic designs, adds in-engine cinematics with voice acting, substantially improves the graphics and lighting, and expands the gameplay with new mechanics and a deeper story. Reviewer Glamrock Dusky did a detailed comparison and concluded that Showman's surpasses Phobia in every single category.</p>
+
+</div>
+
+<!-- Video Section -->
+<div class="post-video-section">
+    <h2>Showman's: The Awakening Gameplay</h2>
+    <div class="post-video-container">
+        <div class="post-yt-facade" data-vid="oKjqLfmW9Ck">
+            <img src="https://i.ytimg.com/vi/oKjqLfmW9Ck/hqdefault.jpg" alt="Showman's: The Awakening gameplay video" loading="lazy" />
+            <button class="post-yt-play" aria-label="Play video">&#9654;</button>
+        </div>
+    </div>
+</div>
+
+<div class="post-content">
+
+<h2>Gameplay Mechanics</h2>
+<p>Showman's introduces its animatronics gradually across the 6 nights, each one bringing a unique mechanic that layers on top of the previous ones. By the later nights, you're juggling six different threats simultaneously — and the game's design makes sure none of them feel redundant.</p>
+
+<h3>Johnny &amp; Harry — The Hallway Stalkers (Night 1+)</h3>
+<p>Johnny approaches from the right hallway, Harry from the left. Each has 5 approach phases, and every step forward is accompanied by directional footstep sounds. You can slow them down using the hallway lights, but once they enter your office, you need to quickly put on a mask (similar to FNAF 2) to scare them off. Advanced players learn to count the audio cues mentally, tracking their positions without even looking.</p>
+
+<h3>Peggy — The Silent Watcher (Night 2+)</h3>
+<p>An unfinished animatronic sitting directly in front of you at the desk. She advances through subtle phases whenever you look away — at cameras, hallways, or the clock behind you. In her final phase, she slams the desk and stares you down with grinding metal sounds. The only way to reset her is the electrical discharge lever on your desk. But here's the catch: each discharge makes her more aggressive for the rest of the night, and using it too early or too many times will kill you outright.</p>
+
+<h3>Captain Cackle — The Pirate (Night 2+)</h3>
+<p>Stationed in Camera 6, Captain Cackle works like a reimagined Foxy. You need to check his camera regularly to keep him in place. If he escapes, he moves rapidly through the camera system and you have to find him before he reaches you. His deep, booming laugh serves as your warning signal when he's on the move.</p>
+
+</div>
+
+<!-- Screenshot Gallery #2 -->
+<div class="post-screenshot-gallery gallery-2" data-lightbox-gallery>
+    <a href="/uploads/overhaul/showman-the-awakening/screenshot_5_28_2025_1_06_00_am-iafr2vmm.webp" data-lightbox>
+        <img src="/uploads/overhaul/showman-the-awakening/screenshot_5_28_2025_1_06_00_am-iafr2vmm-thumb.webp" alt="Harry animatronic entering the office in full body view with green shirt and bow tie" loading="lazy" />
+    </a>
+    <a href="/uploads/overhaul/showman-the-awakening/screenshot_5_28_2025_1_16_28_am-y8xjwteb.webp" data-lightbox>
+        <img src="/uploads/overhaul/showman-the-awakening/screenshot_5_28_2025_1_16_28_am-y8xjwteb-thumb.webp" alt="Ventilation grate showing glowing animatronic eyes peering through in Showman's: The Awakening" loading="lazy" />
+    </a>
+</div>
+
+<div class="post-content">
+
+<h3>Tony &amp; Showman — Ventilation Threats (Night 3+)</h3>
+<p>Tony crawls through vent cameras 11 and 12, while Showman uses only vent camera 13 — making him faster to arrive despite having fewer phases. You can only seal one vent at a time by double-clicking the vent camera button. When both attack simultaneously, you're forced to prioritize whichever one is closer, creating some genuinely panic-inducing moments of split-second decision making.</p>
+
+<h3>Night 6 — The Boss Fight</h3>
+<p>Everything changes on the final night. You no longer play as Mark — he's been possessed by Showman after the events of Night 5. Instead, you control Matthew (the phone guy), who enters the now-burning building to rescue his colleague. The hallway lights are gone, replaced by a flashlight with limited battery. The clock disappears entirely; only the background music tells you how far you are from dawn.</p>
+
+<p>Mark himself becomes an enemy, charging down the hallways and requiring you to spam-click the flashlight directly into his eyes. A new threat called The Figure — a blank-masked endoskeleton — attacks through any of the three vents with no warning phases. Meanwhile, Peggy and Captain Cackle return fire-damaged and more aggressive than ever, with Peggy barely visible in the darkness and her audio cues distorted beyond recognition.</p>
+
+<h2>The Story Behind the Warehouse</h2>
+<p>Set in September 2007, the game takes place in a storage warehouse owned by Jason Baker, founder of the Showman's Pizza Place restaurant chain. The animatronics stored here were equipped with an advanced facial recognition AI system designed to interact with customers. Officially declared defective and shut down, someone reactivated it — giving the machines the ability to see, think independently, and understand conversations around them, including talk of scrapping them for parts.</p>
+
+<p>Over the course of 5 nights, Mark receives phone calls from Matthew guiding him through his shifts. But the story takes darker turns: Mark encounters a mysterious figure watching him, finds a Johnny doll that triggers a vision of Showman, and ignores a direct warning from Jason to stay away because the building is scheduled for demolition.</p>
+
+</div>
+
+<!-- Screenshot Gallery #3 -->
+<div class="post-screenshot-gallery gallery-2" data-lightbox-gallery>
+    <a href="/uploads/overhaul/showman-the-awakening/screenshot_5_28_2025_1_05_52_am-tsmjskim.webp" data-lightbox>
+        <img src="/uploads/overhaul/showman-the-awakening/screenshot_5_28_2025_1_05_52_am-tsmjskim-thumb.webp" alt="Dark camera view showing a shadowy animatronic figure standing among warehouse shelves" loading="lazy" />
+    </a>
+    <a href="/uploads/overhaul/showman-the-awakening/screenshot_5_28_2025_1_29_09_am-fq3tykd7.webp" data-lightbox>
+        <img src="/uploads/overhaul/showman-the-awakening/screenshot_5_28_2025_1_29_09_am-fq3tykd7-thumb.webp" alt="Animatronic inside ventilation duct with instructions to double-click to seal vent in Showman's: The Awakening" loading="lazy" />
+    </a>
+</div>
+
+<div class="post-content">
+
+<p>After surviving Night 5, Showman physically grabs Mark and forces a mask onto his face, possessing him. Night 6 flips the script entirely: Matthew rushes in to save Mark, only to find him turned into an enemy. The night ends with Matthew cornered, the door locked behind him, and Mark closing in. It's one of the most effective protagonist-to-antagonist twists in any FNAF fan game.</p>
+
+<p>Hidden throughout the cameras are 6 VHS tapes (one per night, randomized position except Night 6) that reveal the deeper lore. They tell the story of Timmy, a boy who celebrated his 12th birthday at Showman's Pizza Place in 1995 and died there along with his friends. Johnny was modeled after Timmy. Peggy was modeled after Jason Baker's deceased wife. The implication is devastating: Jason created the animatronics as monuments to his lost family.</p>
+
+<h2>What the Community Says</h2>
+<p>Showman's: The Awakening has received overwhelmingly positive reception from FNAF content creators.</p>
+
+<p><strong>Dexter</strong> called it <em>"one of my favorite FNAF games I've ever played,"</em> highlighting the unique game over screens with individualized dialogue for each animatronic (which he compared to Batman: Arkham Knight's villain taunts) and the sheer unsettling impact of watching animatronics move toward you in real-time 3D.</p>
+
+<p><strong>Aya</strong> praised the sound design as <em>"genuinely amazing"</em> and described the mechanical balance as <em>"borderline perfect,"</em> noting how each animatronic pair complements the others without ever feeling unfair. She singled out Night 6 as <em>"really scary, really fun, really challenging"</em> and only wished for a Custom Night mode to extend replayability.</p>
+
+<p><strong>Glamrock Dusky</strong> called Showman's his <em>"favorite FNAF fan creation to date,"</em> doing a comprehensive side-by-side analysis with Phobia: The Awakening and concluding that Showman's is superior in modeling, lighting, story, cinematics, and gameplay mechanics across the board.</p>
+
+</div>
+
+<div class="post-content">
+<h2>Frequently Asked Questions</h2>
+</div>
+
+<div class="post-faq">
+    <details>
+        <summary>Is Showman's: The Awakening free?</summary>
+        <div>Yes, it's completely free to download and play on PC. The developer released it as a fan project for the FNAF community.</div>
+    </details>
+    <details>
+        <summary>Is there an Android version?</summary>
+        <div>No. Due to the game's real-time 3D rendering in Blender's engine and its 2 GB file size, there is no Android port available.</div>
+    </details>
+    <details>
+        <summary>How many nights does the game have?</summary>
+        <div>There are 6 nights in total. Nights 1-5 are played as Mark Ward, while Night 6 switches your character to Matthew (the phone guy) for a boss fight sequence with completely different mechanics.</div>
+    </details>
+    <details>
+        <summary>Is this connected to Phobia: The Awakening?</summary>
+        <div>Showman's is a remake and reimagining of Phobia: The Awakening, an earlier game by the same developer. It replaces the original characters with new original designs, adds cinematics and voice acting, and significantly improves the graphics and gameplay. You don't need to play Phobia first.</div>
+    </details>
+    <details>
+        <summary>How do I find the secret ending?</summary>
+        <div>On any night except Night 6, dial 911 on the phone in your office. The police will arrive, but the animatronics stop and nobody believes your story. It's a humorous alternate ending hidden in plain sight.</div>
+    </details>
+    <details>
+        <summary>What is The Figure?</summary>
+        <div>The Figure is a mysterious endoskeleton wearing a blank white mask. It appears during Night 6 and attacks through any of the three vents with no warning phases. Its identity is tied to the game's deeper lore — it shares the same dialogue lines as the possessed Mark during game overs, suggesting a direct connection between the two.</div>
+    </details>
+</div>
+
+<!-- Related FNAF Fan Games -->
+<h2 class="il-heading">More FNAF Fan Games</h2>
+<div class="il-grid">
+<div class="il-card"><a href="/a-bite-at-freddys/">
+<img class="il-img" src="/uploads/overhaul/a-bite-at-freddys/portada-thumb.webp" alt="A Bite at Freddy's" loading="lazy" />
+<p class="il-title">A Bite at Freddy's</p></a>
+</div>
+<div class="il-card"><a href="/fredbear-and-friends-left-to-rot/">
+<img class="il-img" src="/uploads/overhaul/fredbear-and-friends-left-to-rot/a7vz6hudd6451-thumb.webp" alt="Fredbear &amp; Friends: Left to Rot" loading="lazy" />
+<p class="il-title">Fredbear &amp; Friends: Left to Rot</p></a>
+</div>
+<div class="il-card"><a href="/shadows-awaken/">
+<img class="il-img" src="/uploads/overhaul/shadows-awaken/portada-thumb.webp" alt="Shadows Awaken" loading="lazy" />
+<p class="il-title">Shadows Awaken</p></a>
+</div>
+<div class="il-card"><a href="/fazbear-entertainment-storage/">
+<img class="il-img" src="/uploads/2024/05/Fazbear-Entertainment-Storage.FanGame.webp" alt="Fazbear Entertainment Storage" loading="lazy" />
+<p class="il-title">Fazbear Entertainment Storage</p></a>
+</div>
+</div>
+
+<!-- Lightbox Script -->
+<script>
+    const overlay = document.createElement('div');
+    overlay.className = 'post-lightbox-overlay';
+    document.body.appendChild(overlay);
+
+    document.querySelectorAll('[data-lightbox]').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const img = document.createElement('img');
+            img.src = link.href;
+            img.alt = link.querySelector('img')?.alt || '';
+            overlay.innerHTML = '';
+            overlay.appendChild(img);
+            overlay.classList.add('active');
+        });
+    });
+
+    overlay.addEventListener('click', () => {
+        overlay.classList.remove('active');
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            overlay.classList.remove('active');
+        }
+    });
+
+    document.querySelectorAll('.post-yt-facade').forEach(el => {
+        el.addEventListener('click', () => {
+            const vid = el.dataset.vid;
+            const container = el.parentElement;
+            const iframe = document.createElement('iframe');
+            iframe.src = 'https://www.youtube-nocookie.com/embed/' + vid + '?autoplay=1';
+            iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+            iframe.setAttribute('allowfullscreen', '');
+            el.remove();
+            container.appendChild(iframe);
+        });
+    });
+</script>
+
+</Layout>

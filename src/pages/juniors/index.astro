@@ -1,0 +1,790 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+<Layout title="JR's: Enter the Flipside - Download Free FNAF Fan Game" description="Download JR's: Enter the Flipside, a paranormal investigation FNAF fan game with photorealistic graphics and ghost-hunting mechanics. Free for PC." lang="en">
+
+<style is:global>
+/* Override site-content width to match sonic-fangames.com (1200px content + 40px padding each side) */
+.site-content {
+    max-width: 1200px !important;
+    padding: 30px 40px !important;
+    box-sizing: content-box !important;
+}
+
+/* Styles for dynamically created elements (JS-created, no Astro scope attribute) */
+.post-video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+.post-lightbox-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.85);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: zoom-out;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+}
+.post-lightbox-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+.post-lightbox-overlay img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 8px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+}
+</style>
+
+<style>
+/* ========== INTERLINKING SECTION ========== */
+.il-heading { font-size: 24px; font-weight: 800; color: #470000; margin: 48px 0 16px; }
+.il-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 0 0 40px; }
+.il-card { background: #fff5f5; border: 1px solid #e0c8c8; border-radius: 12px; padding: 6px; text-align: center; }
+.il-card a { text-decoration: none; color: inherit; display: block; }
+.il-card a:hover { text-decoration: none; }
+.il-card:hover { border-color: #470000; }
+.il-img { width: 100%; height: 150px; object-fit: cover; border-radius: 10px; display: block; }
+.il-title { font-size: 14px; font-weight: 600; color: #1a1d2e; margin: 6px 0 2px; line-height: 1.4; }
+@media (max-width: 768px) { .il-grid { grid-template-columns: repeat(2, 1fr); } }
+
+/* ========== NEW POST DESIGN STYLES ========== */
+
+/* H1 - Game Title */
+.post-title {
+    text-align: center;
+    font-size: 2.8em;
+    font-weight: 800;
+    color: #470000;
+    margin: 20px 0 5px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    letter-spacing: -0.5px;
+}
+.post-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: #470000;
+    margin: 12px auto 0;
+    border-radius: 2px;
+}
+
+/* Description Section (Hero) */
+.post-description {
+    position: relative;
+    padding: 16px 20px;
+    border-radius: 16px;
+    margin: 30px auto;
+    max-width: 1200px;
+    background: linear-gradient(135deg, #f5e6e8, #ffffff);
+    color: #333;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: 0.4s;
+}
+.post-intro-layout {
+    display: flex;
+    align-items: stretch;
+    gap: 24px;
+    margin-bottom: 0;
+}
+.post-intro-layout img {
+    flex-shrink: 0;
+    align-self: flex-start;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    max-width: 330px;
+    width: 100%;
+    height: auto;
+}
+.post-intro-text {
+    flex: 1;
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+}
+.post-intro-text > p {
+    font-size: 1em;
+    line-height: 1.5;
+    margin: 0;
+    text-align: left;
+    flex: 1;
+}
+.post-intro-text > p strong:first-child {
+    color: #470000;
+    font-size: 1.05em;
+}
+
+/* Download CTA Button */
+.post-download-cta {
+    display: block;
+    text-align: center;
+    padding: 15px;
+    background: #470000;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 8px 0 0;
+    transition: background 0.2s;
+    color: #fff !important;
+}
+.post-download-cta:hover {
+    background: #5a0000;
+    text-decoration: none;
+}
+
+/* Stats Table */
+.post-stats-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 24px 0;
+    font-size: 1em;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    border: 1px solid #e0e0e0;
+}
+.post-stats-table thead tr {
+    background: #7E4955;
+}
+.post-stats-table th {
+    color: #fff;
+    font-weight: 700;
+    padding: 14px 18px;
+    text-align: left;
+    font-size: 0.95em;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.post-stats-table td {
+    padding: 12px 18px;
+    border-bottom: 1px solid #f0f0f0;
+}
+.post-stats-table td:first-child {
+    font-weight: 600;
+    color: #470000;
+    width: 35%;
+}
+.post-stats-table tbody tr:nth-child(even) {
+    background: #faf5f6;
+}
+.post-stats-table tbody tr:last-child td {
+    border-bottom: none;
+}
+.post-stats-table tbody tr:hover {
+    background: #f5e6e8;
+}
+
+/* Screenshot Gallery */
+.post-screenshot-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin: 24px 0;
+}
+.post-screenshot-gallery.gallery-2 {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 66%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.post-screenshot-gallery.gallery-1 {
+    grid-template-columns: 1fr;
+    max-width: 33%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.post-screenshot-gallery a {
+    display: block;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+}
+.post-screenshot-gallery a:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.18);
+}
+.post-screenshot-gallery img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+}
+
+/* Download Section */
+.post-download-section {
+    background: linear-gradient(135deg, #470000, #6b1a1a);
+    border-radius: 16px;
+    padding: 30px 24px;
+    text-align: center;
+    margin: 30px 0;
+    color: #fff;
+    box-shadow: 0 4px 16px rgba(71,0,0,0.25);
+}
+.post-download-section h2 {
+    color: #fff;
+    margin: 0 0 8px;
+    font-size: 1.6em;
+}
+.post-download-section .version-info {
+    color: rgba(255,255,255,0.85);
+    margin: 0 0 20px;
+    font-size: 0.95em;
+}
+.post-download-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+.post-download-btn {
+    display: inline-block;
+    padding: 12px 28px;
+    background: #fff;
+    color: #470000 !important;
+    font-weight: 700;
+    border-radius: 8px;
+    text-decoration: none !important;
+    font-size: 1em;
+    transition: all 0.2s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+.post-download-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    background: #f5e6e8;
+}
+
+/* Install Section */
+.post-install-section {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 24px auto;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.post-install-section h3 {
+    margin: 0 0 12px;
+    font-size: 1.3em;
+    color: #470000;
+}
+.post-install-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    align-items: start;
+}
+.post-install-grid details {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+.post-install-grid details:only-child {
+    grid-column: 1 / -1;
+}
+.post-install-grid summary {
+    padding: 12px 16px;
+    font-weight: 600;
+    cursor: pointer;
+    background: #faf5f6;
+    border-bottom: 1px solid #e0e0e0;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #470000;
+}
+.post-install-grid summary::before {
+    content: '▸';
+    transition: transform 0.2s;
+    font-size: 0.9em;
+}
+.post-install-grid details[open] summary::before {
+    transform: rotate(90deg);
+}
+.post-install-grid details div {
+    padding: 12px 16px;
+}
+
+/* Content Sections */
+.post-content h2 {
+    color: #470000;
+    font-size: 1.5em;
+    margin: 30px 0 12px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid #f0e0e2;
+}
+.post-content h3 {
+    color: #5a1a1a;
+    font-size: 1.2em;
+    margin: 20px 0 8px;
+}
+.post-content p {
+    margin: 10px 0;
+    line-height: 1.7;
+}
+.post-content ul {
+    margin: 10px 0 10px 20px;
+}
+.post-content li {
+    margin: 6px 0;
+    line-height: 1.6;
+}
+.post-content li strong {
+    color: #470000;
+}
+
+/* Details Grid (characters, zones, etc.) */
+.post-details-box {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 24px auto;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.post-details-box h3 {
+    margin: 0 0 12px;
+    font-size: 1.4em;
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+/* FAQ Section */
+.post-faq details {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    margin: 8px 0;
+    overflow: hidden;
+}
+.post-faq summary {
+    padding: 14px 18px;
+    font-weight: 600;
+    cursor: pointer;
+    background: #faf5f6;
+    color: #470000;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.post-faq summary::before {
+    content: '▸';
+    transition: transform 0.2s;
+}
+.post-faq details[open] summary::before {
+    transform: rotate(90deg);
+}
+.post-faq details div {
+    padding: 14px 18px;
+    line-height: 1.6;
+}
+
+/* Video Section */
+.post-video-section {
+    margin: 24px 0;
+}
+.post-video-section h2 {
+    color: #470000;
+    font-size: 1.5em;
+    margin: 30px 0 12px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid #f0e0e2;
+}
+.post-video-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    padding-top: 56.25%;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    margin-top: 12px;
+}
+.post-yt-facade {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    background: #000;
+}
+.post-yt-facade img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.post-yt-play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0,0,0,0.7);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 68px;
+    height: 68px;
+    font-size: 28px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+}
+.post-yt-facade:hover .post-yt-play {
+    background: #ff0000;
+}
+
+/* Related Games */
+.post-related-games {
+    margin: 30px 0;
+}
+.post-related-games h2 {
+    text-align: center;
+    border-bottom: none;
+}
+.post-related-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-top: 16px;
+}
+.post-related-grid a {
+    display: block;
+    text-decoration: none;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    background: #fff;
+}
+.post-related-grid a:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.18);
+    text-decoration: none;
+}
+.post-related-grid img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+.post-related-grid span {
+    display: block;
+    padding: 10px;
+    font-weight: 600;
+    text-align: center;
+    color: #333;
+    font-size: 0.9em;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .post-title { font-size: 2em; }
+    .post-intro-layout { flex-direction: column; align-items: center; }
+    .post-intro-layout img { max-width: 280px; }
+    .post-screenshot-gallery { grid-template-columns: 1fr 1fr; }
+    .post-screenshot-gallery.gallery-2 { max-width: 100%; }
+    .post-screenshot-gallery.gallery-1 { max-width: 50%; }
+    .post-install-grid { grid-template-columns: 1fr; }
+    .post-related-grid { grid-template-columns: repeat(2, 1fr); }
+    .post-download-section { padding: 20px 16px; }
+}
+@media (max-width: 480px) {
+    .post-title { font-size: 1.7em; }
+    .post-screenshot-gallery { grid-template-columns: 1fr; }
+    .post-screenshot-gallery.gallery-2 { max-width: 100%; }
+    .post-screenshot-gallery.gallery-1 { max-width: 100%; }
+    .post-related-grid { grid-template-columns: 1fr 1fr; }
+}
+</style>
+
+<!-- ========== POST CONTENT START ========== -->
+
+<h1 class="post-title">JR's: Enter the Flipside</h1>
+
+<!-- Hero / Intro Section -->
+<div class="post-description">
+    <div class="post-intro-layout">
+        <img src="/uploads/overhaul/juniors/juniors-thumb.webp" alt="JR's Enter the Flipside official logo with golden and pink text" width="330" height="207" loading="eager" />
+        <div class="post-intro-text">
+            <p>
+                <strong>JR's: Enter the Flipside</strong> completely reinvents what a FNAF fan game can be. Set in Junior's — the same restaurant from Pizzeria Simulator's Midnight Motorist minigame — you play as a paranormal investigator who must figure out which animatronic is possessed by a ghost using security cameras and supernatural clues. Forget surviving until 6 AM: here, the nights don't end until you've correctly identified the haunted animatronic enough times. Combining elements of FNAF, Among Us, and Phasmophobia into something entirely its own, JR's features photorealistic graphics that reviewers call the best ever seen in a FNAF fan game, and a level of strategic depth unprecedented in the genre. Widely considered one of the greatest FNAF fan games of all time.
+            </p>
+            <a class="post-download-cta" href="#download">Download JR's Free</a>
+        </div>
+    </div>
+</div>
+
+<!-- Stats Table -->
+<table class="post-stats-table">
+    <thead>
+        <tr>
+            <th>Feature</th>
+            <th>Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr><td>Developer</td><td>The JR's Team (Darroc & Ramenov)</td></tr>
+        <tr><td>Engine</td><td>Clickteam Fusion</td></tr>
+        <tr><td>Platforms</td><td>Windows PC</td></tr>
+        <tr><td>Genre</td><td>Horror / Investigation / Strategy</td></tr>
+        <tr><td>Structure</td><td>6 Nights + The Barrens exploration</td></tr>
+        <tr><td>Version</td><td>v1.4.1</td></tr>
+        <tr><td>Price</td><td>Free</td></tr>
+    </tbody>
+</table>
+
+<!-- Screenshot Gallery #1 -->
+<div class="post-screenshot-gallery" data-lightbox-gallery>
+    <a href="/uploads/overhaul/juniors/83610309-e350-4030-9885-3f40db90fe8d-v2gqfbvi.webp" data-lightbox>
+        <img src="/uploads/overhaul/juniors/83610309-e350-4030-9885-3f40db90fe8d-v2gqfbvi-thumb.webp" alt="Freddy animatronic in photorealistic detail with mouth open showing teeth in JR's" loading="lazy" />
+    </a>
+    <a href="/uploads/overhaul/juniors/tvteaser-imu93dau.webp" data-lightbox>
+        <img src="/uploads/overhaul/juniors/tvteaser-imu93dau-thumb.webp" alt="Vintage TV screens showing cartoon characters from Junior's restaurant" loading="lazy" />
+    </a>
+    <a href="/uploads/overhaul/juniors/49046730-5418-4a3e-97aa-fbb1b49e1f62-taj3grev.webp" data-lightbox>
+        <img src="/uploads/overhaul/juniors/49046730-5418-4a3e-97aa-fbb1b49e1f62-taj3grev-thumb.webp" alt="Balloon Baby with STOP sign and a glowing red figure in a dark hallway in JR's" loading="lazy" />
+    </a>
+</div>
+
+<!-- Download Section -->
+<div id="download" class="post-download-section">
+    <h2>Download JR's: Enter the Flipside</h2>
+    <p class="version-info">Version 1.4.1 — available as a free download for <strong>Windows PC</strong> (972 MB).</p>
+    <div class="post-download-buttons">
+        <a class="post-download-btn" href="https://mega.nz/file/yMg3yTwT#tiDKFtlzVZrDiQq01TttUNWq0sL7X-1f8jMAX3aI4yQ" target="_blank" rel="nofollow noopener">Download for PC (Mega)</a>
+    </div>
+</div>
+
+<!-- Install Instructions -->
+<div class="post-install-section">
+    <h3>How to Install JR's</h3>
+    <div class="post-install-grid">
+        <details>
+            <summary>Windows</summary>
+            <div>
+                <ol>
+                    <li>Download the file from the link above</li>
+                    <li>Extract the contents to a folder of your choice</li>
+                    <li>Run the .exe file to start the game</li>
+                    <li>If Windows SmartScreen blocks it, click "More info" then "Run anyway"</li>
+                </ol>
+            </div>
+        </details>
+    </div>
+</div>
+
+<div class="post-content">
+
+<h2>What Makes JR's Special</h2>
+<p>Most FNAF fan games put you in an office and dare you to survive until morning. JR's throws that formula out entirely. Instead of passively enduring waves of animatronic attacks, you're actively investigating — scanning cameras for paranormal evidence, tracking animatronic movements, and using supernatural clues to deduce which one is possessed by a ghost. The nights don't run on a timer; they end when you've made enough correct identifications.</p>
+
+<p>The result feels less like a traditional FNAF game and more like a ghost-hunting detective game wearing FNAF's skin. Reviewers have compared the core loop to Among Us (identifying the "impostor" among the animatronics) and Phasmophobia (gathering paranormal evidence to make your case). It's a combination that no other FNAF fan game has attempted, and it works remarkably well.</p>
+
+<p>Then there are the visuals. Built in Clickteam Fusion — an engine not exactly known for graphical fidelity — JR's delivers photorealistic office renders and animatronic designs that multiple reviewers called the best they've ever seen in any FNAF game, fan-made or official. As one reviewer put it: <em>"I seriously have no idea how the team got it to look this good."</em></p>
+
+</div>
+
+<!-- Video Section -->
+<div class="post-video-section">
+    <h2>JR's Gameplay</h2>
+    <div class="post-video-container">
+        <div class="post-yt-facade" data-vid="Pvc4ymTTeqA">
+            <img src="https://i.ytimg.com/vi/Pvc4ymTTeqA/hqdefault.jpg" alt="JR's Enter the Flipside gameplay video" loading="lazy" />
+            <button class="post-yt-play" aria-label="Play video">&#9654;</button>
+        </div>
+    </div>
+</div>
+
+<div class="post-content">
+
+<h2>Paranormal Investigation Mechanics</h2>
+<p>The core of JR's gameplay revolves around six animatronics — Freddy, Bonnie, Chica, Foxy, Balloon Baby, and the Marionette — one of which is possessed by a ghost at any given time. Your job is to figure out which one using a set of paranormal clues that are introduced progressively across the nights:</p>
+
+<ul>
+    <li><strong>Camera Flickering (Night 1):</strong> The camera feed in the room with the possessed animatronic flickers with brief moments of blackness between blinks.</li>
+    <li><strong>Handprints (Night 1):</strong> The possessed animatronic leaves handprints on the camera lens when it leaves a room.</li>
+    <li><strong>Camera Shaking (Night 3):</strong> When you manually move the camera in the possessed animatronic's room, it shakes in a random direction.</li>
+    <li><strong>Camera Malfunction (Night 4):</strong> The possessed animatronic causes its camera feed to cut out completely, forcing you to identify by elimination.</li>
+    <li><strong>Phone Ringing:</strong> A special event where a phone rings in the room of the possessed animatronic.</li>
+</ul>
+
+<p>Two animatronics require special detection methods. The Marionette doesn't appear on cameras at all — you detect it by listening for its music box through the camera feed. Balloon Baby is also invisible on cameras, but if it's possessed, its icon on the control panel will glitch out.</p>
+
+<h3>The Stability System</h3>
+<p>Every animatronic has a stability meter that constantly decreases. If any meter hits zero, it's game over. You can call an animatronic to the repair room to restore its stability to 100%, but there's a deadly catch: if you call the possessed animatronic for repairs, you die instantly. This creates a constant tension between keeping the animatronics stable and avoiding the one that will kill you.</p>
+
+<p>After each correct identification, there's a brief downtime period where you can repair animatronics for free. And if you've recently repaired one and its stability is still high, you can risk a "free guess" — even if you're wrong, you won't die since its meter won't be near zero. This risk-reward dynamic adds a layer of strategic depth rarely seen in FNAF games.</p>
+
+<p>You also have an ally: <strong>Paul Bear</strong>, a spirit trapped in a bear costume who can be called once per night to narrow the suspects down to just two animatronics.</p>
+
+</div>
+
+<!-- Screenshot Gallery #2 -->
+<div class="post-screenshot-gallery gallery-2" data-lightbox-gallery>
+    <a href="/uploads/overhaul/juniors/jrsintroteaser2-f8swj7xs.webp" data-lightbox>
+        <img src="/uploads/overhaul/juniors/jrsintroteaser2-f8swj7xs-thumb.webp" alt="The Barrens - a liminal moonlit forest landscape between life and death in JR's" loading="lazy" />
+    </a>
+    <a href="/uploads/overhaul/juniors/iamstillhere-ibzadza6.webp" data-lightbox>
+        <img src="/uploads/overhaul/juniors/iamstillhere-ibzadza6-thumb.webp" alt="Terrifying animatronic in the darkness with I AM STILL HERE text in JR's" loading="lazy" />
+    </a>
+</div>
+
+<div class="post-content">
+
+<h2>Story and Lore</h2>
+<p>You arrive at Junior's as a paranormal investigator, but before you can start your work, you lose consciousness and wake up in <strong>The Barrens</strong> — a limbo between life and death. There you meet Paul Bear, the spirit of a man trapped inside a bear costume. His name is a play on "pallbearer" (someone who carries a coffin), and he's been hiding in The Barrens for a long time, avoiding the ghost that haunts Junior's.</p>
+
+<p>Paul Bear strikes a deal with you: investigate the supernatural presence in Junior's, and he'll help you in return. Each night, you drift to sleep in The Barrens and wake up in the restaurant's security office to continue your investigation. Between nights, you explore The Barrens in first-person sections with an N64-era visual style, accompanied by an atmospheric soundtrack and dialogue with Paul Bear.</p>
+
+<p>As the nights progress, VHS tapes — animated in a striking claymation/stop-motion style — reveal that the ghost is a single female entity who possesses the animatronics to build herself a physical body: <strong>The Mangle</strong>. Each tape shows a possessed animatronic carrying parts to the basement.</p>
+
+<h3>Night 6: The Final Confrontation</h3>
+<p>The climax splits into two phases. First, you descend to the basement and discover it's a perfect replica of the FNAF 2 office — complete with the hallway, vents, and Bonnie mask. The animatronics take on deteriorated "Withered" forms, and you must survive using classic FNAF 2 mechanics: wind the music box, flash Foxy in the hallway, and don the mask when animatronics enter your office.</p>
+
+<p>Then everything changes. The animatronics sacrifice themselves on a conveyor belt to assemble The Mangle, and the game shifts into a frantic three-way multitask: locate the ghost on cameras and flash it with your light, use the flashlight on Mangle when it appears in the hallway, and wear the mask when the owl (Mangle's tail) appears in the vents. The cameras are dark most of the time because Mangle moves so fast, making this phase brutally difficult.</p>
+
+<p>After defeating The Mangle, you lure the ghost into The Barrens and destroy it, freeing Paul Bear and the trapped souls. But the true revelation comes in the epilogue: five years later, Junior's reopens with a "rebranding" focused on <em>"family fun, and above all, safety"</em> — the exact words of FNAF 2's Phone Guy. A new employee named <strong>Jeremy</strong> is hired. JR's is a prequel to FNAF 2: the basement of Junior's IS the FNAF 2 location, and the rebranded restaurant becomes Freddy Fazbear's Pizza with the Toy Animatronics.</p>
+
+</div>
+
+<!-- Screenshot Gallery #3 -->
+<div class="post-screenshot-gallery gallery-1" data-lightbox-gallery>
+    <a href="/uploads/overhaul/juniors/img_7631-qtuc3y4h.webp" data-lightbox>
+        <img src="/uploads/overhaul/juniors/img_7631-qtuc3y4h-thumb.webp" alt="The Mangle being assembled from multiple mechanical arms and endoskeletons in JR's" loading="lazy" />
+    </a>
+</div>
+
+<div class="post-content">
+
+<h2>What the Community Says</h2>
+<p>JR's has earned some of the most glowing praise in the entire FNAF fan game community. Multiple reviewers don't just call it the best fan game — they rank it above the official FNAF titles.</p>
+
+<p>One reviewer declared: <em>"JR's is not the best Five Nights at Freddy's fangame; it's the best FNAF game I have ever played, period. It redefines the very notion of what a FNAF fangame is, and it's a monumental leap forward for the sit-and-survive genre as a whole."</em> He praised Darroc's animatronic designs so highly that he said: <em>"I feel like I can smell these characters just by looking at them."</em></p>
+
+<p>Another reviewer was equally emphatic: <em>"Juniors is 100% the most fun I've ever had playing any FNAF game ever designed. Set your expectations as high as you want, and I guarantee Juniors will still blow them out of the water."</em> He highlighted the unprecedented level of player agency: <em>"Never before have I played a FNAF-style game that gave me so much agency on the outcome of the night."</em></p>
+
+<p>Even the more measured reviews praised the presentation. One reviewer called the office <em>"the best presentation for an office in any FNAF game"</em> and the overall graphics near-photorealistic, though he noted that the predictability of the stability meter made the game less scary than it could be. The common thread across all reviews: the investigation mechanic is genuinely innovative, and the Night 6 FNAF 2 connection is a brilliant piece of fan service.</p>
+
+<p>As one reviewer summed it up: <em>"You're not trapped with the animatronics, the animatronics are trapped with you."</em></p>
+
+</div>
+
+<div class="post-content">
+<h2>Frequently Asked Questions</h2>
+</div>
+
+<div class="post-faq">
+    <details>
+        <summary>Is JR's free to download?</summary>
+        <div>Yes, JR's is completely free. It was created as a passion project by The JR's Team for the FNAF community.</div>
+    </details>
+    <details>
+        <summary>Is there an Android version?</summary>
+        <div>No, JR's is only available for Windows PC. There is no official Android or mobile port.</div>
+    </details>
+    <details>
+        <summary>How is JR's connected to FNAF 2?</summary>
+        <div>JR's serves as a prequel to Five Nights at Freddy's 2. The basement of Junior's restaurant is revealed to be the same location as the FNAF 2 pizzeria. The epilogue shows Junior's being rebranded into Freddy Fazbear's Pizza with the hiring of Jeremy Fitzgerald, FNAF 2's protagonist.</div>
+    </details>
+    <details>
+        <summary>What is The Barrens?</summary>
+        <div>The Barrens is a limbo between life and death where you meet Paul Bear between nights. It features first-person exploration sections with an N64-style visual aesthetic, story dialogue, and atmospheric music. It serves as the narrative hub of the game.</div>
+    </details>
+    <details>
+        <summary>Who is Paul Bear?</summary>
+        <div>Paul Bear is the spirit of a man trapped inside a bear costume in The Barrens. His name is a play on "pallbearer" (someone who carries a coffin). He acts as your ally throughout the game, offering help once per night to narrow down which animatronic is possessed. Freeing him from The Barrens is a key part of the story.</div>
+    </details>
+    <details>
+        <summary>How long does it take to beat JR's?</summary>
+        <div>The main story across 6 nights typically takes several hours, depending on how quickly you master the investigation mechanics. Night 6 in particular can take multiple attempts due to its high difficulty and lack of checkpoints.</div>
+    </details>
+</div>
+
+<!-- Related FNAF Fan Games -->
+<h2 class="il-heading">More FNAF Fan Games</h2>
+<div class="il-grid">
+<div class="il-card"><a href="/showmans-the-awakening/">
+<img class="il-img" src="/uploads/overhaul/showman-the-awakening/coverch1_5-9iercv37-thumb.webp" alt="Showman's: The Awakening" loading="lazy" />
+<p class="il-title">Showman's: The Awakening</p></a>
+</div>
+<div class="il-card"><a href="/final-nights-4/">
+<img class="il-img" src="/uploads/overhaul/final-nights-4/teaser9-gw3wxexd-thumb.webp" alt="Final Nights 4" loading="lazy" />
+<p class="il-title">Final Nights 4</p></a>
+</div>
+<div class="il-card"><a href="/animatronic-memories/">
+<img class="il-img" src="/uploads/overhaul/animatronic-memories/animatronics-memories-thumb.webp" alt="Animatronic Memories" loading="lazy" />
+<p class="il-title">Animatronic Memories</p></a>
+</div>
+<div class="il-card"><a href="/welcome-to-fredbears-remake/">
+<img class="il-img" src="/uploads/overhaul/welcome-to-fredbears/portada-thumb.webp" alt="Welcome to Fredbear's" loading="lazy" />
+<p class="il-title">Welcome to Fredbear's</p></a>
+</div>
+</div>
+
+<!-- Lightbox Script -->
+<script>
+    // Lightbox functionality
+    const overlay = document.createElement('div');
+    overlay.className = 'post-lightbox-overlay';
+    document.body.appendChild(overlay);
+
+    document.querySelectorAll('[data-lightbox]').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const img = document.createElement('img');
+            img.src = link.href;
+            img.alt = link.querySelector('img')?.alt || '';
+            overlay.innerHTML = '';
+            overlay.appendChild(img);
+            overlay.classList.add('active');
+        });
+    });
+
+    overlay.addEventListener('click', () => {
+        overlay.classList.remove('active');
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            overlay.classList.remove('active');
+        }
+    });
+
+    // YouTube facade - click to load
+    document.querySelectorAll('.post-yt-facade').forEach(el => {
+        el.addEventListener('click', () => {
+            const vid = el.dataset.vid;
+            const container = el.parentElement;
+            const iframe = document.createElement('iframe');
+            iframe.src = 'https://www.youtube-nocookie.com/embed/' + vid + '?autoplay=1';
+            iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+            iframe.setAttribute('allowfullscreen', '');
+            el.remove();
+            container.appendChild(iframe);
+        });
+    });
+</script>
+
+</Layout>

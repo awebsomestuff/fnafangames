@@ -27,7 +27,7 @@ const { title, description, lang = "en" } = Astro.props;
         a { color: #1e73be; text-decoration: none; }
         a:hover { text-decoration: underline; }
         img { max-width: 100%; height: auto; }
-        h1 { text-align: center; margin: 30px 0; font-size: 2.2em; font-family: Georgia, "Times New Roman", serif; color: #333; }
+        h1 { text-align: center; margin: 30px 0; font-size: 2.2em; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif; font-weight: 800; color: #1a1d2e; }
         h2 { margin: 20px 0 10px; font-size: 1.5em; }
         h3 { margin: 15px 0 10px; font-size: 1.25em; }
         p { margin: 10px 0; }
@@ -163,7 +163,7 @@ const { title, description, lang = "en" } = Astro.props;
             .imagen-redondeada { min-height: 100px; max-height: 100px; }
             .su-column-1-3, .su-column-2-3, .su-column-1-5, .su-column-4-5 { flex: 0 0 100%; }
         }
-        @media screen and (max-width: 600px) {
+        @media screen and (max-width: 900px) {
             .contenedor { justify-content: space-around; }
             .main-nav { display: none; flex-direction: column; width: 100%; }
             .main-nav.active { display: flex; }
@@ -257,7 +257,7 @@ const { title, description, lang = "en" } = Astro.props;
     <header class="site-header">
         <div class="site-logo">
             <a href="/">
-                <img loading="lazy" src="/uploads/2024/04/cropped-fnaf-logo-71w.webp" srcset="/uploads/2024/04/cropped-fnaf-logo-71w.webp 71w, /uploads/2024/04/cropped-fnaf-logo-124w.webp 124w" sizes="(max-width: 768px) 124px, 71px" alt="FNAF Fan Games" width="71" height="40" />
+                <img src="/uploads/2024/04/cropped-fnaf-logo-300x169.webp" alt="FNAF Fan Games" width="71" height="40" />
             </a>
         </div>
         <button class="menu-toggle" aria-label="Menu">&#9776;</button>
@@ -266,9 +266,7 @@ const { title, description, lang = "en" } = Astro.props;
             <a href="/candys-4/">Candy's 4</a>
             <a href="/world/">FNaF World</a>
             <a href="/jolly-4/">Jolly 4</a>
-            <a href="/scp-the-endurance/">SCP: The Endurance</a>
             <a href="/tyke-and-sons-lumber-co/">Tyke and Sons Lumber</a>
-            <a href="/ultimate-custom-night/">Ultimate Custom Night</a>
         </nav>
     </header>
     </div>

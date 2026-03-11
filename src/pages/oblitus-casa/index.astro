@@ -1,77 +1,782 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import AdSenseAfterIntro from '../../components/AdSenseAfterIntro.astro';
 ---
-<Layout title="Oblitus Casa Fan Game | [Download the Game] [All Info] 💣" description="👉 Dive into the haunting depths of Oblitus Casa, the climactic finale to the Five Nights at Treasure Island series..." lang="en">
-<h1>Oblitus Casa Fan Game</h1>
-<AdSenseAfterIntro />
-<span style="font-weight: 400;"><div class="su-row"><div class="su-column su-column-1-3"></span>
+<Layout title="Oblitus Casa - Download Free FNAF Fan Game (FNaTI Sequel)" description="Download Oblitus Casa, the official FNaTI sequel. Survive on Discovery Island with camera surveillance, audio lures, and free-roam tunnel sections. Free for PC." lang="en">
 
-<img class="aligncenter size-full wp-image-100" src="/uploads/2024/05/Oblitus-Casa_Fangame.webp" alt="Oblitus Casa_Fangame" width="200" height="113" />
+<style is:global>
+/* Override site-content width to match sonic-fangames.com (1200px content + 40px padding each side) */
+.site-content {
+    max-width: 1200px !important;
+    padding: 30px 40px !important;
+    box-sizing: content-box !important;
+}
+
+/* Styles for dynamically created elements (JS-created, no Astro scope attribute) */
+.post-video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+.post-lightbox-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.85);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: zoom-out;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+}
+.post-lightbox-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+.post-lightbox-overlay img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 8px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+}
+</style>
+
+<style>
+/* ========== INTERLINKING SECTION ========== */
+.il-heading { font-size: 24px; font-weight: 800; color: #470000; margin: 48px 0 16px; }
+.il-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 0 0 40px; }
+.il-card { background: #fff5f5; border: 1px solid #e0c8c8; border-radius: 12px; padding: 6px; text-align: center; }
+.il-card a { text-decoration: none; color: inherit; display: block; }
+.il-card a:hover { text-decoration: none; }
+.il-card:hover { border-color: #470000; }
+.il-img { width: 100%; height: 150px; object-fit: cover; border-radius: 10px; display: block; }
+.il-title { font-size: 14px; font-weight: 600; color: #1a1d2e; margin: 6px 0 2px; line-height: 1.4; }
+@media (max-width: 768px) { .il-grid { grid-template-columns: repeat(2, 1fr); } }
+
+/* ========== NEW POST DESIGN STYLES ========== */
+
+/* H1 - Game Title */
+.post-title {
+    text-align: center;
+    font-size: 2.8em;
+    font-weight: 800;
+    color: #470000;
+    margin: 20px 0 5px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    letter-spacing: -0.5px;
+}
+.post-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: #470000;
+    margin: 12px auto 0;
+    border-radius: 2px;
+}
+
+/* Description Section (Hero) */
+.post-description {
+    position: relative;
+    padding: 16px 20px;
+    border-radius: 16px;
+    margin: 30px auto;
+    max-width: 1200px;
+    background: linear-gradient(135deg, #f5e6e8, #ffffff);
+    color: #333;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: 0.4s;
+}
+.post-intro-layout {
+    display: flex;
+    align-items: stretch;
+    gap: 24px;
+    margin-bottom: 0;
+}
+.post-intro-layout img {
+    flex-shrink: 0;
+    align-self: flex-start;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    max-width: 330px;
+    width: 100%;
+    height: auto;
+}
+.post-intro-text {
+    flex: 1;
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+}
+.post-intro-text > p {
+    font-size: 1em;
+    line-height: 1.5;
+    margin: 0;
+    text-align: left;
+    flex: 1;
+}
+.post-intro-text > p strong:first-child {
+    color: #470000;
+    font-size: 1.05em;
+}
+
+/* Download CTA Button */
+.post-download-cta {
+    display: block;
+    text-align: center;
+    padding: 15px;
+    background: #470000;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 8px 0 0;
+    transition: background 0.2s;
+    color: #fff !important;
+}
+.post-download-cta:hover {
+    background: #5a0000;
+    text-decoration: none;
+}
+
+/* Stats Table */
+.post-stats-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 24px 0;
+    font-size: 1em;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    border: 1px solid #e0e0e0;
+}
+.post-stats-table thead tr {
+    background: #7E4955;
+}
+.post-stats-table th {
+    color: #fff;
+    font-weight: 700;
+    padding: 14px 18px;
+    text-align: left;
+    font-size: 0.95em;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.post-stats-table td {
+    padding: 12px 18px;
+    border-bottom: 1px solid #f0f0f0;
+}
+.post-stats-table td:first-child {
+    font-weight: 600;
+    color: #470000;
+    width: 35%;
+}
+.post-stats-table tbody tr:nth-child(even) {
+    background: #faf5f6;
+}
+.post-stats-table tbody tr:last-child td {
+    border-bottom: none;
+}
+.post-stats-table tbody tr:hover {
+    background: #f5e6e8;
+}
+
+/* Screenshot Gallery */
+.post-screenshot-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin: 24px 0;
+}
+.post-screenshot-gallery.gallery-2 {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 66%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.post-screenshot-gallery.gallery-1 {
+    grid-template-columns: 1fr;
+    max-width: 33%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.post-screenshot-gallery a {
+    display: block;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+}
+.post-screenshot-gallery a:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.18);
+}
+.post-screenshot-gallery img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+}
+
+/* Download Section */
+.post-download-section {
+    background: linear-gradient(135deg, #470000, #6b1a1a);
+    border-radius: 16px;
+    padding: 30px 24px;
+    text-align: center;
+    margin: 30px 0;
+    color: #fff;
+    box-shadow: 0 4px 16px rgba(71,0,0,0.25);
+}
+.post-download-section h2 {
+    color: #fff;
+    margin: 0 0 8px;
+    font-size: 1.6em;
+}
+.post-download-section .version-info {
+    color: rgba(255,255,255,0.85);
+    margin: 0 0 20px;
+    font-size: 0.95em;
+}
+.post-download-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+.post-download-btn {
+    display: inline-block;
+    padding: 12px 28px;
+    background: #fff;
+    color: #470000 !important;
+    font-weight: 700;
+    border-radius: 8px;
+    text-decoration: none !important;
+    font-size: 1em;
+    transition: all 0.2s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+.post-download-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    background: #f5e6e8;
+}
+
+/* Install Section */
+.post-install-section {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 24px auto;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.post-install-section h3 {
+    margin: 0 0 12px;
+    font-size: 1.3em;
+    color: #470000;
+}
+.post-install-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    align-items: start;
+}
+.post-install-grid details {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+.post-install-grid details:only-child {
+    grid-column: 1 / -1;
+}
+.post-install-grid summary {
+    padding: 12px 16px;
+    font-weight: 600;
+    cursor: pointer;
+    background: #faf5f6;
+    border-bottom: 1px solid #e0e0e0;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #470000;
+}
+.post-install-grid summary::before {
+    content: '▸';
+    transition: transform 0.2s;
+    font-size: 0.9em;
+}
+.post-install-grid details[open] summary::before {
+    transform: rotate(90deg);
+}
+.post-install-grid details div {
+    padding: 12px 16px;
+}
+
+/* Content Sections */
+.post-content h2 {
+    color: #470000;
+    font-size: 1.5em;
+    margin: 30px 0 12px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid #f0e0e2;
+}
+.post-content h3 {
+    color: #5a1a1a;
+    font-size: 1.2em;
+    margin: 20px 0 8px;
+}
+.post-content p {
+    margin: 10px 0;
+    line-height: 1.7;
+}
+.post-content ul {
+    margin: 10px 0 10px 20px;
+}
+.post-content li {
+    margin: 6px 0;
+    line-height: 1.6;
+}
+.post-content li strong {
+    color: #470000;
+}
+
+/* Details Grid (characters, zones, etc.) */
+.post-details-box {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 24px auto;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.post-details-box h3 {
+    margin: 0 0 12px;
+    font-size: 1.4em;
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+/* FAQ Section */
+.post-faq details {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    margin: 8px 0;
+    overflow: hidden;
+}
+.post-faq summary {
+    padding: 14px 18px;
+    font-weight: 600;
+    cursor: pointer;
+    background: #faf5f6;
+    color: #470000;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.post-faq summary::before {
+    content: '▸';
+    transition: transform 0.2s;
+}
+.post-faq details[open] summary::before {
+    transform: rotate(90deg);
+}
+.post-faq details div {
+    padding: 14px 18px;
+    line-height: 1.6;
+}
+
+/* Video Section */
+.post-video-section {
+    margin: 24px 0;
+}
+.post-video-section h2 {
+    color: #470000;
+    font-size: 1.5em;
+    margin: 30px 0 12px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid #f0e0e2;
+}
+.post-video-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    padding-top: 56.25%;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    margin-top: 12px;
+}
+.post-yt-facade {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    background: #000;
+}
+.post-yt-facade img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.post-yt-play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0,0,0,0.7);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 68px;
+    height: 68px;
+    font-size: 28px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+}
+.post-yt-facade:hover .post-yt-play {
+    background: #ff0000;
+}
+
+/* Related Games */
+.post-related-games {
+    margin: 30px 0;
+}
+.post-related-games h2 {
+    text-align: center;
+    border-bottom: none;
+}
+.post-related-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-top: 16px;
+}
+.post-related-grid a {
+    display: block;
+    text-decoration: none;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    background: #fff;
+}
+.post-related-grid a:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.18);
+    text-decoration: none;
+}
+.post-related-grid img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+.post-related-grid span {
+    display: block;
+    padding: 10px;
+    font-weight: 600;
+    text-align: center;
+    color: #333;
+    font-size: 0.9em;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .post-title { font-size: 2em; }
+    .post-intro-layout { flex-direction: column; align-items: center; }
+    .post-intro-layout img { max-width: 280px; }
+    .post-screenshot-gallery { grid-template-columns: 1fr 1fr; }
+    .post-screenshot-gallery.gallery-2 { max-width: 100%; }
+    .post-screenshot-gallery.gallery-1 { max-width: 50%; }
+    .post-install-grid { grid-template-columns: 1fr; }
+    .post-related-grid { grid-template-columns: repeat(2, 1fr); }
+    .post-download-section { padding: 20px 16px; }
+}
+@media (max-width: 480px) {
+    .post-title { font-size: 1.7em; }
+    .post-screenshot-gallery { grid-template-columns: 1fr; }
+    .post-screenshot-gallery.gallery-2 { max-width: 100%; }
+    .post-screenshot-gallery.gallery-1 { max-width: 100%; }
+    .post-related-grid { grid-template-columns: 1fr 1fr; }
+}
+</style>
+
+<!-- ========== POST CONTENT START ========== -->
+
+<h1 class="post-title">Oblitus Casa</h1>
+
+<!-- Hero / Intro Section -->
+<div class="post-description">
+    <div class="post-intro-layout">
+        <img src="/uploads/overhaul/oblitus-casa/teaser2glow-mkwwvq2a-thumb.webp" alt="Oblitus Casa teaser art featuring a twisted Minnie creature with glowing eyes" width="330" height="207" loading="eager" />
+        <div class="post-intro-text">
+            <p>
+                <strong>Oblitus Casa</strong> is the official final chapter of the Five Nights at Treasure Island saga, developed by Radiance Team. Set one year after the original game, you play as Jake Smith — the sole survivor of Discovery Island — returning to an isolated cabin deep in the island's forest. Across five intense nights, you'll face twisted, ink-like monstrosities based on classic Disney characters using a layered system of camera surveillance, audio lures, and a notepad defense. Between nights, you'll navigate claustrophobic underground tunnels in first-person free-roam sections. And if you die? The Postmortem system gives you a surreal second chance. "Oblitus Casa" means "forgotten house" in Latin — and this house won't let you forget it.
+            </p>
+            <a class="post-download-cta" href="#download">Download Oblitus Casa Free</a>
+        </div>
+    </div>
+</div>
+
+<!-- Stats Table -->
+<table class="post-stats-table">
+    <thead>
+        <tr>
+            <th>Feature</th>
+            <th>Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr><td>Developer</td><td>Radiance Team (@RadianceGamesOfficial)</td></tr>
+        <tr><td>Engine</td><td>Clickteam Fusion</td></tr>
+        <tr><td>Platforms</td><td>Windows PC</td></tr>
+        <tr><td>Genre</td><td>Survival Horror / Strategy</td></tr>
+        <tr><td>Structure</td><td>5 Nights + Night 6 + Custom Night</td></tr>
+        <tr><td>Latest Version</td><td>v2.0.5</td></tr>
+        <tr><td>Price</td><td>Free</td></tr>
+    </tbody>
+</table>
+
+<!-- Screenshot Gallery #1 -->
+<div class="post-screenshot-gallery" data-lightbox-gallery>
+    <a href="/uploads/overhaul/oblitus-casa/gameplaycasa3-pwrxhjkx.webp" data-lightbox>
+        <img src="/uploads/overhaul/oblitus-casa/gameplaycasa3-pwrxhjkx-thumb.webp" alt="Oblitus Casa camera view showing a cluttered room with the camera map overlay" loading="lazy" />
+    </a>
+    <a href="/uploads/overhaul/oblitus-casa/gameplaycasa4-4iq7mrje.webp" data-lightbox>
+        <img src="/uploads/overhaul/oblitus-casa/gameplaycasa4-4iq7mrje-thumb.webp" alt="Oblitus Casa camera feed with Willy visible lurking in a dark room" loading="lazy" />
+    </a>
+    <a href="/uploads/overhaul/oblitus-casa/gameplaycasa22-vzc9sdhu.webp" data-lightbox>
+        <img src="/uploads/overhaul/oblitus-casa/gameplaycasa22-vzc9sdhu-thumb.webp" alt="Oblitus Casa cabin office showing the notepad with Belial's drawing at 1:30 AM" loading="lazy" />
+    </a>
+</div>
+
+<!-- Download Section -->
+<div id="download" class="post-download-section">
+    <h2>Download Oblitus Casa</h2>
+    <p class="version-info">Version 2.0.5 — Free download for <strong>Windows PC</strong> (~2 GB).</p>
+    <div class="post-download-buttons">
+        <a class="post-download-btn" href="https://mega.nz/file/fNZQHIpD#Obnp8GD8yECToS_wY1QM7hIhhEpUHq7xop871CIFZLw" target="_blank" rel="nofollow noopener">Download for PC (Mega)</a>
+    </div>
+</div>
+
+<!-- Install Instructions -->
+<div class="post-install-section">
+    <h3>How to Install Oblitus Casa</h3>
+    <div class="post-install-grid">
+        <details>
+            <summary>Windows</summary>
+            <div>
+                <ol>
+                    <li>Download the file from the link above</li>
+                    <li>Extract the contents to a folder of your choice</li>
+                    <li>Run the .exe file to start the game</li>
+                    <li>If Windows SmartScreen blocks it, click "More info" then "Run anyway"</li>
+                </ol>
+            </div>
+        </details>
+    </div>
+</div>
+
+<div class="post-content">
+
+<h2>What Makes Oblitus Casa Special</h2>
+<p>Five Nights at Treasure Island was a beloved classic of the FNAF fan game scene, but it was also a product of its time — limited mechanics, rough edges, and a lot of untapped potential. Oblitus Casa takes everything that made the original interesting and rebuilds it from the ground up. The jump in quality between the two games — developed only two years apart — is staggering.</p>
+
+<p>The cabin setting replaces the typical office with an asymmetric space that feels genuinely lived-in and threatening. Instead of simply watching cameras and closing doors, you're juggling multiple defense tools simultaneously: an audio lure system, a camera flash, a notepad with an eraser, and an attic accessible by ladder with a lighter. Each animatronic demands a different approach, and by Night 5, you need to have mastered every single one of them.</p>
+
+<p>What really sets Oblitus Casa apart is the sheer variety of its content. The main campaign alone features distinct mechanics per night, but the game also packs free-roam tunnel sections, the Postmortem second-chance system, a Night 6, Custom Night, creepypasta crossover challenges (Jeff the Killer, Slenderman, Smile Dog, Eyeless Jack), and a brutal True Nightmare 12/20 mode. All of it free.</p>
 
 </div>
 
-<div class="su-column su-column-2-3">
+<!-- Video Section -->
+<div class="post-video-section">
+    <h2>Oblitus Casa Gameplay</h2>
+    <div class="post-video-container">
+        <div class="post-yt-facade" data-vid="NHNqbGN3hws">
+            <img src="https://i.ytimg.com/vi/NHNqbGN3hws/hqdefault.jpg" alt="Oblitus Casa gameplay video" loading="lazy" />
+            <button class="post-yt-play" aria-label="Play video">&#9654;</button>
+        </div>
+    </div>
+</div>
 
-<strong>Dive into the haunting depths of Oblitus Casa,</strong> the climactic finale to the Five Nights at Treasure Island series. Known also as Project D.I. or Forgotten House, this game is designed to challenge your perception and pull you back into the eerie world of Treasure Island one year after the harrowing events that left an indelible mark on your psyche. With a focus on retconning and enhancing the narrative and visual elements of the series, Oblitus Casa promises a deeply atmospheric and unsettling experience.
+<div class="post-content">
 
-</div></div>
+<h2>Night-by-Night Breakdown</h2>
+<p>Oblitus Casa introduces its animatronics gradually, with each night layering new threats on top of existing ones. By the final night, every tool at your disposal is being tested simultaneously.</p>
 
-<a href="https://gamejolt.com/get/build?game=356260&amp;build=1487228" target="_blank" class="su-button" style="background-color:#470000;color:#fff;padding:10px 20px;border-radius:4px;text-decoration:none;display:inline-block;font-size:16px;font-weight:600;text-align:center;width:100%;box-sizing:border-box;" rel="nofollow">⬇ Download Oblitus Casa</a>
-<table class="stats-table">
-<thead>
-<tr>
-<th><strong>Characteristic</strong></th>
-<th><strong>Data</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Development Stage</td>
-<td>Complete</td>
-</tr>
-<tr>
-<td>Engine/Language</td>
-<td>Clickteam Series</td>
-</tr>
-<tr>
-<td>Published On</td>
-<td>July 30, 2021</td>
-</tr>
-<tr>
-<td>File Size</td>
-<td>2 GB</td>
-</tr>
-<tr>
-<td>Views</td>
-<td>1.3 million</td>
-</tr>
-</tbody>
-</table>
-<h3>Gameplay and Features</h3>
-Oblitus Casa elevates the horror genre with enhanced gameplay mechanics, superior graphics, and an enveloping sound design:
-<ul>
- 	<li><strong>Advanced Gameplay Mechanics:</strong> Navigate through the dark with innovative controls designed to enhance the horror and challenge.</li>
- 	<li><strong>Enhanced Visuals and Atmosphere:</strong> Experience the island in unprecedented detail with revamped visuals that bring the chilling environment to life.</li>
- 	<li><strong>Immersive Soundtrack:</strong> The game features a haunting soundtrack with titles like "Chimes of a Painful Past" that deepen the immersive experience of the game.</li>
-</ul>
-<center><div class="yt-facade" data-vid="nFEWFPc68F4" style="max-width:560px;aspect-ratio:560/315"><img src="https://i.ytimg.com/vi/nFEWFPc68F4/hqdefault.jpg" alt="Play video" loading="lazy" width="560" height="315"><button class="yt-play" aria-label="Play video">&#9654;</button></div></center>
-<h3>Download Oblitus Casa</h3>
-Embark on a psychological journey to piece together your fractured mind in the eerie corridors of Treasure Island. Click to download Oblitus Casa and confront the shadows of the past in this definitive final chapter. Are you ready to face your fears and uncover the island's darkest secrets one last time?
-<h3>Game Soundtrack Highlights</h3>
-The Oblitus Casa soundtrack, <strong>crafted to complement the game’s dark theme,</strong> includes:
-<ol>
- 	<li>Chimes of a Painful Past</li>
- 	<li>An Unreal Reawakening</li>
- 	<li>Communications</li>
-</ol>
-<h4>Oblitus Casa Storyline</h4>
-One year after the unforgettable incidents at Treasure Island, the echoes of the past still haunt you. Oblitus Casa invites players to traverse a path of redemption and horror, offering a chance to reconcile with unresolved events and face the terrifying consequences of previous actions.
-<h4>Comprehensive World</h4>
-Oblitus Casa not only concludes the story but expands the universe with a variety of characters and settings:
-<ul>
- 	<li><strong>Rich Character Roster:</strong> From haunted animatronics to sinister humanoids, each character is designed to challenge your bravery and puzzle-solving skills.</li>
- 	<li><strong>Eerie Locations:</strong> Explore new and familiar areas of Treasure Island, each crafted to keep you on the edge of your seat.</li>
-</ul>
-Oblitus Casa stands as a monument to the legacy of the Treasure Island series, offering fans and new players alike a chance to dive deep into its mysterious world. This game combines psychological horror with complex storytelling and high-quality production to deliver a memorable and unsettling experience. Download now and prepare to uncover the truths that lurk in the shadows of Oblitus Casa.
+<h3>Night 1 — Willy &amp; Belial</h3>
+<p><strong>Willy</strong> (based on Steamboat Willie) is a persistent roamer similar to Springtrap. You lure him away using the audio player on your cameras, ideally keeping him pinned at Camera 9 — the farthest point from the cabin. If he reaches Cameras 4 or 6, which connect directly to your office, you have seconds to redirect him. Meanwhile, <strong>Belial</strong> (based on Sadie the Cat) progressively draws on your notepad. You need to erase the drawing frequently with the rubber eraser before it completes and triggers an attack.</p>
+
+<h3>Night 2 — Corrupted Face &amp; Daisy</h3>
+<p><strong>Corrupted Face</strong> appears in the attic, signaled by a distinct sound cue. Climb up and point the lighter at it to drive it away. <strong>Daisy</strong> shows up on camera feeds and must be photographed with the flash — ignore her and she disables your cameras, making every other animatronic more aggressive.</p>
+
+<h3>Night 3 — Photo Negative Mini</h3>
+<p>Similar to Willy's patrol behavior but repelled by the camera flash instead of audio. You need to flash her repeatedly to push her back room by room, keeping her away from the cabin.</p>
+
+<h3>Night 4 — Pete &amp; Dippy</h3>
+<p><strong>Pete</strong> (The Pit) is one of the game's trickiest threats. He appears in the attic like Corrupted Face, but the response is opposite — if you see him, turn off the lighter and leave immediately. On higher difficulties, he's an instant kill. You track him through cameras; when he vanishes from all feeds, he's in the attic. <strong>Dippy</strong> works like Willy but runs the inverse route, trying to reach Camera 9. This forces you to constantly rebalance your lure strategy since you can no longer park Willy at Camera 9 indefinitely.</p>
+
+<h3>Night 5 — MicMic (Mother)</h3>
+<p>The final boss. Mother transforms into MicMic and cycles through the mechanics of every previous animatronic. Her eyes tell you what to do: no glow means use the audio lure, glowing means use the flash. She can also mimic Pete's behavior — vanishing from all cameras means she's in the attic. At 3 AM she transforms into a larger, more aggressive form. There's no Postmortem on this night. You either survive or start over.</p>
+
+</div>
+
+<!-- Screenshot Gallery #2 -->
+<div class="post-screenshot-gallery gallery-2" data-lightbox-gallery>
+    <a href="/uploads/overhaul/oblitus-casa/gameplaycasa5-fg7jib4w.webp" data-lightbox>
+        <img src="/uploads/overhaul/oblitus-casa/gameplaycasa5-fg7jib4w-thumb.webp" alt="Oblitus Casa attic view with lighter illuminating the silhouette of Corrupted Face" loading="lazy" />
+    </a>
+    <a href="/uploads/overhaul/oblitus-casa/gameplaycasa1-riitg3in.webp" data-lightbox>
+        <img src="/uploads/overhaul/oblitus-casa/gameplaycasa1-riitg3in-thumb.webp" alt="Oblitus Casa tunnel section in first person with lighter and compass visible" loading="lazy" />
+    </a>
+</div>
+
+<div class="post-content">
+
+<h2>The Tunnels &amp; Postmortem</h2>
+<p>Between each night, Oblitus Casa shifts gears entirely. You leave the cabin and enter the <strong>utilidors</strong> — underground service tunnels inspired by the real tunnels beneath Walt Disney World. These are first-person free-roam sections built in Clickteam where you navigate dark corridors searching for a key to unlock the exit. Hourglass, a returning character from Treasure Island now wearing a WWII-era Mickey gas mask, stalks you through the tunnels.</p>
+
+<p>The controls are deliberately clunky — click to advance, choose directions at crossroads, hold shift to sprint — and the tension comes from the limited visibility and the ever-present sound of Hourglass behind you. A compass helps with navigation, and there's even a stealth strategy: keep the flashlight off and rely solely on the compass and audio cues to slip past threats undetected.</p>
+
+<p>The <strong>Postmortem</strong> system activates when you die during Nights 1 through 4. Instead of a simple game over, you're transported into a surreal, psychedelic version of Jake's memories of Treasure Island. The goal is to find 3 Mickey heads scattered across the cameras while surviving shade versions of classic FNaTI characters — Mickey and Oswald patrol hallways and must be pinned with a voodoo doll, Mini appears on camera feeds, Goofy is repelled with firecrackers, and Donald disguises himself as Mickey to trick you into clicking fake heads. It's chaotic, colorful, and completely unlike anything else in the game.</p>
+
+</div>
+
+<!-- Screenshot Gallery #3 -->
+<div class="post-screenshot-gallery gallery-2" data-lightbox-gallery>
+    <a href="/uploads/overhaul/oblitus-casa/gameplaycasa6-h4wpwa6s.webp" data-lightbox>
+        <img src="/uploads/overhaul/oblitus-casa/gameplaycasa6-h4wpwa6s-thumb.webp" alt="Oblitus Casa Postmortem mode showing psychedelic camera view with illuminated carousel and Mickey head counter" loading="lazy" />
+    </a>
+    <a href="/uploads/overhaul/oblitus-casa/ghostsofthepast-jtztufp7.webp" data-lightbox>
+        <img src="/uploads/overhaul/oblitus-casa/ghostsofthepast-jtztufp7-thumb.webp" alt="Oblitus Casa promotional art with the text Maybe even death can save your life" loading="lazy" />
+    </a>
+</div>
+
+<div class="post-content">
+
+<h2>What the Community Says</h2>
+<p>Oblitus Casa has been widely praised as one of the best FNAF fan game sequels ever made. Here's what reviewers had to say:</p>
+
+<p>One Spanish-language reviewer gave it a <strong>9.5/10</strong>, calling it <em>"a masterpiece"</em> and <em>"the best sequel ever made in FNAF fan games."</em> They singled out the tunnels as <em>"the best free-roam section in fan games"</em> and the MicMic boss fight as <em>"one of my favorite final battles in FNAF fan games."</em></p>
+
+<p>An English reviewer described it as <em>"one of the most engaging FNAF fan games I've played in a while,"</em> with special praise for the tunnel sections — calling them <em>"maybe the scariest FNAF fan game sequence I've ever experienced."</em> They highlighted the sound design, ambient soundtrack, and how Radiance Team clearly pushed themselves to deliver something exceptional.</p>
+
+<p>Another reviewer noted the massive leap in quality from Five Nights at Treasure Island: <em>"Oblitus Casa is definitely a massive step up from Five Nights at Treasure Island."</em> They praised the <em>"smooth gameplay, beautiful graphics and animations"</em> and the enormous amount of free post-game content, while noting that the tunnel sections could feel visually repetitive.</p>
+
+</div>
+
+<div class="post-content">
+<h2>Frequently Asked Questions</h2>
+</div>
+
+<div class="post-faq">
+    <details>
+        <summary>Is Oblitus Casa free?</summary>
+        <div>Yes, Oblitus Casa is completely free to download and play. All post-game content — Night 6, Custom Night, creepypasta challenges, and True Nightmare mode — is included at no cost.</div>
+    </details>
+    <details>
+        <summary>Do I need to play Five Nights at Treasure Island first?</summary>
+        <div>It helps for understanding the story, but it's not required. Oblitus Casa stands on its own as a gameplay experience. The game provides enough context through its narrative to follow along even if you haven't played the original.</div>
+    </details>
+    <details>
+        <summary>Is there an Android version?</summary>
+        <div>No, Oblitus Casa is only available for Windows PC. There is no official Android or mobile port.</div>
+    </details>
+    <details>
+        <summary>What does "Oblitus Casa" mean?</summary>
+        <div>"Oblitus Casa" is Latin for "forgotten house," referring to the abandoned cabin on Discovery Island where the game takes place. It ties into the broader theme of forgotten, decaying Disney locations from the "Abandoned by Disney" creepypasta.</div>
+    </details>
+    <details>
+        <summary>How hard is this game?</summary>
+        <div>The main campaign has a solid difficulty curve that teaches mechanics gradually. Night 5 and Night 6 are significantly harder, requiring mastery of all systems. The post-game content — especially True Nightmare 12/20 and the True Limbo challenge (finding 99 Mickey heads) — is designed for players who want an extreme challenge.</div>
+    </details>
+    <details>
+        <summary>What is the Postmortem system?</summary>
+        <div>When you die during Nights 1 through 4, instead of getting a game over, you're sent to a surreal minigame set in Jake's memories. Survive it by finding 3 Mickey heads across the cameras while fending off shade versions of FNaTI characters, and you get a second chance at the night. Nights 5 and 6 have no Postmortem — death is final.</div>
+    </details>
+</div>
+
+<!-- Related FNAF Fan Games -->
+<h2 class="il-heading">More FNAF Fan Games</h2>
+<div class="il-grid">
+<div class="il-card"><a href="/tyke-and-sons-lumber-co/">
+<img class="il-img" src="/uploads/overhaul/tyke-and-sons-lumber-co/tyke-and-sons-thumb.webp" alt="Tyke and Sons Lumber Co." loading="lazy" />
+<p class="il-title">Tyke and Sons Lumber Co.</p></a>
+</div>
+<div class="il-card"><a href="/freddys-reanimated/">
+<img class="il-img" src="/uploads/overhaul/freddys-reanimated/freddys-reanimated-thumb.webp" alt="Freddy's Reanimated" loading="lazy" />
+<p class="il-title">Freddy's Reanimated</p></a>
+</div>
+<div class="il-card"><a href="/showmans-the-awakening/">
+<img class="il-img" src="/uploads/overhaul/showman-the-awakening/coverch1_5-9iercv37-thumb.webp" alt="Showman's: The Awakening" loading="lazy" />
+<p class="il-title">Showman's: The Awakening</p></a>
+</div>
+<div class="il-card"><a href="/fredbear-and-friends-left-to-rot/">
+<img class="il-img" src="/uploads/overhaul/fredbear-and-friends-left-to-rot/a7vz6hudd6451-thumb.webp" alt="Fredbear &amp; Friends: Left to Rot" loading="lazy" />
+<p class="il-title">Fredbear &amp; Friends: Left to Rot</p></a>
+</div>
+</div>
+
+<!-- Lightbox Script -->
+<script>
+    // Lightbox functionality
+    const overlay = document.createElement('div');
+    overlay.className = 'post-lightbox-overlay';
+    document.body.appendChild(overlay);
+
+    document.querySelectorAll('[data-lightbox]').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const img = document.createElement('img');
+            img.src = link.href;
+            img.alt = link.querySelector('img')?.alt || '';
+            overlay.innerHTML = '';
+            overlay.appendChild(img);
+            overlay.classList.add('active');
+        });
+    });
+
+    overlay.addEventListener('click', () => {
+        overlay.classList.remove('active');
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            overlay.classList.remove('active');
+        }
+    });
+
+    // YouTube facade - click to load
+    document.querySelectorAll('.post-yt-facade').forEach(el => {
+        el.addEventListener('click', () => {
+            const vid = el.dataset.vid;
+            const container = el.parentElement;
+            const iframe = document.createElement('iframe');
+            iframe.src = 'https://www.youtube-nocookie.com/embed/' + vid + '?autoplay=1';
+            iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+            iframe.setAttribute('allowfullscreen', '');
+            el.remove();
+            container.appendChild(iframe);
+        });
+    });
+</script>
+
 </Layout>

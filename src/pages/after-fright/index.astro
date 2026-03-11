@@ -1,0 +1,728 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+<Layout title="After Fright - Download Free FNAF Fan Game" description="Download After Fright, a post-FNAF 3 fan game. Survive a warehouse of salvaged animatronics across levels with unique mechanics. Free for PC and Android." lang="en">
+
+<style is:global>
+.site-content {
+    max-width: 1200px !important;
+    padding: 30px 40px !important;
+    box-sizing: content-box !important;
+}
+.post-video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+.post-lightbox-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.85);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: zoom-out;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+}
+.post-lightbox-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+.post-lightbox-overlay img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 8px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+}
+</style>
+
+<style>
+/* ========== INTERLINKING SECTION ========== */
+.il-heading { font-size: 24px; font-weight: 800; color: #470000; margin: 48px 0 16px; }
+.il-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 0 0 40px; }
+.il-card { background: #fff5f5; border: 1px solid #e0c8c8; border-radius: 12px; padding: 6px; text-align: center; }
+.il-card a { text-decoration: none; color: inherit; display: block; }
+.il-card a:hover { text-decoration: none; }
+.il-card:hover { border-color: #470000; }
+.il-img { width: 100%; height: 150px; object-fit: cover; border-radius: 10px; display: block; }
+.il-title { font-size: 14px; font-weight: 600; color: #1a1d2e; margin: 6px 0 2px; line-height: 1.4; }
+@media (max-width: 768px) { .il-grid { grid-template-columns: repeat(2, 1fr); } }
+
+.post-title {
+    text-align: center;
+    font-size: 2.8em;
+    font-weight: 800;
+    color: #470000;
+    margin: 20px 0 5px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    letter-spacing: -0.5px;
+}
+.post-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: #470000;
+    margin: 12px auto 0;
+    border-radius: 2px;
+}
+.post-description {
+    position: relative;
+    padding: 16px 20px;
+    border-radius: 16px;
+    margin: 30px auto;
+    max-width: 1200px;
+    background: linear-gradient(135deg, #f5e6e8, #ffffff);
+    color: #333;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: 0.4s;
+}
+.post-intro-layout {
+    display: flex;
+    align-items: stretch;
+    gap: 24px;
+    margin-bottom: 0;
+}
+.post-intro-layout img {
+    flex-shrink: 0;
+    align-self: flex-start;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    max-width: 330px;
+    width: 100%;
+    height: auto;
+}
+.post-intro-text {
+    flex: 1;
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+}
+.post-intro-text > p {
+    font-size: 1em;
+    line-height: 1.5;
+    margin: 0;
+    text-align: left;
+    flex: 1;
+}
+.post-intro-text > p strong:first-child {
+    color: #470000;
+    font-size: 1.05em;
+}
+.post-download-cta {
+    display: block;
+    text-align: center;
+    padding: 15px;
+    background: #470000;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 8px 0 0;
+    transition: background 0.2s;
+    color: #fff !important;
+}
+.post-download-cta:hover {
+    background: #5a0000;
+    text-decoration: none;
+}
+.post-stats-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 24px 0;
+    font-size: 1em;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    border: 1px solid #e0e0e0;
+}
+.post-stats-table thead tr {
+    background: #7E4955;
+}
+.post-stats-table th {
+    color: #fff;
+    font-weight: 700;
+    padding: 14px 18px;
+    text-align: left;
+    font-size: 0.95em;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.post-stats-table td {
+    padding: 12px 18px;
+    border-bottom: 1px solid #f0f0f0;
+}
+.post-stats-table td:first-child {
+    font-weight: 600;
+    color: #470000;
+    width: 35%;
+}
+.post-stats-table tbody tr:nth-child(even) {
+    background: #faf5f6;
+}
+.post-stats-table tbody tr:last-child td {
+    border-bottom: none;
+}
+.post-stats-table tbody tr:hover {
+    background: #f5e6e8;
+}
+.post-screenshot-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin: 24px 0;
+}
+.post-screenshot-gallery.gallery-2 {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 66%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.post-screenshot-gallery.gallery-1 {
+    grid-template-columns: 1fr;
+    max-width: 33%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.post-screenshot-gallery a {
+    display: block;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+}
+.post-screenshot-gallery a:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.18);
+}
+.post-screenshot-gallery img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+}
+.post-download-section {
+    background: linear-gradient(135deg, #470000, #6b1a1a);
+    border-radius: 16px;
+    padding: 30px 24px;
+    text-align: center;
+    margin: 30px 0;
+    color: #fff;
+    box-shadow: 0 4px 16px rgba(71,0,0,0.25);
+}
+.post-download-section h2 {
+    color: #fff;
+    margin: 0 0 8px;
+    font-size: 1.6em;
+}
+.post-download-section .version-info {
+    color: rgba(255,255,255,0.85);
+    margin: 0 0 20px;
+    font-size: 0.95em;
+}
+.post-download-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+.post-download-btn {
+    display: inline-block;
+    padding: 12px 28px;
+    background: #fff;
+    color: #470000 !important;
+    font-weight: 700;
+    border-radius: 8px;
+    text-decoration: none !important;
+    font-size: 1em;
+    transition: all 0.2s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+.post-download-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    background: #f5e6e8;
+}
+.post-install-section {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 24px auto;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.post-install-section h3 {
+    margin: 0 0 12px;
+    font-size: 1.3em;
+    color: #470000;
+}
+.post-install-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    align-items: start;
+}
+.post-install-grid details {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+.post-install-grid details:only-child {
+    grid-column: 1 / -1;
+}
+.post-install-grid summary {
+    padding: 12px 16px;
+    font-weight: 600;
+    cursor: pointer;
+    background: #faf5f6;
+    border-bottom: 1px solid #e0e0e0;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #470000;
+}
+.post-install-grid summary::before {
+    content: '▸';
+    transition: transform 0.2s;
+    font-size: 0.9em;
+}
+.post-install-grid details[open] summary::before {
+    transform: rotate(90deg);
+}
+.post-install-grid details div {
+    padding: 12px 16px;
+}
+.post-content h2 {
+    color: #470000;
+    font-size: 1.5em;
+    margin: 30px 0 12px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid #f0e0e2;
+}
+.post-content h3 {
+    color: #5a1a1a;
+    font-size: 1.2em;
+    margin: 20px 0 8px;
+}
+.post-content p {
+    margin: 10px 0;
+    line-height: 1.7;
+}
+.post-content ul {
+    margin: 10px 0 10px 20px;
+}
+.post-content li {
+    margin: 6px 0;
+    line-height: 1.6;
+}
+.post-content li strong {
+    color: #470000;
+}
+.post-details-box {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 24px auto;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.post-details-box h3 {
+    margin: 0 0 12px;
+    font-size: 1.4em;
+    border-bottom: none;
+    padding-bottom: 0;
+}
+.post-faq details {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    margin: 8px 0;
+    overflow: hidden;
+}
+.post-faq summary {
+    padding: 14px 18px;
+    font-weight: 600;
+    cursor: pointer;
+    background: #faf5f6;
+    color: #470000;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.post-faq summary::before {
+    content: '▸';
+    transition: transform 0.2s;
+}
+.post-faq details[open] summary::before {
+    transform: rotate(90deg);
+}
+.post-faq details div {
+    padding: 14px 18px;
+    line-height: 1.6;
+}
+.post-video-section {
+    margin: 24px 0;
+}
+.post-video-section h2 {
+    color: #470000;
+    font-size: 1.5em;
+    margin: 30px 0 12px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid #f0e0e2;
+}
+.post-video-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    padding-top: 56.25%;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    margin-top: 12px;
+}
+.post-yt-facade {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    background: #000;
+}
+.post-yt-facade img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.post-yt-play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0,0,0,0.7);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 68px;
+    height: 68px;
+    font-size: 28px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+}
+.post-yt-facade:hover .post-yt-play {
+    background: #ff0000;
+}
+.post-related-games {
+    margin: 30px 0;
+}
+.post-related-games h2 {
+    text-align: center;
+    border-bottom: none;
+}
+.post-related-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-top: 16px;
+}
+.post-related-grid a {
+    display: block;
+    text-decoration: none;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    background: #fff;
+}
+.post-related-grid a:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.18);
+    text-decoration: none;
+}
+.post-related-grid img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+.post-related-grid span {
+    display: block;
+    padding: 10px;
+    font-weight: 600;
+    text-align: center;
+    color: #333;
+    font-size: 0.9em;
+}
+@media (max-width: 768px) {
+    .post-title { font-size: 2em; }
+    .post-intro-layout { flex-direction: column; align-items: center; }
+    .post-intro-layout img { max-width: 280px; }
+    .post-screenshot-gallery { grid-template-columns: 1fr 1fr; }
+    .post-screenshot-gallery.gallery-2 { max-width: 100%; }
+    .post-screenshot-gallery.gallery-1 { max-width: 50%; }
+    .post-install-grid { grid-template-columns: 1fr; }
+    .post-related-grid { grid-template-columns: repeat(2, 1fr); }
+    .post-download-section { padding: 20px 16px; }
+}
+@media (max-width: 480px) {
+    .post-title { font-size: 1.7em; }
+    .post-screenshot-gallery { grid-template-columns: 1fr; }
+    .post-screenshot-gallery.gallery-2 { max-width: 100%; }
+    .post-screenshot-gallery.gallery-1 { max-width: 100%; }
+    .post-related-grid { grid-template-columns: 1fr 1fr; }
+}
+</style>
+
+<!-- ========== POST CONTENT START ========== -->
+
+<h1 class="post-title">After Fright</h1>
+
+<!-- Hero / Intro Section -->
+<div class="post-description">
+    <div class="post-intro-layout">
+        <img src="/uploads/overhaul/after-fright/portada-thumb.webp" alt="After Fright cover art featuring a damaged Springtrap sitting in a dark warehouse" width="330" height="207" loading="eager" />
+        <div class="post-intro-text">
+            <p>
+                <strong>After Fright</strong> picks up right where FNAF 3 left off — after the Fazbear's Fright fire, but before the infamous auction. You play as David, a night security guard stuck watching over a warehouse full of salvaged animatronics and charred memorabilia. What sets this fan game apart is its level-based structure: instead of repeating the same office routine for five nights, each level throws completely different mechanics at you. One moment you're managing batteries and flashlighting Freddy, the next you're crawling through pitch-black air ducts with Mangle breathing down your neck. Developed by ERabbitGames with impressive 3D renders by TMMarkus, After Fright delivers a tense and varied FNAF experience that keeps you guessing.
+            </p>
+            <a class="post-download-cta" href="#download">Download After Fright Free</a>
+        </div>
+    </div>
+</div>
+
+<!-- Stats Table -->
+<table class="post-stats-table">
+    <thead>
+        <tr>
+            <th>Feature</th>
+            <th>Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr><td>Developer</td><td>ERabbitGames (TMMarkus, MikiSolor)</td></tr>
+        <tr><td>Platforms</td><td>Windows PC, Android</td></tr>
+        <tr><td>Genre</td><td>Survival Horror / Strategy / Point & Click</td></tr>
+        <tr><td>Structure</td><td>Multi-level (4 levels in beta, 6 planned)</td></tr>
+        <tr><td>Version</td><td>v0.5.0 Beta</td></tr>
+        <tr><td>Download Size</td><td>673 MB (PC)</td></tr>
+        <tr><td>Language</td><td>English, Spanish</td></tr>
+        <tr><td>Price</td><td>Free</td></tr>
+    </tbody>
+</table>
+
+<!-- Screenshot Gallery #1 -->
+<div class="post-screenshot-gallery" data-lightbox-gallery>
+    <a href="/uploads/overhaul/after-fright/take2-kx9uurw7.webp" data-lightbox>
+        <img src="/uploads/overhaul/after-fright/take2-kx9uurw7-thumb.webp" alt="After Fright security office with desk, computer, animatronic parts and children's drawings on the wall" loading="lazy" />
+    </a>
+    <a href="/uploads/overhaul/after-fright/take5-73ysudhy.webp" data-lightbox>
+        <img src="/uploads/overhaul/after-fright/take5-73ysudhy-thumb.webp" alt="After Fright office view with Foxy visible on the left side and a Hide button on screen" loading="lazy" />
+    </a>
+    <a href="/uploads/overhaul/after-fright/take7-rskvtvzf.webp" data-lightbox>
+        <img src="/uploads/overhaul/after-fright/take7-rskvtvzf-thumb.webp" alt="Large animatronic silhouette with glowing red eyes in a dark warehouse hallway" loading="lazy" />
+    </a>
+</div>
+
+<!-- Download Section -->
+<div id="download" class="post-download-section">
+    <h2>Download After Fright</h2>
+    <p class="version-info">After Fright is available as a free download for <strong>Windows PC</strong> and <strong>Android</strong>.</p>
+    <div class="post-download-buttons">
+        <a class="post-download-btn" href="https://mega.nz/file/KV5TlaAD#_csr7WvXfp5en_HOzFIvnkMR7DtgCTxL5MHtoCQLu_o" target="_blank" rel="nofollow noopener">Download for PC (Mega)</a>
+        <a class="post-download-btn" href="https://play.google.com/store/apps/details?id=com.ERabbitGames.AfterFright" target="_blank" rel="nofollow noopener">Download for Android (Google Play)</a>
+    </div>
+</div>
+
+<!-- Install Instructions -->
+<div class="post-install-section">
+    <h3>How to Install After Fright</h3>
+    <div class="post-install-grid">
+        <details>
+            <summary>Windows</summary>
+            <div>
+                <ol>
+                    <li>Download the .zip file from the link above</li>
+                    <li>Extract the contents to a folder of your choice</li>
+                    <li>Run the .exe file to start the game</li>
+                    <li>If Windows SmartScreen blocks it, click "More info" then "Run anyway"</li>
+                </ol>
+            </div>
+        </details>
+        <details>
+            <summary>Android</summary>
+            <div>
+                <ol>
+                    <li>Tap the Google Play download link above</li>
+                    <li>Install the game directly from the Play Store</li>
+                    <li>Open the app and start playing</li>
+                </ol>
+            </div>
+        </details>
+    </div>
+</div>
+
+<div class="post-content">
+
+<h2>What Makes After Fright Stand Out</h2>
+<p>Most FNAF fan games follow a familiar formula: sit in an office, check cameras, close doors, survive until 6 AM. After Fright breaks that mold entirely. The game is structured as a series of distinct levels, each one introducing new mechanics, new environments, and new ways the animatronics hunt you down. You're never doing the same thing twice.</p>
+
+<p>The setting itself is a stroke of brilliance. A storage warehouse holding the charred remains of Fazbear's Fright is the perfect excuse to throw every classic animatronic into one place — Freddy, Foxy, Mangle, Chica, and of course Springtrap — without needing to justify why they're all in the same building. The warehouse's failing infrastructure (flickering lights, broken ventilation, malfunctioning doors) adds a layer of systemic tension on top of the animatronic threats.</p>
+
+</div>
+
+<!-- Video Section -->
+<div class="post-video-section">
+    <h2>After Fright Gameplay</h2>
+    <div class="post-video-container">
+        <div class="post-yt-facade" data-vid="rbECVdXTES8">
+            <img src="https://i.ytimg.com/vi/rbECVdXTES8/hqdefault.jpg" alt="After Fright gameplay video" loading="lazy" />
+            <button class="post-yt-play" aria-label="Play video">&#9654;</button>
+        </div>
+    </div>
+</div>
+
+<div class="post-content">
+
+<h2>Level-by-Level Breakdown</h2>
+
+<h3>Level 1 — The Office</h3>
+<p>Your first night starts at a security desk with a computer that charges the warehouse's batteries. You need to hold down a button to keep the charge going while monitoring hallways for Freddy — flash your light at him to scare him off. Foxy attacks from the side doors, forcing you to hide. Meanwhile, the main exit door has a health bar that ticks down if you're not careful. Juggling battery charging, lights, ventilation, and door management sets the tone for the rest of the game.</p>
+
+<h3>Level 2 — The Air Ducts</h3>
+<p>The perspective shifts to first person as you crawl through narrow ventilation ducts. Mangle stalks you from both directions — ahead and behind. Your only tool is a flashlight with limited battery that needs periodic recharging. Every step forward is a gamble: shine your light to check for Mangle, but risk draining your battery and being left in total darkness.</p>
+
+<h3>Level 3 — Chica's Door</h3>
+<p>Chica relentlessly tries to force open a door that you must keep shut. You can electrocute her to slow her down, but each shock makes her faster and more aggressive on the next attempt. The level escalates through multiple sub-stages of increasing difficulty, with additional doors requiring blue button sequences to progress.</p>
+
+<h3>Level 4 — The Generator</h3>
+<p>The most complex level combines scavenging, puzzle-solving, and survival. You search crates scattered around the warehouse for blue generator parts and green button pieces, but can only carry one of each color at a time. Foxy patrols the area — hide in the correct locker when he appears. On top of all that, you need to solve a frequency modulation puzzle (adjusting wave patterns) and a Simon Says color sequence, all while Chica continues hammering at her door in the background.</p>
+
+</div>
+
+<!-- Screenshot Gallery #2 -->
+<div class="post-screenshot-gallery" data-lightbox-gallery>
+    <a href="/uploads/overhaul/after-fright/take1-pnwi27zr.webp" data-lightbox>
+        <img src="/uploads/overhaul/after-fright/take1-pnwi27zr-thumb.webp" alt="First-person view inside a dark ventilation duct with pipes on both sides" loading="lazy" />
+    </a>
+    <a href="/uploads/overhaul/after-fright/take6-zgfappn5.webp" data-lightbox>
+        <img src="/uploads/overhaul/after-fright/take6-zgfappn5-thumb.webp" alt="Danger-striped door with red button and animatronic silhouette lurking in the darkness" loading="lazy" />
+    </a>
+    <a href="/uploads/overhaul/after-fright/2-cz7cpvvs.webp" data-lightbox>
+        <img src="/uploads/overhaul/after-fright/2-cz7cpvvs-thumb.webp" alt="Springtrap sitting among wooden crates inside the After Fright warehouse" loading="lazy" />
+    </a>
+</div>
+
+<div class="post-content">
+
+<h2>What the Community Says</h2>
+<p>After Fright has earned serious praise from both FNAF content creators and the wider community. In a ranking of top FNAF fan games, one reviewer didn't hold back: <em>"I dare say this is the best fan game on this list, without a doubt."</em> The game was highlighted for its strong animatronic designs, effective jumpscares, and the way each level feels genuinely different from the last.</p>
+
+<p>Gameplay reviewers praised the variety: <em>"It was honestly great — something different from the nights we're used to."</em> The constant tension and the way the game forces you to switch strategies between levels were singled out as major strengths.</p>
+
+<p>Community feedback on GameJolt has been similarly positive. Users described the game as <em>"pretty solid with lots of potential"</em> even in its early builds, praising the office design as <em>"simple yet effective"</em> and the overall concept as <em>"original and fresh."</em> The connection to FNAF 3's post-fire lore was called out as a clever foundation that gives the game a natural place in the fan timeline.</p>
+
+</div>
+
+<div class="post-content">
+<h2>Frequently Asked Questions</h2>
+</div>
+
+<div class="post-faq">
+    <details>
+        <summary>Is After Fright free?</summary>
+        <div>Yes, After Fright is completely free to download and play on both PC and Android.</div>
+    </details>
+    <details>
+        <summary>Is the game finished?</summary>
+        <div>After Fright is currently in beta (v0.5.0). It features 4 playable levels with plans for a total of 6 levels, plus cutscenes and multiple endings in the final release. The developer continues to release updates.</div>
+    </details>
+    <details>
+        <summary>Can I play After Fright on my phone?</summary>
+        <div>Yes, After Fright is available on Android through the Google Play Store. There is no iOS version at this time.</div>
+    </details>
+    <details>
+        <summary>Where does After Fright fit in the FNAF timeline?</summary>
+        <div>The game takes place after the fire at Fazbear's Fright (FNAF 3) and before the public auction of the recovered items. It is not part of the official FNAF canon — it's a fan-made story that uses official lore as its starting point.</div>
+    </details>
+</div>
+
+<!-- Related FNAF Fan Games -->
+<h2 class="il-heading">More FNAF Fan Games</h2>
+<div class="il-grid">
+<div class="il-card"><a href="/playtime-with-percy/">
+<img class="il-img" src="/uploads/overhaul/percys-playtime/portada-thumb.webp" alt="Playtime with Percy" loading="lazy" />
+<p class="il-title">Playtime with Percy</p></a>
+</div>
+<div class="il-card"><a href="/freddys-reanimated/">
+<img class="il-img" src="/uploads/overhaul/freddys-reanimated/freddys-reanimated-thumb.webp" alt="Freddy's Reanimated" loading="lazy" />
+<p class="il-title">Freddy's Reanimated</p></a>
+</div>
+<div class="il-card"><a href="/animatronic-memories/">
+<img class="il-img" src="/uploads/overhaul/animatronic-memories/animatronics-memories-thumb.webp" alt="Animatronic Memories" loading="lazy" />
+<p class="il-title">Animatronic Memories</p></a>
+</div>
+<div class="il-card"><a href="/golden-memory-remastered/">
+<img class="il-img" src="/uploads/overhaul/golden-memory-remastered/menu concept-bv9aitjr-thumb.webp" alt="Golden Memory Remastered" loading="lazy" />
+<p class="il-title">Golden Memory Remastered</p></a>
+</div>
+</div>
+
+<!-- Lightbox Script -->
+<script>
+    const overlay = document.createElement('div');
+    overlay.className = 'post-lightbox-overlay';
+    document.body.appendChild(overlay);
+
+    document.querySelectorAll('[data-lightbox]').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const img = document.createElement('img');
+            img.src = link.href;
+            img.alt = link.querySelector('img')?.alt || '';
+            overlay.innerHTML = '';
+            overlay.appendChild(img);
+            overlay.classList.add('active');
+        });
+    });
+
+    overlay.addEventListener('click', () => {
+        overlay.classList.remove('active');
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            overlay.classList.remove('active');
+        }
+    });
+
+    document.querySelectorAll('.post-yt-facade').forEach(el => {
+        el.addEventListener('click', () => {
+            const vid = el.dataset.vid;
+            const container = el.parentElement;
+            const iframe = document.createElement('iframe');
+            iframe.src = 'https://www.youtube-nocookie.com/embed/' + vid + '?autoplay=1';
+            iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+            iframe.setAttribute('allowfullscreen', '');
+            el.remove();
+            container.appendChild(iframe);
+        });
+    });
+</script>
+
+</Layout>

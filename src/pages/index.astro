@@ -1,201 +1,818 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import AdSenseAfterIntro from '../components/AdSenseAfterIntro.astro';
 ---
-<Layout title="FNAF Fan Games | [Download the Games] & [All Info] 🐻" description="👉 Welcome to the Ultimate FNAF Fan Games Universe! Dive into the shadowy corridors of the Freddy Fazbear series reimagined by fans around..." lang="en">
+<Layout title="FNAF Fan Games - Download Free Five Nights at Freddy's Games" description="Download 60+ free FNAF fan games for PC and Android. The biggest collection of Five Nights at Freddy's fangames with reviews, screenshots, and direct downloads." lang="en">
 <h1>FNAF Fan Games</h1>
-<strong>Welcome to the Ultimate FNAF Fan Games Universe! </strong>Dive into the shadowy corridors of the Freddy Fazbear series reimagined by fans around the globe. Here, creativity meets horror in a collection of games that expand the chilling lore and gameplay of the original Five Nights at Freddy's, crafted by Scott Cawthon. Explore varied settings, face new animatronics, and survive the night in these fan-made tributes that keep the spirit of FNAF alive.
 
-<AdSenseAfterIntro />
+<div class="idx-hero-box">
+<p class="idx-intro"><strong>The largest collection of FNAF fan games — all free to download and play.</strong> From classic point-and-click survival horror to 3D free-roam, RPGs, and visual novels for PC and Android.</p>
+<nav class="idx-quicknav">
+<a href="#featured">Featured Fan Games</a>
+<a href="#tierlist">Fan Games Tier-List</a>
+<a href="#getting-started">How to Get Started</a>
+</nav>
+</div>
+
+<h2 id="featured" style="text-align:center">Featured FNAF Fan Games</h2>
+
+<div class="fg-filters">
+<button class="fg-filter active" data-filter="all">All</button>
+<div class="fg-filter-sep"></div>
+<button class="fg-filter" data-filter="2D">2D</button>
+<button class="fg-filter" data-filter="3D">3D</button>
+<div class="fg-filter-sep"></div>
+<button class="fg-filter" data-filter="Point & Click">Point &amp; Click</button>
+<button class="fg-filter" data-filter="Free Roam">Free Roam</button>
+<button class="fg-filter" data-filter="RPG">RPG</button>
+<div class="fg-filter-sep"></div>
+<button class="fg-filter" data-filter="PC">PC</button>
+<button class="fg-filter" data-filter="Android">Android</button>
+</div>
+
+<div id="fg-count" class="fg-counter">Showing 34 of 34 games</div>
+
+<div class="fg-gallery">
+
+<a href="/the-joy-of-creation-story-mode/" class="fg-card" data-platform="PC" data-genre="Free Roam">
+<img src="/uploads/overhaul/the-joy-of-creation-story-mode/the-joy-of-creation-thumb.webp" alt="The Joy of Creation: Story Mode" class="fg-card-img" loading="lazy" data-lightbox-full="/uploads/overhaul/the-joy-of-creation-story-mode/the-joy-of-creation.webp">
+<div class="fg-card-info"><div class="fg-card-head"><h3 class="fg-card-title">The Joy of Creation: Story Mode</h3>
+<div class="fg-tags"><span class="fg-tag fg-tag-platform">PC</span><span class="fg-tag">3D</span><span class="fg-tag">Free Roam</span></div></div>
+<p class="fg-card-desc">Survive five unique memories as the Cawthon family hunted by terrifying Ignited animatronics in this Unreal Engine survival horror masterpiece.</p></div></a>
+
+<a href="/one-night-at-flumptys-3/" class="fg-card" data-platform="PC" data-genre="Point & Click">
+<img src="/uploads/overhaul/one-night-at-flumptys-3/flumpty-thumb.webp" alt="One Night at Flumpty's 3" class="fg-card-img" loading="lazy" data-lightbox-full="/uploads/overhaul/one-night-at-flumptys-3/flumpty.webp">
+<div class="fg-card-info"><div class="fg-card-head"><h3 class="fg-card-title">One Night at Flumpty's 3</h3>
+<div class="fg-tags"><span class="fg-tag fg-tag-platform">PC</span><span class="fg-tag">2D</span><span class="fg-tag">Point &amp; Click</span></div></div>
+<p class="fg-card-desc">Survive Flumpty Bumpty's frozen lair using a limited flash camera and temperature management in the epic finale of Jonochrome's Fanverse trilogy.</p></div></a>
+
+<a href="/candys-3/" class="fg-card" data-platform="PC" data-genre="Point & Click">
+<img src="/uploads/overhaul/five-nights-at-candys-3/Fnac_3_icon_768-2ptwpvda-thumb.webp" alt="Five Nights at Candy's 3" class="fg-card-img" loading="lazy" data-lightbox-full="/uploads/overhaul/five-nights-at-candys-3/Fnac_3_icon_768-2ptwpvda.webp">
+<div class="fg-card-info"><div class="fg-card-head"><h3 class="fg-card-title">Five Nights at Candy's 3</h3>
+<div class="fg-tags"><span class="fg-tag fg-tag-platform">PC</span><span class="fg-tag">2D</span><span class="fg-tag">Point &amp; Click</span></div></div>
+<p class="fg-card-desc">Survive as a child armed only with a flashlight against nightmare creatures in a bedroom setting with unique combat mechanics and a deeply layered trauma-driven story.</p></div></a>
+
+<a href="/a-bite-at-freddys/" class="fg-card" data-platform="PC" data-genre="Point & Click">
+<img src="/uploads/overhaul/a-bite-at-freddys/portada-thumb.webp" alt="A Bite at Freddy's" class="fg-card-img" loading="lazy" data-lightbox-full="/uploads/overhaul/a-bite-at-freddys/portada.webp">
+<div class="fg-card-info"><div class="fg-card-head"><h3 class="fg-card-title">A Bite at Freddy's</h3>
+<div class="fg-tags"><span class="fg-tag fg-tag-platform">PC</span><span class="fg-tag">2D</span><span class="fg-tag">Point &amp; Click</span></div></div>
+<p class="fg-card-desc">Run a conveyor belt at a western burger joint while legless Talkshow animatronics crawl through the building to reach you.</p></div></a>
+
+<a href="/oblitus-casa/" class="fg-card" data-platform="PC" data-genre="Point & Click">
+<img src="/uploads/overhaul/oblitus-casa/teaser2glow-mkwwvq2a-thumb.webp" alt="Oblitus Casa" class="fg-card-img" loading="lazy" data-lightbox-full="/uploads/overhaul/oblitus-casa/teaser2glow-mkwwvq2a.webp">
+<div class="fg-card-info"><div class="fg-card-head"><h3 class="fg-card-title">Oblitus Casa</h3>
+<div class="fg-tags"><span class="fg-tag fg-tag-platform">PC</span><span class="fg-tag">2D</span><span class="fg-tag">Point &amp; Click</span></div></div>
+<p class="fg-card-desc">The official FNaTI sequel. Survive 5 nights in a cabin with audio lures, notepad defense, and first-person tunnel sections between nights.</p></div></a>
+
+<a href="/the-glitched-attraction/" class="fg-card" data-platform="PC" data-genre="Free Roam">
+<img src="/uploads/overhaul/the-glitched-attraction/Cover_for_The_Glitched_Attraction.-thumb.webp" alt="The Glitched Attraction" class="fg-card-img" loading="lazy" data-lightbox-full="/uploads/overhaul/the-glitched-attraction/Cover_for_The_Glitched_Attraction..webp">
+<div class="fg-card-info"><div class="fg-card-head"><h3 class="fg-card-title">The Glitched Attraction</h3>
+<div class="fg-tags"><span class="fg-tag fg-tag-platform">PC</span><span class="fg-tag">3D</span><span class="fg-tag">Free Roam</span></div></div>
+<p class="fg-card-desc">A six-level escape room where each night recreates an iconic FNAF location with unique animatronics, puzzles, and survival mechanics.</p></div></a>
+
+<a href="/day-shift-at-freddys/" class="fg-card" data-platform="PC" data-genre="Visual Novel">
+<img src="/uploads/overhaul/day-shift-at-freddys/dayshift-at-freddys-thumb.webp" alt="Day Shift at Freddy's" class="fg-card-img" loading="lazy" data-lightbox-full="/uploads/overhaul/day-shift-at-freddys/dayshift-at-freddys.webp">
+<div class="fg-card-info"><div class="fg-card-head"><h3 class="fg-card-title">Day Shift at Freddy's</h3>
+<div class="fg-tags"><span class="fg-tag fg-tag-platform">PC</span><span class="fg-tag">2D</span><span class="fg-tag">Visual Novel</span></div></div>
+<p class="fg-card-desc">A comedy visual novel trilogy where you work the day shift alongside Purple Guy — starting as an absurd shitpost and evolving into an emotionally devastating story with dozens of endings.</p></div></a>
+
+<a href="/golden-memory-remastered/" class="fg-card" data-platform="PC" data-genre="Point & Click">
+<img src="/uploads/overhaul/golden-memory-remastered/menu concept-bv9aitjr-thumb.webp" alt="Golden Memory Remastered" class="fg-card-img" loading="lazy" data-lightbox-full="/uploads/overhaul/golden-memory-remastered/menu concept-bv9aitjr.webp">
+<div class="fg-card-info"><div class="fg-card-head"><h3 class="fg-card-title">Golden Memory Remastered</h3>
+<div class="fg-tags"><span class="fg-tag fg-tag-platform">PC</span><span class="fg-tag">2D</span><span class="fg-tag">Point &amp; Click</span></div></div>
+<p class="fg-card-desc">Survive at Fredbear's Family Diner in 1983 with four animatronics, each requiring a different button-based defense strategy.</p></div></a>
+
+<a href="/shadows-awaken/" class="fg-card" data-platform="PC" data-genre="Free Roam">
+<img src="/uploads/overhaul/shadows-awaken/portada-thumb.webp" alt="Shadows Awaken" class="fg-card-img" loading="lazy" data-lightbox-full="/uploads/overhaul/shadows-awaken/portada.webp">
+<div class="fg-card-info"><div class="fg-card-head"><h3 class="fg-card-title">Shadows Awaken</h3>
+<div class="fg-tags"><span class="fg-tag fg-tag-platform">PC</span><span class="fg-tag">3D</span><span class="fg-tag">Free Roam</span></div></div>
+<p class="fg-card-desc">A P.T.-inspired psychological horror where you play as Michael Afton, managing anxiety and light while a towering Freddy stalks a crumbling house.</p></div></a>
+
+<a href="/welcome-to-fredbears-remake/" class="fg-card" data-platform="PC" data-genre="Free Roam">
+<img src="/uploads/overhaul/welcome-to-fredbears/portada-thumb.webp" alt="Welcome to Fredbear's" class="fg-card-img" loading="lazy" data-lightbox-full="/uploads/overhaul/welcome-to-fredbears/portada.webp">
+<div class="fg-card-info"><div class="fg-card-head"><h3 class="fg-card-title">Welcome to Fredbear's</h3>
+<div class="fg-tags"><span class="fg-tag fg-tag-platform">PC</span><span class="fg-tag">3D</span><span class="fg-tag">Free Roam</span></div></div>
+<p class="fg-card-desc">Play as William Afton in a storage facility survival against Springlock animatronics, combining free roam exploration, office defense, and fuse repair phases.</p></div></a>
+
+<a href="/five-nights-at-treasure-island/" class="fg-card" data-platform="PC" data-genre="Point & Click">
+<img src="/uploads/overhaul/five-nights-at-treasure-island/portada-thumb.webp" alt="Five Nights at Treasure Island" class="fg-card-img" loading="lazy" data-lightbox-full="/uploads/overhaul/five-nights-at-treasure-island/portada.webp">
+<div class="fg-card-info"><div class="fg-card-head"><h3 class="fg-card-title">Five Nights at Treasure Island</h3>
+<div class="fg-tags"><span class="fg-tag fg-tag-platform">PC</span><span class="fg-tag">2D</span><span class="fg-tag">Point &amp; Click</span></div></div>
+<p class="fg-card-desc">Survive in an abandoned Disney resort where distorted toon characters hunt you using three conflicting defense mechanics.</p></div></a>
+
+<a href="/fnaf-world-refreshed/" class="fg-card" data-platform="PC" data-genre="RPG">
+<img src="/uploads/overhaul/fnaf-world-refreshed/fnaf-world-refreshed-thumb.webp" alt="FNAF World Refreshed" class="fg-card-img" loading="lazy" data-lightbox-full="/uploads/overhaul/fnaf-world-refreshed/fnaf-world-refreshed.webp">
+<div class="fg-card-info"><div class="fg-card-head"><h3 class="fg-card-title">FNAF World Refreshed</h3>
+<div class="fg-tags"><span class="fg-tag fg-tag-platform">PC</span><span class="fg-tag">2D</span><span class="fg-tag">RPG</span></div></div>
+<p class="fg-card-desc">A massive remaster of Scott Cawthon's chibi RPG with 20+ new characters, rebalanced combat, new worlds, skins, minigames, and Nuzlocke mode.</p></div></a>
+
+<a href="/fnafb-complete-collection/" class="fg-card" data-platform="PC" data-genre="RPG">
+<img src="/uploads/overhaul/five-nights-at-fboys-complete-collection/1-4hgfncgt-thumb.webp" alt="Five Nights at F***boy's: Complete Collection" class="fg-card-img" loading="lazy" data-lightbox-full="/uploads/overhaul/five-nights-at-fboys-complete-collection/1-4hgfncgt.webp">
+<div class="fg-card-info"><div class="fg-card-head"><h3 class="fg-card-title">FNAF***boy's: Complete Collection</h3>
+<div class="fg-tags"><span class="fg-tag fg-tag-platform">PC</span><span class="fg-tag">2D</span><span class="fg-tag">RPG</span></div></div>
+<p class="fg-card-desc">A turn-based RPG parody with text-to-speech voice acting where Freddy and friends battle sentient party hats across three full games plus bonus content.</p></div></a>
+
+<a href="/tyke-and-sons-lumber-co/" class="fg-card" data-platform="PC" data-genre="Point & Click">
+<img src="/uploads/overhaul/tyke-and-sons-lumber-co/tyke-and-sons-thumb.webp" alt="Tyke and Sons Lumber Co." class="fg-card-img" loading="lazy" data-lightbox-full="/uploads/overhaul/tyke-and-sons-lumber-co/tyke-and-sons.webp">
+<div class="fg-card-info"><div class="fg-card-head"><h3 class="fg-card-title">Tyke and Sons Lumber Co.</h3>
+<div class="fg-tags"><span class="fg-tag fg-tag-platform">PC</span><span class="fg-tag">2D</span><span class="fg-tag">Point &amp; Click</span></div></div>
+<p class="fg-card-desc">Two games in one: a full crafting adventure by day, FNAF 4-style survival horror by night — everything you build becomes your enemy.</p></div></a>
+
+<a href="/final-nights-4/" class="fg-card" data-platform="PC" data-genre="Point & Click">
+<img src="/uploads/overhaul/final-nights-4/teaser9-gw3wxexd-thumb.webp" alt="Final Nights 4: Fates Entwined" class="fg-card-img" loading="lazy" data-lightbox-full="/uploads/overhaul/final-nights-4/teaser9-gw3wxexd.webp">
+<div class="fg-card-info"><div class="fg-card-head"><h3 class="fg-card-title">Final Nights 4: Fates Entwined</h3>
+<div class="fg-tags"><span class="fg-tag fg-tag-platform">PC</span><span class="fg-tag">3D</span><span class="fg-tag">Point &amp; Click</span></div></div>
+<p class="fg-card-desc">Dual-timeline UE4 horror with camera-based nights in 1973 and point-and-click investigation in 2017. Multiple endings based on lore knowledge.</p></div></a>
+
+<a href="/five-nights-at-freddys-1-remake/" class="fg-card" data-platform="PC" data-genre="Point & Click">
+<img src="/uploads/overhaul/five-nights-at-freddys-1-remake/fnaf-1-remake-thumb.webp" alt="FNAF 1 Remake" class="fg-card-img" loading="lazy" data-lightbox-full="/uploads/overhaul/five-nights-at-freddys-1-remake/fnaf-1-remake.webp">
+<div class="fg-card-info"><div class="fg-card-head"><h3 class="fg-card-title">FNAF 1 Remake</h3>
+<div class="fg-tags"><span class="fg-tag fg-tag-platform">PC</span><span class="fg-tag">2D</span><span class="fg-tag">Point &amp; Click</span></div></div>
+<p class="fg-card-desc">A ransomware-styled reimagining of FNAF 1 where the window moves with your camera, animatronics melt in black-and-white, and a self-aware entity called Buddy drives a story about nostalgia and loss.</p></div></a>
+
+<a href="/those-nights-at-rachels/" class="fg-card" data-platform="PC,Android" data-genre="Point & Click">
+<img src="/uploads/overhaul/those-nights-at-rachels/portada-thumb.webp" alt="Those Nights at Rachel's" class="fg-card-img" loading="lazy" data-lightbox-full="/uploads/overhaul/those-nights-at-rachels/portada.webp">
+<div class="fg-card-info"><div class="fg-card-head"><h3 class="fg-card-title">Those Nights at Rachel's</h3>
+<div class="fg-tags"><span class="fg-tag fg-tag-platform">PC</span><span class="fg-tag fg-tag-platform">Android</span><span class="fg-tag">3D</span><span class="fg-tag">Point &amp; Click</span></div></div>
+<p class="fg-card-desc">A 3D Unreal Engine FNAF fan game by Nikson with six roaming animatronics, real-time lighting, and a multi-station office you physically navigate.</p></div></a>
+
+<a href="/fnaf-urbex/" class="fg-card" data-platform="PC" data-genre="Free Roam">
+<img src="/uploads/overhaul/fnaf-urbex/urbex-thumb.webp" alt="FNAF Urbex" class="fg-card-img" loading="lazy" data-lightbox-full="/uploads/overhaul/fnaf-urbex/urbex.webp">
+<div class="fg-card-info"><div class="fg-card-head"><h3 class="fg-card-title">FNAF Urbex</h3>
+<div class="fg-tags"><span class="fg-tag fg-tag-platform">PC</span><span class="fg-tag">3D</span><span class="fg-tag">Free Roam</span></div></div>
+<p class="fg-card-desc">Explore Fazbear's Fright in first person while Springtrap hunts you by listening to your real microphone. VHS-style stealth horror.</p></div></a>
+
+<a href="/after-fright/" class="fg-card" data-platform="PC,Android" data-genre="Point & Click">
+<img src="/uploads/overhaul/after-fright/portada-thumb.webp" alt="After Fright" class="fg-card-img" loading="lazy" data-lightbox-full="/uploads/overhaul/after-fright/portada.webp">
+<div class="fg-card-info"><div class="fg-card-head"><h3 class="fg-card-title">After Fright</h3>
+<div class="fg-tags"><span class="fg-tag fg-tag-platform">PC</span><span class="fg-tag fg-tag-platform">Android</span><span class="fg-tag">3D</span><span class="fg-tag">Point &amp; Click</span></div></div>
+<p class="fg-card-desc">A post-FNAF 3 level-based survival horror set in a warehouse of salvaged animatronics. Each level introduces completely different mechanics, from office defense to duct-crawling.</p></div></a>
+
+<a href="/five-nights-at-freddys-blood-and-gears/" class="fg-card" data-platform="PC" data-genre="Point & Click">
+<img src="/uploads/overhaul/five-nights-at-freddys-blood-and-gears/idka-uppi3gdn-thumb.webp" alt="Five Nights at Freddy's: Blood and Gears" class="fg-card-img" loading="lazy" data-lightbox-full="/uploads/overhaul/five-nights-at-freddys-blood-and-gears/idka-uppi3gdn.webp">
+<div class="fg-card-info"><div class="fg-card-head"><h3 class="fg-card-title">FNAF: Blood and Gears</h3>
+<div class="fg-tags"><span class="fg-tag fg-tag-platform">PC</span><span class="fg-tag">2D</span><span class="fg-tag">Point &amp; Click</span></div></div>
+<p class="fg-card-desc">A stunning FNAF 1 reimagining with realistic animatronics, industrial atmosphere, expanded lore, and a unique arcade-survival overtime mechanic.</p></div></a>
+
+<a href="/after-nights-at-freddys/" class="fg-card" data-platform="PC,Android" data-genre="Point & Click">
+<img src="/uploads/overhaul/after-nights-at-freddys/after-nights-at-freddys-thumb.webp" alt="After Nights at Freddy's" class="fg-card-img" loading="lazy" data-lightbox-full="/uploads/overhaul/after-nights-at-freddys/after-nights-at-freddys.webp">
+<div class="fg-card-info"><div class="fg-card-head"><h3 class="fg-card-title">After Nights at Freddy's</h3>
+<div class="fg-tags"><span class="fg-tag fg-tag-platform">PC</span><span class="fg-tag fg-tag-platform">Android</span><span class="fg-tag">2D</span><span class="fg-tag">Point &amp; Click</span></div></div>
+<p class="fg-card-desc">A Spanish-language FNAF fan game where sound is your primary survival tool. Listen carefully to identify each animatronic's unique audio cues.</p></div></a>
+
+<a href="/animatronic-memories/" class="fg-card" data-platform="PC" data-genre="Point & Click">
+<img src="/uploads/overhaul/animatronic-memories/animatronics-memories-thumb.webp" alt="Animatronic Memories" class="fg-card-img" loading="lazy" data-lightbox-full="/uploads/overhaul/animatronic-memories/animatronics-memories.webp">
+<div class="fg-card-info"><div class="fg-card-head"><h3 class="fg-card-title">Animatronic Memories</h3>
+<div class="fg-tags"><span class="fg-tag fg-tag-platform">PC</span><span class="fg-tag">3D</span><span class="fg-tag">Point &amp; Click</span></div></div>
+<p class="fg-card-desc">A 1989-set FNAF reimagining with Chuck E. Cheese-style animatronics, a fuse-based power system, and two radically different endings.</p></div></a>
+
+<a href="/fredbear-and-friends-left-to-rot/" class="fg-card" data-platform="PC" data-genre="Point & Click">
+<img src="/uploads/overhaul/fredbear-and-friends-left-to-rot/a7vz6hudd6451-thumb.webp" alt="Fredbear and Friends: Left to Rot" class="fg-card-img" loading="lazy" data-lightbox-full="/uploads/overhaul/fredbear-and-friends-left-to-rot/a7vz6hudd6451.webp">
+<div class="fg-card-info"><div class="fg-card-head"><h3 class="fg-card-title">Fredbear &amp; Friends: Left to Rot</h3>
+<div class="fg-tags"><span class="fg-tag fg-tag-platform">PC</span><span class="fg-tag">2D</span><span class="fg-tag">Point &amp; Click</span></div></div>
+<p class="fg-card-desc">Five unique rooms, each with different mechanics and animatronics, set inside an abandoned Fredbear's diner with multiple endings and a full custom night.</p></div></a>
+
+<a href="/five-nights-at-friedrichs/" class="fg-card" data-platform="PC" data-genre="Point & Click">
+<img src="/uploads/overhaul/five-nights-at-friedrichs/ss1_v3-9vmsejm7-thumb.webp" alt="Five Nights at Friedrich's" class="fg-card-img" loading="lazy" data-lightbox-full="/uploads/overhaul/five-nights-at-friedrichs/ss1_v3-9vmsejm7.webp">
+<div class="fg-card-info"><div class="fg-card-head"><h3 class="fg-card-title">Five Nights at Friedrich's</h3>
+<div class="fg-tags"><span class="fg-tag fg-tag-platform">PC</span><span class="fg-tag">2D</span><span class="fg-tag">Point &amp; Click</span></div></div>
+<p class="fg-card-desc">A comedy-driven FNAF fan game with hand-drawn 2D art, laser doors, pizza-cooking mechanics, and a sprinkler system praised as one of the most inventive additions in any FNAF game.</p></div></a>
+
+<a href="/bondees-barnyard/" class="fg-card" data-platform="PC" data-genre="Point & Click">
+<img src="/uploads/overhaul/bondees-barnyard/bondees-thumb.webp" alt="Bondee's Barnyard" class="fg-card-img" loading="lazy" data-lightbox-full="/uploads/overhaul/bondees-barnyard/bondees.webp">
+<div class="fg-card-info"><div class="fg-card-head"><h3 class="fg-card-title">Bondee's Barnyard</h3>
+<div class="fg-tags"><span class="fg-tag fg-tag-platform">PC</span><span class="fg-tag">2D</span><span class="fg-tag">Point &amp; Click</span></div></div>
+<p class="fg-card-desc">Play as a child trapped inside an animatronic cow, surviving haywired characters while avoiding a security guard who's watching you through cameras.</p></div></a>
+
+<a href="/five-nights-with-39/" class="fg-card" data-platform="PC,Android" data-genre="Point & Click">
+<img src="/uploads/overhaul/five-nights-with-39/menupose0003-dn3fccwp-thumb.webp" alt="Five Nights with 39" class="fg-card-img" loading="lazy" data-lightbox-full="/uploads/overhaul/five-nights-with-39/menupose0003-dn3fccwp.webp">
+<div class="fg-card-info"><div class="fg-card-head"><h3 class="fg-card-title">Five Nights with 39</h3>
+<div class="fg-tags"><span class="fg-tag fg-tag-platform">PC</span><span class="fg-tag fg-tag-platform">Android</span><span class="fg-tag">2D</span><span class="fg-tag">Point &amp; Click</span></div></div>
+<p class="fg-card-desc">A comedy fan game starring 39 the Bunny — a foul-mouthed animatronic who insults you every night while hiding a surprisingly emotional story beneath the jokes.</p></div></a>
+
+<a href="/five-nights-with-mac-tonight/" class="fg-card" data-platform="PC" data-genre="Point & Click">
+<img src="/uploads/overhaul/five-nights-with-mac-tonight/portada-thumb.webp" alt="Five Nights with Mac Tonight" class="fg-card-img" loading="lazy" data-lightbox-full="/uploads/overhaul/five-nights-with-mac-tonight/portada.webp">
+<div class="fg-card-info"><div class="fg-card-head"><h3 class="fg-card-title">Five Nights with Mac Tonight</h3>
+<div class="fg-tags"><span class="fg-tag fg-tag-platform">PC</span><span class="fg-tag">2D</span><span class="fg-tag">Point &amp; Click</span></div></div>
+<p class="fg-card-desc">A McDonald's-themed FNAF game where real mascots like Mac Tonight, Ronald McDonald, and Grimace become hostile animatronics hunting you across a two-story restaurant.</p></div></a>
+
+<a href="/fnaf-rewritten-87/" class="fg-card" data-platform="PC" data-genre="Point & Click">
+<img src="/uploads/overhaul/fnaf-rewritten-87/portada-thumb.webp" alt="FNAF Rewritten '87" class="fg-card-img" loading="lazy" data-lightbox-full="/uploads/overhaul/fnaf-rewritten-87/portada.webp">
+<div class="fg-card-info"><div class="fg-card-head"><h3 class="fg-card-title">FNAF Rewritten '87</h3>
+<div class="fg-tags"><span class="fg-tag fg-tag-platform">PC</span><span class="fg-tag">3D</span><span class="fg-tag">Point &amp; Click</span></div></div>
+<p class="fg-card-desc">A ground-up FNAF 2 remake with redesigned animatronics, real-time animations, explorable 3D environments, and a rewritten lore centered on Michael Afton.</p></div></a>
+
+<a href="/freddys-reanimated/" class="fg-card" data-platform="PC" data-genre="Point & Click">
+<img src="/uploads/overhaul/freddys-reanimated/freddys-reanimated-thumb.webp" alt="Freddy's Reanimated" class="fg-card-img" loading="lazy" data-lightbox-full="/uploads/overhaul/freddys-reanimated/freddys-reanimated.webp">
+<div class="fg-card-info"><div class="fg-card-head"><h3 class="fg-card-title">Freddy's Reanimated</h3>
+<div class="fg-tags"><span class="fg-tag fg-tag-platform">PC</span><span class="fg-tag">3D</span><span class="fg-tag">Point &amp; Click</span></div></div>
+<p class="fg-card-desc">Survive in the most realistic FNAF fan game ever made — a hyper-detailed abandoned pizzeria with unique camera mechanics and a story about being forgotten.</p></div></a>
+
+<a href="/juniors/" class="fg-card" data-platform="PC" data-genre="Point & Click">
+<img src="/uploads/overhaul/juniors/juniors-thumb.webp" alt="JR's: Enter the Flipside" class="fg-card-img" loading="lazy" data-lightbox-full="/uploads/overhaul/juniors/juniors.webp">
+<div class="fg-card-info"><div class="fg-card-head"><h3 class="fg-card-title">JR's: Enter the Flipside</h3>
+<div class="fg-tags"><span class="fg-tag fg-tag-platform">PC</span><span class="fg-tag">2D</span><span class="fg-tag">Point &amp; Click</span></div></div>
+<p class="fg-card-desc">A paranormal investigation game where you use cameras and supernatural clues to identify which animatronic is possessed by a ghost.</p></div></a>
+
+<a href="/next-week-at-freddys/" class="fg-card" data-platform="PC" data-genre="Point & Click">
+<img src="/uploads/overhaul/next-week-at-freddys/portada-thumb.webp" alt="Next Week at Freddy's" class="fg-card-img" loading="lazy" data-lightbox-full="/uploads/overhaul/next-week-at-freddys/portada.webp">
+<div class="fg-card-info"><div class="fg-card-head"><h3 class="fg-card-title">Next Week at Freddy's</h3>
+<div class="fg-tags"><span class="fg-tag fg-tag-platform">PC</span><span class="fg-tag">3D</span><span class="fg-tag">Point &amp; Click</span></div></div>
+<p class="fg-card-desc">A UE5 reimagining of FNAF 1 with 21 cameras, a full control panel of levers and switches, and interconnected sabotage systems that make every mechanic matter.</p></div></a>
+
+<a href="/playtime-with-percy/" class="fg-card" data-platform="PC" data-genre="Point & Click">
+<img src="/uploads/overhaul/percys-playtime/portada-thumb.webp" alt="Playtime with Percy" class="fg-card-img" loading="lazy" data-lightbox-full="/uploads/overhaul/percys-playtime/portada.webp">
+<div class="fg-card-info"><div class="fg-card-head"><h3 class="fg-card-title">Playtime with Percy</h3>
+<div class="fg-tags"><span class="fg-tag fg-tag-platform">PC</span><span class="fg-tag">2D</span><span class="fg-tag">Point &amp; Click</span></div></div>
+<p class="fg-card-desc">A Tamagotchi-powered twist on the FNAF formula where completing minigames ends the night, plus hand-drawn art, post-night boss fights, and a 3D final battle.</p></div></a>
+
+<a href="/return-to-bloody-nights/" class="fg-card" data-platform="PC" data-genre="Point & Click">
+<img src="/uploads/overhaul/return-to-bloody-nights/new-thub-bnaf-done-sgrezqhe-thumb.webp" alt="The Return to Bloody Nights" class="fg-card-img" loading="lazy" data-lightbox-full="/uploads/overhaul/return-to-bloody-nights/new-thub-bnaf-done-sgrezqhe.webp">
+<div class="fg-card-info"><div class="fg-card-head"><h3 class="fg-card-title">The Return to Bloody Nights</h3>
+<div class="fg-tags"><span class="fg-tag fg-tag-platform">PC</span><span class="fg-tag">2D</span><span class="fg-tag">Point &amp; Click</span></div></div>
+<p class="fg-card-desc">Set in Fredbear's Family Diner in 1983, featuring a generator heat system, stunning animatronic models, and a deep narrative exploring Henry and William's crumbling friendship.</p></div></a>
+
+<a href="/showmans-the-awakening/" class="fg-card" data-platform="PC" data-genre="Point & Click">
+<img src="/uploads/overhaul/showman-the-awakening/coverch1_5-9iercv37-thumb.webp" alt="Showman's: The Awakening" class="fg-card-img" loading="lazy" data-lightbox-full="/uploads/overhaul/showman-the-awakening/coverch1_5-9iercv37.webp">
+<div class="fg-card-info"><div class="fg-card-head"><h3 class="fg-card-title">Showman's: The Awakening</h3>
+<div class="fg-tags"><span class="fg-tag fg-tag-platform">PC</span><span class="fg-tag">3D</span><span class="fg-tag">Point &amp; Click</span></div></div>
+<p class="fg-card-desc">Survive 6 nights in a warehouse full of decommissioned animatronics in this fully 3D Blender-built game with real-time movement and deep lore.</p></div></a>
+
+</div>
+
+<div class="fg-empty">No games match the selected filters.</div>
+
+<h2 id="tierlist" class="tier-heading">The Best FNAF Fan Games Ranked — Our Tier List</h2>
+<p class="tier-intro">Not all FNAF fan games are created equal. After analyzing dozens of YouTube rankings, tier lists, and community reviews, we put together <strong>a tier list that separates the must-plays from the rest</strong>. Whether you are looking for a classic point-and-click experience or a terrifying 3D free-roam adventure, this ranking has you covered.</p>
+
+<h3 class="tier-subheading tier-s">S Tier — The Best FNAF Fan Games Ever Made</h3>
+<p class="tier-desc">These are not just good fan games. These are games that would hold up as commercial releases. If you only play eight FNAF fan games in your life, make it these.</p>
+
+<div class="tier-card">
+<h4><a href="/the-joy-of-creation-story-mode/">The Joy of Creation: Story Mode</a> <span class="tier-badge tier-badge-s">S TIER</span></h4>
+<p>Widely considered the greatest FNAF fan game ever made, The Joy of Creation: Story Mode by Nikson drops the static camera formula and puts you in first-person control across five completely unique memories. You play as different members of the Cawthon family — surviving the bedroom, the basement, the attic, and more — each with its own mechanics and Ignited animatronic threats. Built in Unreal Engine with cinematic-quality visuals, TJoC:SM ranked #1 across multiple community tier lists and earned unanimous praise from YouTubers and Markiplier alike. If you play only one FNAF fan game, this is it.</p>
+<div class="tier-card-previews">
+<img src="/uploads/overhaul/the-joy-of-creation-story-mode/t_bedroom-67ncacb5-thumb.webp" alt="The Joy of Creation - Bedroom memory with animatronic silhouette in the window" loading="lazy" data-lightbox-full="/uploads/overhaul/the-joy-of-creation-story-mode/t_bedroom-67ncacb5.webp">
+<img src="/uploads/overhaul/the-joy-of-creation-story-mode/t_basement-e6ux7bpf-thumb.webp" alt="The Joy of Creation - Basement memory dark hallway scene" loading="lazy" data-lightbox-full="/uploads/overhaul/the-joy-of-creation-story-mode/t_basement-e6ux7bpf.webp">
+<img src="/uploads/overhaul/the-joy-of-creation-story-mode/highresscreenshot00034-in7fkanr-thumb.webp" alt="The Joy of Creation - High-res in-game screenshot of Ignited animatronic" loading="lazy" data-lightbox-full="/uploads/overhaul/the-joy-of-creation-story-mode/highresscreenshot00034-in7fkanr.webp">
+</div>
+</div>
+
+<div class="tier-card">
+<h4><a href="/day-shift-at-freddys/">Day Shift at Freddy's</a> <span class="tier-badge tier-badge-s">S TIER</span></h4>
+<p>Created by DirectDogman, the Day Shift at Freddy's trilogy is a visual novel RPG series that starts as a hilarious comedy shitpost and evolves into a genuinely emotional masterpiece. You play as Jack Kennedy alongside the infamous Dave Miller — "Old Sport" — navigating absurd humor, branching storylines, and surprisingly deep lore across three increasingly ambitious entries. Named "the best FNAF fan game of all time" by multiple content creators, DSaF earned its S Tier spot through sheer cultural impact and unforgettable characters that the community still references years later.</p>
+<div class="tier-card-previews">
+<img src="/uploads/overhaul/day-shift-at-freddys/dayshift-at-freddys-thumb.webp" alt="Day Shift at Freddy's - Trilogy cover art featuring Purple Guy, Phone Guy, and Toy Chica" loading="lazy" data-lightbox-full="/uploads/overhaul/day-shift-at-freddys/dayshift-at-freddys.webp">
+</div>
+</div>
+
+<div class="tier-card">
+<h4><a href="/tyke-and-sons-lumber-co/">Tyke and Sons Lumber Co.</a> <span class="tier-badge tier-badge-s">S TIER</span></h4>
+<p>Built as a love letter to Scott Cawthon's Chipper and Sons Lumber Co., this fan game is mechanically the most ambitious FNAF project ever created. You play as Mike — Chipper's grandson — spending your days planting trees, gathering resources, and building robots called Chipo-Mats to run your lumber business. But when night falls, those same machines wake up and hunt you down in a full classic FNAF survival mode. Ranked #1 in community tier lists and praised as "a perfect love letter to anything FNAF," it packs crafting, boss battles, underwater mazes, fishing, and more into one massive package.</p>
+<div class="tier-card-previews">
+<img src="/uploads/overhaul/tyke-and-sons-lumber-co/2-sqc5pq5r-thumb.webp" alt="Tyke and Sons Lumber Co. - Mike standing in front of lumber headquarters with HUD interface" loading="lazy" data-lightbox-full="/uploads/overhaul/tyke-and-sons-lumber-co/2-sqc5pq5r.webp">
+<img src="/uploads/overhaul/tyke-and-sons-lumber-co/5-e9vn8pdq-thumb.webp" alt="Tyke and Sons Lumber Co. - Beach area with palm trees and crab NPCs" loading="lazy" data-lightbox-full="/uploads/overhaul/tyke-and-sons-lumber-co/5-e9vn8pdq.webp">
+<img src="/uploads/overhaul/tyke-and-sons-lumber-co/8-refpmadj-thumb.webp" alt="Tyke and Sons Lumber Co. - Nighttime survival gameplay scene" loading="lazy" data-lightbox-full="/uploads/overhaul/tyke-and-sons-lumber-co/8-refpmadj.webp">
+</div>
+</div>
+
+<div class="tier-card">
+<h4><a href="/animatronic-memories/">Animatronic Memories</a> <span class="tier-badge tier-badge-s">S TIER</span></h4>
+<p>Set in an alternate 1989 timeline, Animatronic Memories reimagines FNAF 1 inside a hyper-realistic Chuck E. Cheese-style restaurant with animatronics so lifelike they feel uncanny. The game features a fuse-based power system, three distinct gameplay layers, and two radically different endings that will leave you stunned. Praised across multiple community rankings as "the definition of art," it consistently leaves players and content creators speechless — a true visual and atmospheric masterpiece that stands among the finest fan games ever crafted.</p>
+<div class="tier-card-previews">
+<img src="/uploads/overhaul/animatronic-memories/animatronics-memories-thumb.webp" alt="Animatronic Memories - Main animatronic characters in the restaurant" loading="lazy" data-lightbox-full="/uploads/overhaul/animatronic-memories/animatronics-memories.webp">
+<img src="/uploads/overhaul/animatronic-memories/3-zxncd4tx-thumb.webp" alt="Animatronic Memories - Surveillance camera view of the dark restaurant" loading="lazy" data-lightbox-full="/uploads/overhaul/animatronic-memories/3-zxncd4tx.webp">
+<img src="/uploads/overhaul/animatronic-memories/5-jpimkqcf-thumb.webp" alt="Animatronic Memories - Close-up of a realistic animatronic on stage" loading="lazy" data-lightbox-full="/uploads/overhaul/animatronic-memories/5-jpimkqcf.webp">
+</div>
+</div>
+
+<div class="tier-card">
+<h4><a href="/fnaf-world-refreshed/">FNAF World Refreshed</a> <span class="tier-badge tier-badge-s">S TIER</span></h4>
+<p>The definitive remaster of Scott Cawthon's FNAF World RPG, rebuilt from the ground up with deeper combat, 10 explorable worlds, a fully redesigned Flipside area, and over 20 new playable characters including Golden Freddy, Sparky the Dog, and the Rockstar animatronics. A ticket-based skin system, Nuzlocke mode, and dozens of quality-of-life improvements transform it into what FNAF World should have always been. Named the best FNAF fan game of 2025 by multiple independent sources, it earned its S Tier spot through sheer ambition and an incredible amount of content packed into a free download.</p>
+<div class="tier-card-previews">
+<img src="/uploads/overhaul/fnaf-world-refreshed/battlescreenshot-sf2gmrfv-thumb.webp" alt="FNAF World Refreshed - Turn-based battle in a snowy area with Springtrap in the party" loading="lazy" data-lightbox-full="/uploads/overhaul/fnaf-world-refreshed/battlescreenshot-sf2gmrfv.webp">
+<img src="/uploads/overhaul/fnaf-world-refreshed/screenshot_2026-01-19_205448-wmavzzxr-thumb.webp" alt="FNAF World Refreshed - Party creation screen showing Freddy's stats and attacks" loading="lazy" data-lightbox-full="/uploads/overhaul/fnaf-world-refreshed/screenshot_2026-01-19_205448-wmavzzxr.webp">
+<img src="/uploads/overhaul/fnaf-world-refreshed/screenshot_2026-01-19_210411-mnsqqkkz-thumb.webp" alt="FNAF World Refreshed - Colorful battle in a circus area with unique enemies" loading="lazy" data-lightbox-full="/uploads/overhaul/fnaf-world-refreshed/screenshot_2026-01-19_210411-mnsqqkkz.webp">
+</div>
+</div>
+
+<div class="tier-card">
+<h4><a href="/shadows-awaken/">Shadows Awaken</a> <span class="tier-badge tier-badge-s">S TIER</span></h4>
+<p>Often described as "P.T. but in FNAF," Shadows Awaken abandons the camera-watching formula entirely and drops you into a crumbling two-story house as Michael Afton, exploring in first person while a nightmarish Freddy stalks you through the corridors. A unique anxiety meter punishes time spent in darkness with escalating panic attacks — distorted visuals, warped audio, and death — while you scavenge light bulbs to keep the shadows at bay. Ranked #2 out of 29 fan games and praised as "damn near perfect," it's so terrifying that even the content creator reviewing it nearly alt-F4'd out of sheer dread.</p>
+<div class="tier-card-previews">
+<img src="/uploads/overhaul/shadows-awaken/umbra2-wgtxbmu8-thumb.webp" alt="Shadows Awaken - Monstrous animatronic silhouette bathed in red light" loading="lazy" data-lightbox-full="/uploads/overhaul/shadows-awaken/umbra2-wgtxbmu8.webp">
+<img src="/uploads/overhaul/shadows-awaken/screenshot_10-02-2026_02-00-42_6-3sqdemug-thumb.webp" alt="Shadows Awaken - First-person view holding a camera in a dark hallway" loading="lazy" data-lightbox-full="/uploads/overhaul/shadows-awaken/screenshot_10-02-2026_02-00-42_6-3sqdemug.webp">
+<img src="/uploads/overhaul/shadows-awaken/screenshot_10-02-2026_01-59-19_5-rtwfaurg-thumb.webp" alt="Shadows Awaken - Dim hallway with flickering light and deteriorating walls" loading="lazy" data-lightbox-full="/uploads/overhaul/shadows-awaken/screenshot_10-02-2026_01-59-19_5-rtwfaurg.webp">
+</div>
+</div>
+
+<div class="tier-card">
+<h4><a href="/after-nights-at-freddys/">After Nights at Freddy's</a> <span class="tier-badge tier-badge-s">S TIER</span></h4>
+<p>Set three years after the fire that destroyed Fazbear's Fright, After Nights at Freddy's puts you in charge of a revived Freddy Fazbear's restaurant where the original Fredbear animatronics have been brought back to life. The game's audio-based mechanics set it apart — you must manage Fredbear's music box, repair malfunctioning cameras through a CMD Pad, and track animatronics through ventilation sounds, creating a layered survival challenge that escalates with each night. Ranked #1 across multiple FNAF Android fan game rankings and called "one of the best, if not THE best" by reviewers, it delivers cinematic storytelling and atmospheric sound design that rival commercial releases — all entirely in Spanish, giving it a unique identity in the fangame scene.</p>
+<div class="tier-card-previews">
+<img src="/uploads/overhaul/after-nights-at-freddys/oficina-2w3rwad6-thumb.webp" alt="After Nights at Freddy's - Security office with CRT monitor and Fredbear lurking in the shadows" loading="lazy" data-lightbox-full="/uploads/overhaul/after-nights-at-freddys/oficina-2w3rwad6.webp">
+<img src="/uploads/overhaul/after-nights-at-freddys/stage---light-nqytf9e5-thumb.webp" alt="After Nights at Freddy's - Fredbear and band on the main stage with instruments" loading="lazy" data-lightbox-full="/uploads/overhaul/after-nights-at-freddys/stage---light-nqytf9e5.webp">
+<img src="/uploads/overhaul/after-nights-at-freddys/partes-servicios---dark-jjnaevie-thumb.webp" alt="After Nights at Freddy's - Parts and Service room with shadowy animatronic silhouettes" loading="lazy" data-lightbox-full="/uploads/overhaul/after-nights-at-freddys/partes-servicios---dark-jjnaevie.webp">
+</div>
+</div>
+
+<h3 class="tier-subheading tier-aplus">A+ Tier — The Best of the Best</h3>
+<p class="tier-desc">Highly acclaimed with strong opinions, high positions in rankings, or presence across multiple independent sources. Just one step below the legends.</p>
+
+<div class="tier-card">
+<h4><a href="/the-glitched-attraction/">The Glitched Attraction</a> <span class="tier-badge tier-badge-aplus">A+ TIER</span></h4>
+<p>Created by just two 18-year-old developers at PowerLine Studios, The Glitched Attraction is a free-roaming escape room horror experience that takes you through six iconic FNAF locations — from the FNAF 4 bedroom to Sister Location to Pizzeria Simulator — each with completely unique mechanics, animatronic threats, and creative puzzles. The production quality is so high that multiple reviewers compared it directly to Steel Wool Studios' work, with some wishing Security Breach had been more like this. Packed with cinematic cutscenes, a model gallery, achievements, and a lore-rich storyline involving Vanny and Burntrap, it's one of the most ambitious and polished FNAF fan games ever made.</p>
+<div class="tier-card-previews">
+<img src="/uploads/overhaul/the-glitched-attraction/new_3-vtmp2ajd-thumb.webp" alt="The Glitched Attraction - Nightmare Fredbear lurking in the FNAF 4 bedroom level" loading="lazy" data-lightbox-full="/uploads/overhaul/the-glitched-attraction/new_3-vtmp2ajd.webp">
+<img src="/uploads/overhaul/the-glitched-attraction/new_7-3b6k7wgi-thumb.webp" alt="The Glitched Attraction - Ballora dancing in a checkered hallway in the Sister Location level" loading="lazy" data-lightbox-full="/uploads/overhaul/the-glitched-attraction/new_7-3b6k7wgi.webp">
+<img src="/uploads/overhaul/the-glitched-attraction/new_10-3n8d24r5-thumb.webp" alt="The Glitched Attraction - Scrap Baby emerging from the darkness in the Pizzeria Simulator level" loading="lazy" data-lightbox-full="/uploads/overhaul/the-glitched-attraction/new_10-3n8d24r5.webp">
+</div>
+</div>
+
+<div class="tier-card">
+<h4><a href="/five-nights-at-freddys-1-remake/">FNAF 1 Remake</a> <span class="tier-badge tier-badge-aplus">A+ TIER</span></h4>
+<p>Disguised as a simple remake of Five Nights at Freddy's, FNAF 1 Remake by Marco Antonio is actually a ransomware-styled psychological horror experience that pretends to take over your computer. The game forces itself into a small window that physically moves across your desktop as you look around, with everything rendered in haunting black-and-white and grotesquely deformed, melting animatronics. Built in just two months as an April Fools joke, it landed #1 in a ranking of 30 fan games — praised as "the only one that truly understood terror." Beneath the metafictional horror lies a deeply personal story about nostalgia, loss, and the impossibility of going back to the way things were.</p>
+<div class="tier-card-previews">
+<img src="/uploads/overhaul/five-nights-at-freddys-1-remake/fnaf-1-remake-thumb.webp" alt="FNAF 1 Remake - Deformed black-and-white animatronics and Buddy in yellow" loading="lazy" data-lightbox-full="/uploads/overhaul/five-nights-at-freddys-1-remake/fnaf-1-remake.webp">
+</div>
+</div>
+
+<div class="tier-card">
+<h4><a href="/one-night-at-flumptys-3/">One Night at Flumpty's 3</a> <span class="tier-badge tier-badge-aplus">A+ TIER</span></h4>
+<p>The grand finale of Jonochrome's beloved egg-themed FNAF parody trilogy, and a Fazbear Fanverse Initiative title. ONAF 3 introduces a temperature-based survival system where you're trapped in a freezing office, managing a limited-use flash camera and periodic trips to a furnace — all while a cast of uniquely threatening characters closes in. But the real masterpiece is Flumpty Night: the final night where Flumpty murders all his friends and replaces them with twisted versions of himself, inverting the entire visual palette and adding an electro swing soundtrack that makes the whole experience feel beautifully unhinged. Ranked in the top 3 across multiple independent lists and praised as "the perfect closure to a great trilogy," it's one of the most creative and polished final chapters in FNAF fan game history.</p>
+<div class="tier-card-previews">
+<img src="/uploads/overhaul/one-night-at-flumptys-3/onaf3_screenshot1-mkvvzdhc-thumb.webp" alt="One Night at Flumpty's 3 - Frozen office at 12 AM with icicles and thermometer" loading="lazy" data-lightbox-full="/uploads/overhaul/one-night-at-flumptys-3/onaf3_screenshot1-mkvvzdhc.webp">
+<img src="/uploads/overhaul/one-night-at-flumptys-3/onaf3_screenshot3-ejwauviu-thumb.webp" alt="One Night at Flumpty's 3 - Birthday Boy Blam on security camera near the furnace" loading="lazy" data-lightbox-full="/uploads/overhaul/one-night-at-flumptys-3/onaf3_screenshot3-ejwauviu.webp">
+<img src="/uploads/overhaul/one-night-at-flumptys-3/onaf3_screenshot4-hah4x3t3-thumb.webp" alt="One Night at Flumpty's 3 - Grunkfuss the Clown's gallery with no flash photography signs" loading="lazy" data-lightbox-full="/uploads/overhaul/one-night-at-flumptys-3/onaf3_screenshot4-hah4x3t3.webp">
+</div>
+</div>
+
+<table class="tier-table">
+<thead><tr><th>Game</th><th>Why it stands out</th></tr></thead>
+<tbody>
+<tr><td><a href="/bondees-barnyard/">Bondee's Barnyard</a></td><td>FNAF but on a farm. Play as a child trapped inside an animatronic cow suit. One of the most horrific endings in fangame history.</td></tr>
+<tr><td><a href="/juniors/">JR's: Enter the Flipside</a></td><td>Ghostbusters-style ghost hunting mechanics. Deduce which animatronic is possessed. Boss fight against Mangle.</td></tr>
+<tr><td><a href="/showmans-the-awakening/">Showman's: The Awakening</a></td><td>Animatronics visibly move toward you Toy Story-style. The most unsettling thing one creator had ever seen.</td></tr>
+<tr><td><a href="/a-bite-at-freddys/">A Bite at Freddy's</a></td><td>Western-themed FNAF with conveyor belt mechanics. Only 4 nights but oozing with passion. Duel with Chica.</td></tr>
+<tr><td><a href="/final-nights-4/">Final Nights 4: Fates Entwined</a></td><td>Multiple endings with Reaper Puppet as the most feared animatronic. The Final Nights series is genuinely legendary.</td></tr>
+<tr><td><a href="/fredbear-and-friends-left-to-rot/">Fredbear &amp; Friends: Left to Rot</a></td><td>Sister Location-style structure with multiple gameplay sections. Custom Night with all-max mode. Phenomenal creativity.</td></tr>
+<tr><td><a href="/candys-3/">Five Nights at Candy's 3</a></td><td>Best of the Candy's franchise. Monster Rat cassette mechanic. Story about trauma that is well written, tasteful, and amazing.</td></tr>
+<tr><td><a href="/those-nights-at-rachels/">Those Nights at Rachel's</a></td><td>Unreal Engine remake by Nikson. Considered the best fangame ported to Android. Must play quality.</td></tr>
+<tr><td><a href="/after-fright/">After Fright</a></td><td>Post-FNAF 3 fire, pre-auction. Available in Spanish. Called the best fangame of its video without a doubt.</td></tr>
+<tr><td><a href="/playtime-with-percy/">Playtime with Percy</a></td><td>Fake credits lead to a surprise boss fight against Percy. When it comes to the classic five nights formula, this might be the best.</td></tr>
+<tr><td><a href="/return-to-bloody-nights/">The Return to Bloody Nights</a></td><td>Spring Bonnie with time-based attack mechanics. Connects Sister Location with FNAF 4. One of the most terrifying.</td></tr>
+<tr><td><a href="/freddys-reanimated/">Freddy's Reanimated</a></td><td>Retro 2000s aesthetic with Windows 7 in-game. Features the mythical Sparky. Some of the most realistic graphics in any fangame.</td></tr>
+<tr><td><a href="/five-nights-at-freddys-blood-and-gears/">FNAF: Blood and Gears</a></td><td>Arcade machine mechanic while animatronics attack. Animatronic designs favorably compared to Scott's own. Very replayable.</td></tr>
+<tr><td><a href="/next-week-at-freddys/">Next Week at Freddy's</a></td><td>Highly immersive 3D with electrical grid management. Silent animatronics detectable only through cameras.</td></tr>
+<tr><td><a href="/fnafb-complete-collection/">FNAF***boy's: Complete Collection</a></td><td>Remastered RPG collection. Comedy and engaging gameplay. A fun ride from start to finish, better than the originals.</td></tr>
+</tbody>
+</table>
+
+<h3 class="tier-subheading tier-a">A Tier — Solid Picks Worth Your Time</h3>
+<p class="tier-desc">These fan games may not have the universal acclaim of the tiers above, but they each offer something genuinely worth experiencing.</p>
+<table class="tier-table">
+<thead><tr><th>Game</th><th>Why it stands out</th></tr></thead>
+<tbody>
+<tr><td><a href="/oblitus-casa/">Oblitus Casa</a></td><td>Evolution of Five Nights at Treasure Island. 5 nights + night 6 + Custom Night with unlockable secret characters.</td></tr>
+<tr><td><a href="/fnaf-urbex/">FNAF Urbex</a></td><td>Realistic VHS-style free-roam of the FNAF 3 building. Uses your real microphone for stealth gameplay.</td></tr>
+<tr><td><a href="/fazbear-entertainment-storage/">Fazbear Entertainment Storage</a></td><td>Favorite FNAF 2 reimagination. Fusion withered/toy designs. Mangle in the ducts is chaotic.</td></tr>
+<tr><td><a href="/golden-memory-remastered/">Golden Memory</a></td><td>Inspired by Fredbear's Family Diner with flawless graphics. Sequel is just as good as the first.</td></tr>
+<tr><td><a href="/five-nights-at-treasure-island/">Five Nights at Treasure Island</a></td><td>Abandoned Disney resort. One of the most well-known fangames of its era. Android port matches PC quality.</td></tr>
+<tr><td><a href="/five-nights-with-mac-tonight/">Five Nights with Mac Tonight</a></td><td>McDonald's-inspired with spectacular graphics, atmosphere, and soundtrack across the board.</td></tr>
+<tr><td><a href="/fnaf-rewritten-87/">FNAF Rewritten '87</a></td><td>The best remake of FNAF 2. Pre-night exploration mechanic adds a fresh twist.</td></tr>
+<tr><td><a href="/five-nights-with-39/">Five Nights with 39</a></td><td>39 the Bunny called one of the best fangame characters ever. Crude comedy with deep lore. Heavily underappreciated.</td></tr>
+<tr><td><a href="/in-real-time/">FNAF In Real Time</a></td><td>Mod that adds full animations to all animatronics. FNAF 1 as it should have felt. Requires FNAF 1 on Steam.</td></tr>
+<tr><td><a href="/five-nights-at-friedrichs/">Five Nights at Friedrich's</a></td><td>Cartoon style with absurd humor and dark undertones. Animatronics made from human parts. 6 nights and Custom Night.</td></tr>
+<tr><td><a href="/welcome-to-fredbears-remake/">Welcome to Fredbear's</a></td><td>Warehouse with Fredbear, Spring Bonnie, and redesigned Baby. You play as William Afton. Made with love.</td></tr>
+</tbody>
+</table>
+
+<h2>More FNAF Fan Games</h2>
 <div class="contenedor">
-<div class="columna"><a href="https://fnafangames.com/watchful-bear-2/">
+<div class="columna"><a href="/watchful-bear-2/">
 <img class="imagen-redondeada" src="/uploads/2024/09/Watchful-Bear-2.webp" alt="Watchful Bear 2" />
 <p class="texto-imagen">Watchful Bear 2</p></a>
 </div>
-<div class="columna"><a href="https://fnafangames.com/ramiz-friends-revisualized/">
+<div class="columna"><a href="/ramiz-friends-revisualized/">
 <img class="imagen-redondeada" src="/uploads/2024/09/Ramiz-Friends-Revisualized.webp" alt="Ramiz & Friends: Revisualized" />
 <p class="texto-imagen">Ramiz & Friends: Revisualized</p></a>
 </div>
-<div class="columna"><a href="https://fnafangames.com/the-mind-of-a-killer/">
+<div class="columna"><a href="/the-mind-of-a-killer/">
 <img class="imagen-redondeada" src="/uploads/2024/09/FNAF-3-The-Mind-of-a-Killer.webp" alt="FNAF 3: The Mind of a Killer" />
 <p class="texto-imagen">FNAF 3: The Mind of a Killer</p></a>
 </div>
-<div class="columna"><a href="https://fnafangames.com/five-nights-at-maggies-3/">
-<img class="imagen-redondeada" src="/uploads/2024/09/Five-Nights-at-Maggies-3.webp" alt="Five Nights at Maggie’s 3" />
-<p class="texto-imagen">Five Nights at Maggie’s 3</p></a>
+<div class="columna"><a href="/five-nights-at-maggies-3/">
+<img class="imagen-redondeada" src="/uploads/2024/09/Five-Nights-at-Maggies-3.webp" alt="Five Nights at Maggie's 3" />
+<p class="texto-imagen">Five Nights at Maggie's 3</p></a>
 </div>
-<div class="columna"><a href="https://fnafangames.com/welcome-to-fredbears-remake/">
-<img class="imagen-redondeada" src="/uploads/2024/09/Welcome-To-Fredbears-Remake.webp" alt="Welcome To Fredbear’s Remake" />
-<p class="texto-imagen">Welcome To Fredbear’s Remake</p></a>
-</div>
-<div class="columna"><a href="https://fnafangames.com/project-102/">
+<div class="columna"><a href="/project-102/">
 <img class="imagen-redondeada" src="/uploads/2024/08/PROJECT-102-FNAF-Fan-Game.webp" alt="PROJECT: 102" />
 <p class="texto-imagen">PROJECT: 102</p></a>
 </div>
-<div class="columna"><a href="https://fnafangames.com/fazbear-nights-2/">
+<div class="columna"><a href="/fazbear-nights-2/">
 <img class="imagen-redondeada" src="/uploads/2024/08/Fazbear-Nights-2.webp" alt="Fazbear Nights 2" />
 <p class="texto-imagen">Fazbear Nights 2</p></a>
 </div>
-<div class="columna"><a href="https://fnafangames.com/fazbear-nights/">
+<div class="columna"><a href="/fazbear-nights/">
 <img class="imagen-redondeada" src="/uploads/2024/08/Fazbear-Nights.webp" alt="Fazbear Nights" />
 <p class="texto-imagen">Fazbear Nights</p></a>
 </div>
-<div class="columna"><a href="https://fnafangames.com/fnafb-complete-collection/">
-<img class="imagen-redondeada" src="/uploads/2024/08/Five-Nights-at-Fboys-Complete-Collection.webp" alt="Five Nights at F***boy’s: Complete Collection" />
-<p class="texto-imagen">Five Nights at F***boy’s: Complete Collection</p></a>
-</div>
-<div class="columna"><a href="https://fnafangames.com/the-springlock-aftermath/">
+<div class="columna"><a href="/the-springlock-aftermath/">
 <img class="imagen-redondeada" src="/uploads/2024/08/The-Springlock-Aftermath.webp" alt="The Springlock: Aftermath" />
 <p class="texto-imagen">The Springlock: Aftermath</p></a>
 </div>
-<div class="columna"><a href="https://fnafangames.com/fredbears-83-reborn/">
+<div class="columna"><a href="/fredbears-83-reborn/">
 <img class="imagen-redondeada" src="/uploads/2024/08/Fredbears-83-Reborn.webp" alt="Fredbear's 83: Reborn" />
 <p class="texto-imagen">Fredbear's 83: Reborn</p></a>
 </div>
-<div class="columna"><a href="https://fnafangames.com/jrs-enter-the-flipside/">
-<img class="imagen-redondeada" src="/uploads/2024/08/FNAF-JRs-Enter-the-Flipside.webp" alt="FNAF JR’s: Enter the Flipside" />
-<p class="texto-imagen">FNAF JR’s: Enter the Flipside</p></a>
+<div class="columna"><a href="/in-real-time/">
+<img class="imagen-redondeada" src="/uploads/2024/08/FNAF-in-Real-Time.webp" alt="Five Nights at Freddy's: In Real Time" />
+<p class="texto-imagen">Five Nights at Freddy's: In Real Time</p></a>
 </div>
-<div class="columna"><a href="https://fnafangames.com/in-real-time/">
-<img class="imagen-redondeada" src="/uploads/2024/08/FNAF-in-Real-Time.webp" alt="Five Nights at Freddy’s: In Real Time" />
-<p class="texto-imagen">Five Nights at Freddy’s: In Real Time</p></a>
-</div>
-<div class="columna"><a href="https://fnafangames.com/candys-4/">
+<div class="columna"><a href="/candys-4/">
 <img class="imagen-redondeada" src="/uploads/2024/05/Five-Nights-at-Candys-4.FanGame.webp" alt="Candy's 4" />
 <p class="texto-imagen">Candy's 4</p></a>
 </div>
-<div class="columna"><a href="https://fnafangames.com/candys-remastered/">
+<div class="columna"><a href="/candys-remastered/">
 <img class="imagen-redondeada" src="/uploads/2024/05/Five-Nights-at-Candys-Remastered.FanGame.webp" alt="Candy's Remastered" />
 <p class="texto-imagen">Candy's Remastered</p></a>
 </div>
-<div class="columna"><a href="https://fnafangames.com/candys-3/">
-<img class="imagen-redondeada" src="/uploads/2024/05/Five-Nights-at-Candys-3-Official_Fangame.webp" alt="Candy's 3" />
-<p class="texto-imagen">Candy's 3</p></a>
-</div>
-<div class="columna"><a href="https://fnafangames.com/candys-2/">
+<div class="columna"><a href="/candys-2/">
 <img class="imagen-redondeada" src="/uploads/2024/05/Five-Nights-at-Candys-2-Official_Fangame.webp" alt="Candy's 2" />
 <p class="texto-imagen">Candy's 2</p></a>
 </div>
-<div class="columna"><a href="https://fnafangames.com/candys/">
+<div class="columna"><a href="/candys/">
 <img class="imagen-redondeada" src="/uploads/2024/05/Five-Nights-at-Candys-Official_Fangame.webp" alt="Candy's 1" />
 <p class="texto-imagen">Candy's 1</p></a>
 </div>
-<div class="columna"><a href="https://fnafangames.com/world/">
+<div class="columna"><a href="/world/">
 <img class="imagen-redondeada" src="/uploads/2024/05/FNaF-World.FanGame.webp" alt="FNaF World" />
 <p class="texto-imagen">FNaF World</p></a>
 </div>
-<div class="columna"><a href="https://fnafangames.com/jolly-4/">
+<div class="columna"><a href="/jolly-4/">
 <img class="imagen-redondeada" src="/uploads/2024/05/JOLLY-4.FanGame.webp" alt="Jolly 4" />
 <p class="texto-imagen">Jolly 4</p></a>
 </div>
-<div class="columna"><a href="https://fnafangames.com/scp-the-endurance/">
+<div class="columna"><a href="/scp-the-endurance/">
 <img class="imagen-redondeada" src="/uploads/2024/05/SCP-The-Endurance.FanGame.webp" alt="SCP: The Endurance" />
 <p class="texto-imagen">SCP: The Endurance</p></a>
 </div>
-<div class="columna"><a href="https://fnafangames.com/tyke-and-sons-lumber-co/">
-<img class="imagen-redondeada" src="/uploads/2024/05/Tyke-and-Sons-Lumber-Co.FanGame.webp" alt="Tyke and Sons Lumber" />
-<p class="texto-imagen">Tyke and Sons Lumber</p></a>
-</div>
-<div class="columna"><a href="https://fnafangames.com/ultimate-custom-night/">
+<div class="columna"><a href="/ultimate-custom-night/">
 <img class="imagen-redondeada" src="/uploads/2024/05/Ultimate-Custom-Night_Fangame.webp" alt="Ultimate Custom Night" />
 <p class="texto-imagen">Ultimate Custom Night</p></a>
 </div>
-<div class="columna"><a href="https://fnafangames.com/a-bite-at-freddys/">
-<img class="imagen-redondeada" src="/uploads/2024/05/A-Bite-at-Freddys.FanGame.webp" alt="A Bite at Freddy’s" />
-<p class="texto-imagen">A Bite at Freddy’s</p></a>
+<div class="columna"><a href="/babys-nightmare-circus/">
+<img class="imagen-redondeada" src="/uploads/2024/05/Babys-Nightmare-Circus_Fangame.webp" alt="Baby's Nightmare Circus" />
+<p class="texto-imagen">Baby's Nightmare Circus</p></a>
 </div>
-<div class="columna"><a href="https://fnafangames.com/babys-nightmare-circus/">
-<img class="imagen-redondeada" src="/uploads/2024/05/Babys-Nightmare-Circus_Fangame.webp" alt="Baby’s Nightmare Circus" />
-<p class="texto-imagen">Baby’s Nightmare Circus</p></a>
-</div>
-<div class="columna"><a href="https://fnafangames.com/dayshift-at-freddys-3/">
-<img class="imagen-redondeada" src="/uploads/2024/05/Dayshift-at-Freddys-Trilogy_Fangame.webp" alt="Dayshift at Freddy’s 3" />
-<p class="texto-imagen">Dayshift at Freddy’s 3</p></a>
-</div>
-<div class="columna"><a href="https://fnafangames.com/nightmare-before-disney/">
+<div class="columna"><a href="/nightmare-before-disney/">
 <img class="imagen-redondeada" src="/uploads/2024/05/Everlasting-Nightmare-Before-Disney_Fangame.webp" alt="Nightmare Before Disney" />
 <p class="texto-imagen">Nightmare Before Disney</p></a>
 </div>
-<div class="columna"><a href="https://fnafangames.com/fazbear-entertainment-storage/">
+<div class="columna"><a href="/fazbear-entertainment-storage/">
 <img class="imagen-redondeada" src="/uploads/2024/05/Fazbear-Entertainment-Storage.FanGame.webp" alt="Fazbear Storage" />
 <p class="texto-imagen">Fazbear Storage</p></a>
 </div>
-<div class="columna"><a href="https://fnafangames.com/fazbears-pizzeria-simulator/">
-<img class="imagen-redondeada" src="/uploads/2024/05/Freddy-Fazbears-Pizzeria-Simulator.FanGame.webp" alt="Fazbear’s Pizzeria Simulator" />
-<p class="texto-imagen">Fazbear’s Pizzeria Simulator</p></a>
+<div class="columna"><a href="/fazbears-pizzeria-simulator/">
+<img class="imagen-redondeada" src="/uploads/2024/05/Freddy-Fazbears-Pizzeria-Simulator.FanGame.webp" alt="Fazbear's Pizzeria Simulator" />
+<p class="texto-imagen">Fazbear's Pizzeria Simulator</p></a>
 </div>
-<div class="columna"><a href="https://fnafangames.com/freddy-in-space-2/">
+<div class="columna"><a href="/freddy-in-space-2/">
 <img class="imagen-redondeada" src="/uploads/2024/05/Freddy-in-Space-2_Fangame.webp" alt="Freddy in Space 2" />
 <p class="texto-imagen">Freddy in Space 2</p></a>
 </div>
-<div class="columna"><a href="https://fnafangames.com/golden-memory-2/">
-<img class="imagen-redondeada" src="/uploads/2024/05/Golden-Memory-2.FanGame.webp" alt="Golden Memory 2" />
-<p class="texto-imagen">Golden Memory 2</p></a>
-</div>
-<div class="columna"><a href="https://fnafangames.com/oblitus-casa/">
-<img class="imagen-redondeada" src="/uploads/2024/05/Oblitus-Casa_Fangame.webp" alt="Oblitus Casa" />
-<p class="texto-imagen">Oblitus Casa</p></a>
-</div>
-<div class="columna"><a href="https://fnafangames.com/one-night-at-flumptys-3/">
-<img class="imagen-redondeada" src="/uploads/2024/05/One-Night-at-Flumptys-3.FanGame.webp" alt="One Night at Flumpty’s 3" />
-<p class="texto-imagen">One Night at Flumpty’s 3</p></a>
-</div>
-<div class="columna"><a href="https://fnafangames.com/purgatorium/">
+<div class="columna"><a href="/purgatorium/">
 <img class="imagen-redondeada" src="/uploads/2024/05/purgatorium-fnaf_Fangame.webp" alt="Purgatorium" />
 <p class="texto-imagen">Purgatorium</p></a>
 </div>
-<div class="columna"><a href="https://fnafangames.com/rat-race/">
+<div class="columna"><a href="/rat-race/">
 <img class="imagen-redondeada" src="/uploads/2024/05/Rat-Race.FanGame.webp" alt="Rat Race" />
 <p class="texto-imagen">Rat Race</p></a>
 </div>
-<div class="columna"><a href="https://fnafangames.com/welcome-to-freddys/">
-<img class="imagen-redondeada" src="/uploads/2024/05/Welcome-to-Freddys_Fangame.webp" alt="Welcome to Freddy’s" />
-<p class="texto-imagen">Welcome to Freddy’s</p></a>
+<div class="columna"><a href="/welcome-to-freddys/">
+<img class="imagen-redondeada" src="/uploads/2024/05/Welcome-to-Freddys_Fangame.webp" alt="Welcome to Freddy's" />
+<p class="texto-imagen">Welcome to Freddy's</p></a>
 </div>
-<div class="columna"><a href="https://fnafangames.com/shadows-awaken/">
-<img class="imagen-redondeada" src="/uploads/2024/05/Shadows-Awaken.FanGame.webp" alt="Shadows Awaken" />
-<p class="texto-imagen">Shadows Awaken</p></a>
-</div>
-<div class="columna"><a href="https://fnafangames.com/wonderful-day/">
+<div class="columna"><a href="/wonderful-day/">
 <img class="imagen-redondeada" src="/uploads/2024/05/Super-FNaF-2-Wonderful-Day.FanGame.webp" alt="Super FNaF 2: Wonderful" />
 <p class="texto-imagen">Super FNaF 2: Wonderful</p></a>
 </div>
-<div class="columna"><a href="https://fnafangames.com/tealerland/">
+<div class="columna"><a href="/tealerland/">
 <img class="imagen-redondeada" src="/uploads/2024/05/TEALERLAND.FanGame.webp" alt="Tealerland" />
 <p class="texto-imagen">Tealerland</p></a>
 </div>
-<div class="columna"><a href="https://fnafangames.com/the-fazbear-facility/">
+<div class="columna"><a href="/the-fazbear-facility/">
 <img class="imagen-redondeada" src="/uploads/2024/05/The-Fazbear-Facility_Fangame.webp" alt="The Fazbear Facility" />
 <p class="texto-imagen">The Fazbear Facility</p></a>
 </div>
-<div class="columna"><a href="https://fnafangames.com/the-glitched-attraction/">
-<img class="imagen-redondeada" src="/uploads/2024/05/The-Glitched-Attraction-_Fangame.webp" alt="The Glitched Attraction" />
-<p class="texto-imagen">The Glitched Attraction</p></a>
-</div>
-<div class="columna"><a href="https://fnafangames.com/the-joy-of-creation-story-mode/">
-<img class="imagen-redondeada" src="/uploads/2024/05/The-Joy-of-Creation-Story-Mode_Fangame.webp" alt="The Joy of Creation Story" />
-<p class="texto-imagen">The Joy of Creation Story</p></a>
-</div>
-<div class="columna"><a href="https://fnafangames.com/trump-location/">
+<div class="columna"><a href="/trump-location/">
 <img class="imagen-redondeada" src="/uploads/2024/05/Trump-Location-Official_Fangame.webp" alt="Trump Location" />
 <p class="texto-imagen">Trump Location</p></a>
 </div>
 </div>
-<h2>What are FNAF Fan Games?</h2>
-<strong>FNAF Fan Games are a vibrant category of horror and survival games inspired by the iconic</strong> Five Nights at Freddy's series. These games take the core mechanics of the original series—monitoring cameras, managing resources, and staying one step ahead of the animatronics—to new levels with unique twists and expanded lore. From full-scale remakes to games that experiment with new narratives and gameplay mechanics, the world of FNAF Fan Games is as diverse as it is thrilling.
 
-<img class="aligncenter size-full wp-image-98" src="/uploads/2024/05/Five-Nights-at-Candys-3-Official_Fangame.webp" alt="Five Nights at Candy's 3 (Official)_Fangame" width="200" height="200" />
-<h3>Why Play FNAF Fan Games?</h3>
-<ul>
- 	<li><strong>Fresh Scenarios:</strong> Each fan game introduces its own storyline and setting, ranging from direct continuations of the FNAF universe to completely new adventures and mysteries.</li>
- 	<li><strong>Innovative Gameplay:</strong> Developers often incorporate new gameplay elements, such as different security tools, interactive environments, or even RPG elements, making each game a new challenge.</li>
- 	<li><strong>Community and Creativity:</strong> Playing FNAF Fan Games supports the creative fans behind these projects and contributes to the community, encouraging ongoing innovation and storytelling.</li>
-</ul>
-<img class="aligncenter size-full wp-image-93" src="/uploads/2024/05/Babys-Nightmare-Circus_Fangame.webp" alt="Baby's Nightmare Circus_Fangame" width="200" height="175" />
-<h4>Getting Started with FNAF Fan Games</h4>
-To begin exploring the world of FNAF Fan Games, visit dedicated platforms where these games are hosted. <strong>These platforms not only provide safe and easy access to download</strong> the games but also offer community feedback, developer interactions, and updates. Whether you're a seasoned FNAF veteran or new to the series, these fan games offer something for everyone.
+<!-- Getting Started -->
+<div id="getting-started" class="idx-section">
+<h2>Getting Started with FNAF Fan Games</h2>
+<p>New to the world of Five Nights at Freddy's fan games? Here is everything you need to know to jump in. Every game on this site is <strong>completely free</strong> — no hidden costs, no subscriptions. Most are available as direct downloads for Windows PC, and a growing number support Android devices.</p>
+<h3>How to Download and Install</h3>
+<ol>
+<li>Pick a game from our <a href="#featured">featured selection</a> or <a href="#tierlist">tier list</a> above.</li>
+<li>Click through to the game page and hit the download button — most files come as a <code>.zip</code> or <code>.rar</code> archive.</li>
+<li>Extract the archive to any folder on your PC using Windows Explorer or <a href="https://www.7-zip.org/" target="_blank" rel="nofollow noopener">7-Zip</a>.</li>
+<li>Run the <code>.exe</code> file inside. If Windows SmartScreen shows a warning, click <em>"More info"</em> then <em>"Run anyway"</em> — this is normal for indie games without a publisher certificate.</li>
+</ol>
+<h3>Where to Start — Our Top 4 Picks for Beginners</h3>
+<p>If you have never played a FNAF fan game before, these four titles are the perfect entry point — each one showcases a different style of what the community has to offer:</p>
+<div class="idx-starter-grid">
+<div class="idx-starter-pick">
+<strong>1. <a href="/the-joy-of-creation-story-mode/">The Joy of Creation: Story Mode</a></strong>
+<p>The undisputed GOAT. Five unique levels, Unreal Engine visuals, and a story that hits harder than any official FNAF game. Start here.</p>
+</div>
+<div class="idx-starter-pick">
+<strong>2. <a href="/a-bite-at-freddys/">A Bite at Freddy's</a></strong>
+<p>A fresh take on the classic formula with conveyor belt mechanics, cartoonish art, and genuine humor. Perfect if you want something lighter.</p>
+</div>
+<div class="idx-starter-pick">
+<strong>3. <a href="/day-shift-at-freddys/">Day Shift at Freddy's</a></strong>
+<p>A visual novel RPG trilogy that starts as a comedy and evolves into an emotional masterpiece. If you love FNAF lore, this is essential.</p>
+</div>
+<div class="idx-starter-pick">
+<strong>4. <a href="/fnaf-world-refreshed/">FNAF World Refreshed</a></strong>
+<p>The definitive remaster of Scott's RPG spinoff — deeper combat, 10 worlds, 20+ new characters. The best way to experience FNAF World.</p>
+</div>
+</div>
+</div>
 
-<img class="aligncenter size-full wp-image-101" src="/uploads/2024/05/purgatorium-fnaf_Fangame.webp" alt="purgatorium fnaf_Fangame" width="200" height="208" />
+<!-- What Are FNAF Fan Games -->
+<div id="what-are" class="idx-section">
+<h2>What Are FNAF Fan Games?</h2>
+<p>FNAF fan games are unofficial video games created by independent developers and fans of Scott Cawthon's <strong>Five Nights at Freddy's</strong> franchise. They range from faithful recreations of the original point-and-click survival formula to wildly ambitious 3D horror experiences, RPGs, visual novels, and everything in between. All of them are free, and most are built by solo developers or small teams as passion projects.</p>
+<p>The FNAF fan game community took off shortly after the original game launched in 2014. Platforms like <strong>GameJolt</strong> and <strong>itch.io</strong> became the primary hubs where creators published their work and players discovered new titles. Within a few years, hundreds of fan games had been released — some so impressive that they rivaled the official entries in quality and ambition.</p>
+<p>In 2021, Scott Cawthon launched the <strong>Fanverse Initiative</strong>, officially licensing and funding a select group of fan games — including <a href="/one-night-at-flumptys-3/">One Night at Flumpty's</a>, <a href="/candys-3/">Five Nights at Candy's</a>, and <a href="/the-joy-of-creation-story-mode/">The Joy of Creation</a> — for commercial release on Steam and consoles. This was a landmark moment: the creator of FNAF himself recognized that some fan games had become pillars of the franchise's legacy.</p>
+<p>Today, the FNAF fan game scene is more active than ever. New titles are released every month, engines like Unreal and Godot have raised the production quality ceiling, and the community continues to push boundaries in ways the official games haven't. Whether you want classic camera-watching tension or a story-driven horror experience, there is a FNAF fan game for you.</p>
+</div>
 
-<strong>The realm of FNAF Fan Games is a testament to the enduring popularity and impact of the Five Nights at Freddy's series.</strong> With endless creativity and relentless scares, these games ensure that the spirit of FNAF continues to evolve and entertain. Whether you're looking for a nostalgic trip back to Freddy's or an entirely new nightmare to survive, the FNAF Fan Games community welcomes you. Prepare your flashlights, check those cameras, and brace yourself for a night of frights!
+<!-- Types of FNAF Fan Games -->
+<div id="types" class="idx-section">
+<h2>Types of FNAF Fan Games</h2>
+<p>Not all FNAF fan games follow the same formula. Over the years, the community has branched out into several distinct genres and styles:</p>
+<div class="idx-types-grid">
+<div class="idx-type-card">
+<h3>Point & Click (Classic)</h3>
+<p>The original FNAF formula: you sit in an office, check cameras, close doors, and survive until 6 AM. Games like <a href="/animatronic-memories/">Animatronic Memories</a>, <a href="/one-night-at-flumptys-3/">One Night at Flumpty's 3</a>, and <a href="/those-nights-at-rachels/">Those Nights at Rachel's</a> refine and expand this style with new mechanics and settings.</p>
+</div>
+<div class="idx-type-card">
+<h3>Free Roam (3D)</h3>
+<p>First-person 3D games where you physically move through environments while animatronics hunt you. <a href="/the-joy-of-creation-story-mode/">The Joy of Creation</a>, <a href="/shadows-awaken/">Shadows Awaken</a>, <a href="/the-glitched-attraction/">The Glitched Attraction</a>, and <a href="/fnaf-urbex/">FNAF Urbex</a> are prime examples — often built in Unreal Engine with cinematic-quality visuals.</p>
+</div>
+<div class="idx-type-card">
+<h3>RPG</h3>
+<p>Turn-based or action RPGs set in the FNAF universe. <a href="/fnaf-world-refreshed/">FNAF World Refreshed</a> is the definitive example — a full remaster of Scott's official spinoff with deeper combat and over 20 new characters. <a href="/fnafb-complete-collection/">FNAF***boy's</a> takes the RPG format in a decidedly more irreverent direction.</p>
+</div>
+<div class="idx-type-card">
+<h3>Visual Novel</h3>
+<p>Story-driven games with branching narratives and dialogue choices. The <a href="/day-shift-at-freddys/">Day Shift at Freddy's</a> trilogy is the gold standard — a comedy series that evolves into one of the most emotionally complex stories in FNAF fan game history.</p>
+</div>
+<div class="idx-type-card">
+<h3>Remakes & Reimaginings</h3>
+<p>Fresh takes on the original games. <a href="/five-nights-at-freddys-1-remake/">FNAF 1 Remake</a> turns the original into a meta-horror experience, while <a href="/golden-memory-remastered/">Golden Memory Remastered</a> and <a href="/welcome-to-fredbears-remake/">Welcome to Fredbear's</a> reimagine classic locations with modern production quality.</p>
+</div>
+<div class="idx-type-card">
+<h3>Unique & Experimental</h3>
+<p>Games that defy categorization. <a href="/tyke-and-sons-lumber-co/">Tyke and Sons Lumber Co.</a> combines crafting, boss battles, and a day-night cycle into a full sandbox experience. <a href="/bondees-barnyard/">Bondee's Barnyard</a> transplants FNAF mechanics to a farm setting. <a href="/five-nights-with-39/">Five Nights with 39</a> blends Vocaloid with FNAF.</p>
+</div>
+</div>
+</div>
+
+<!-- FAQ -->
+<div id="faq" class="idx-section">
+<h2>Frequently Asked Questions About FNAF Fan Games</h2>
+<div class="idx-faq">
+<details>
+<summary>Are FNAF fan games free?</summary>
+<div><p>Yes. Every FNAF fan game listed on this site is completely free to download and play. Most are distributed through GameJolt, itch.io, or direct download links. Some Fanverse titles like One Night at Flumpty's have paid versions on Steam, but the original free versions remain available.</p></div>
+</details>
+<details>
+<summary>Are FNAF fan games safe to download?</summary>
+<div><p>The games listed on fnafangames.com have been individually verified. However, as with any indie software, Windows SmartScreen may flag the executable because it is unsigned — this is normal for free indie games. Always download from official sources (GameJolt, itch.io, or the developer's own page) and never from random third-party sites.</p></div>
+</details>
+<details>
+<summary>What is the best FNAF fan game?</summary>
+<div><p><a href="/the-joy-of-creation-story-mode/">The Joy of Creation: Story Mode</a> is widely considered the greatest FNAF fan game ever made — it ranked #1 across multiple independent community tier lists. Other top contenders include <a href="/day-shift-at-freddys/">Day Shift at Freddy's</a>, <a href="/tyke-and-sons-lumber-co/">Tyke and Sons Lumber Co.</a>, and <a href="/animatronic-memories/">Animatronic Memories</a>. See our <a href="#tierlist">full tier list</a> for the complete ranking.</p></div>
+</details>
+<details>
+<summary>Can I play FNAF fan games on Android?</summary>
+<div><p>Some FNAF fan games have official Android versions, including <a href="/after-nights-at-freddys/">After Nights at Freddy's</a> and <a href="/five-nights-at-treasure-island/">Five Nights at Treasure Island</a>. Use the "Android" filter in our <a href="#featured">featured section</a> to find all mobile-compatible titles. Most fan games, however, are PC-only due to the complexity of their engines.</p></div>
+</details>
+<details>
+<summary>What is the Fanverse Initiative?</summary>
+<div><p>The Fanverse Initiative is a program launched by Scott Cawthon in 2021 to officially support and fund select FNAF fan games for commercial release on Steam and consoles. Chosen titles include One Night at Flumpty's, Five Nights at Candy's, The Joy of Creation, and Popgoes. It was the first time a major game creator formally endorsed fan-made projects in this way.</p></div>
+</details>
+<details>
+<summary>How many FNAF fan games exist?</summary>
+<div><p>There are hundreds of FNAF fan games across GameJolt, itch.io, and other platforms. On fnafangames.com alone we cover over 45 titles in depth, with our research identifying over 170 notable fan games mentioned across community rankings and reviews. The number continues to grow as new titles are released regularly.</p></div>
+</details>
+<details>
+<summary>Do I need to play the official FNAF games first?</summary>
+<div><p>Not necessarily. Many fan games are standalone experiences with their own stories and mechanics. However, games like <a href="/the-glitched-attraction/">The Glitched Attraction</a> and <a href="/golden-memory-remastered/">Golden Memory Remastered</a> reference official FNAF lore heavily, so familiarity with the main series enhances the experience. For a completely self-contained experience, start with <a href="/a-bite-at-freddys/">A Bite at Freddy's</a> or <a href="/tyke-and-sons-lumber-co/">Tyke and Sons Lumber Co.</a></p></div>
+</details>
+</div>
+</div>
+
+<style is:global>
+.site-content { max-width:1200px; box-sizing:content-box; padding:20px 40px; }
+.fg-filters { display:flex; gap:8px; margin:0 0 16px; flex-wrap:wrap; justify-content:center; }
+.fg-filter { font-size:16px; font-weight:600; padding:6px 17px; border-radius:6px; border:1px solid #e0c8c8; background:#fff; color:#475569; cursor:pointer; transition:all .2s; user-select:none; }
+.fg-filter:hover { border-color:#470000; color:#470000; }
+.fg-filter.active { background:#470000; color:#fff; border-color:#470000; }
+.fg-filter-sep { width:1px; background:#e0c8c8; margin:0 4px; align-self:stretch; }
+.fg-counter { text-align:center; font-size:14px; color:#64748b; margin:-8px 0 12px; }
+.fg-gallery { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin:20px 0 32px; }
+.fg-card { display:flex; align-items:center; gap:14px; background:#fff5f5; border:1px solid #e0c8c8; border-radius:12px; padding:12px; text-decoration:none; color:#1a1d2e; transition:border-color .2s, transform .15s; overflow:hidden; }
+.fg-card:hover { border-color:#470000; transform:translateY(-2px); text-decoration:none; }
+.fg-card-img { width:179px; min-width:179px; height:101px; object-fit:cover; border-radius:8px; }
+.fg-card-info { flex:1; min-width:0; }
+.fg-card-head { display:flex; align-items:center; justify-content:space-between; gap:8px; margin:0 0 4px; flex-wrap:wrap; }
+.fg-card-title { font-size:20px; font-weight:700; color:#111; margin:0; line-height:1.2; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; flex:1; min-width:0; }
+.fg-tags { display:flex; gap:4px; flex-shrink:0; }
+.fg-tag { font-size:12px; font-weight:600; padding:3px 8px; border-radius:4px; background:#fde8e8; color:#6b1a1a; white-space:nowrap; line-height:1.4; }
+.fg-tag-platform { background:#470000; color:#fff; }
+.fg-card-desc { font-size:14px; color:#64748b; line-height:1.4; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; margin:14px 0; }
+.fg-card.fg-hidden { display:none; }
+.fg-empty { display:none; text-align:center; padding:32px 16px; color:#94a3b8; font-size:15px; }
+.fg-empty.visible { display:block; }
+.contenedor { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin:0; }
+.columna { background:#fff5f5; border:1px solid #e0c8c8; border-radius:12px; padding:6px; text-align:center; min-width:0; max-width:none; flex:none; }
+.columna a { text-decoration:none; color:inherit; display:block; }
+.columna a:hover { text-decoration:none; }
+.columna:hover { border-color:#470000; }
+.imagen-redondeada { width:100%; height:150px; object-fit:cover; border-radius:10px; display:block; }
+.texto-imagen { font-size:14px; font-weight:600; color:#1a1d2e; margin:6px 0 2px; line-height:1.4; }
+.tier-heading { font-size:32px; font-weight:800; color:#470000; text-align:center; margin:48px 0 12px; font-style:italic; }
+.tier-intro { font-size:16px; color:#1a1d2e; line-height:1.7; text-align:left; margin:0 0 32px; }
+.tier-subheading { font-size:24px; font-weight:700; text-align:center; margin:36px 0 8px; font-style:italic; }
+.tier-subheading.tier-s { color:#470000; }
+.tier-subheading.tier-aplus { color:#470000; }
+.tier-subheading.tier-a { color:#470000; }
+.tier-desc { font-size:15px; color:#475569; line-height:1.6; text-align:left; margin:0 0 16px; }
+.tier-table { width:100%; border-collapse:collapse; margin:0 0 32px; background:#fff5f5; border:1px solid #e0c8c8; border-radius:12px; overflow:hidden; }
+.tier-table thead tr { background:#470000; }
+.tier-table th { padding:12px 16px; text-align:left; font-size:13px; font-weight:700; color:#fff; text-transform:uppercase; letter-spacing:0.05em; }
+.tier-table td { padding:10px 16px; font-size:14px; color:#1a1d2e; border-top:1px solid #e0c8c8; line-height:1.5; }
+.tier-table td:first-child { font-weight:600; white-space:nowrap; }
+.tier-table td a { color:#470000; text-decoration:none; font-weight:700; }
+.tier-table td a:hover { text-decoration:underline; }
+.tier-table tbody tr:hover { background:#fde8e8; }
+/* Tier List - Enhanced Cards */
+.tier-card { background:#fff5f5; border:2px solid #e0c8c8; border-radius:16px; padding:24px; margin-bottom:20px; }
+.tier-card h4 { font-size:22px; font-weight:700; margin:0 0 8px; padding-bottom:8px; border-bottom:2px solid rgba(71,0,0,0.2); }
+.tier-card h4 a { color:#470000; text-decoration:none; }
+.tier-card h4 a:hover { text-decoration:underline; }
+.tier-badge { display:inline-block; padding:2px 8px; border-radius:4px; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; vertical-align:middle; margin-left:8px; }
+.tier-badge-s { background:#470000; color:#fff; }
+.tier-badge-aplus { background:#8b2500; color:#fff; }
+.tier-card p { font-size:16px; line-height:1.6; color:#444; margin:0 0 16px; }
+.tier-card-previews { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; justify-items:center; }
+.tier-card-previews:has(> :last-child:nth-child(1)) { grid-template-columns:1fr; max-width:50%; margin:0 auto; }
+.tier-card-previews:has(> :last-child:nth-child(2)) { grid-template-columns:repeat(2,1fr); max-width:75%; margin:0 auto; }
+.tier-card-previews img { width:100%; height:auto; border-radius:8px; aspect-ratio:16/9; object-fit:cover; cursor:pointer; }
+.fg-card-img { cursor:pointer; }
+img[data-lightbox-full]:hover { opacity:0.85; transition:opacity 0.15s; }
+.idx-lightbox { position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.9); display:none; align-items:center; justify-content:center; cursor:pointer; }
+.idx-lightbox.active { display:flex; }
+.idx-lightbox img { max-width:92vw; max-height:92vh; border-radius:8px; object-fit:contain; }
+/* Intro */
+/* Hero box */
+.idx-hero-box { background:#fff5f5; border-radius:12px; padding:20px 28px; margin:0 0 32px; text-align:center; }
+.idx-intro { font-size:16px; line-height:1.7; color:#444; margin:0 0 14px; }
+.idx-intro strong { color:#1a1d2e; }
+/* Quick nav */
+.idx-quicknav { display:flex; flex-wrap:wrap; gap:8px; justify-content:center; }
+.idx-quicknav a { font-size:13px; font-weight:600; padding:7px 18px; border-radius:6px; background:#470000; color:#fff; text-decoration:none; transition:all .2s; }
+.idx-quicknav a:hover { background:#7E4955; transform:translateY(-1px); }
+/* Content sections */
+.idx-section { margin:48px 0; }
+.idx-section h2 { font-size:28px; color:#1a1d2e; margin:0 0 16px; }
+.idx-section h3 { font-size:20px; color:#470000; margin:24px 0 8px; }
+.idx-section p { font-size:16px; line-height:1.7; color:#444; margin:0 0 12px; }
+.idx-section ol { font-size:16px; line-height:1.7; color:#444; padding-left:24px; margin:0 0 16px; }
+.idx-section a { color:#470000; text-decoration:underline; }
+.idx-section a:hover { color:#7E4955; }
+.idx-section code { background:#f5f0f0; padding:2px 6px; border-radius:4px; font-size:14px; }
+/* Starter picks */
+.idx-starter-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin:16px 0; }
+.idx-starter-pick { background:#fff5f5; border:1px solid #e0c8c8; border-radius:12px; padding:16px; }
+.idx-starter-pick strong { font-size:17px; }
+.idx-starter-pick strong a { color:#470000; }
+.idx-starter-pick p { font-size:15px; margin:6px 0 0; }
+/* Types grid */
+.idx-types-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin:16px 0; }
+.idx-type-card { background:#fff5f5; border:1px solid #e0c8c8; border-radius:12px; padding:16px 20px; }
+.idx-type-card h3 { margin:0 0 8px; font-size:18px; }
+.idx-type-card p { font-size:15px; margin:0; }
+/* FAQ */
+.idx-faq { display:flex; flex-direction:column; gap:8px; }
+.idx-faq details { background:#fff5f5; border:1px solid #e0c8c8; border-radius:12px; padding:0; }
+.idx-faq summary { font-size:17px; font-weight:600; color:#1a1d2e; padding:16px 20px; cursor:pointer; list-style:none; }
+.idx-faq summary::-webkit-details-marker { display:none; }
+.idx-faq summary::before { content:'+ '; color:#470000; font-weight:700; }
+.idx-faq details[open] summary::before { content:'− '; }
+.idx-faq details div { padding:0 20px 16px; }
+.idx-faq details div p { margin:0; }
+@media(max-width:1100px) {
+  .fg-gallery { grid-template-columns:1fr; max-width:700px; margin-left:auto; margin-right:auto; }
+  .fg-card-img { width:150px; min-width:150px; height:85px; }
+}
+@media(max-width:768px) {
+  .fg-card-img { width:120px; min-width:120px; height:68px; }
+  .fg-card-title { font-size:16px; }
+  .fg-card-head { flex-direction:column; gap:4px; }
+  .contenedor { grid-template-columns:repeat(2,1fr); }
+  .tier-heading { font-size:24px; }
+  .tier-subheading { font-size:20px; }
+  .tier-table td:first-child { white-space:normal; }
+  .tier-card-previews { grid-template-columns:1fr; }
+  .idx-starter-grid { grid-template-columns:1fr; }
+  .idx-types-grid { grid-template-columns:1fr; }
+  .idx-quicknav { gap:6px; }
+  .idx-quicknav a { font-size:13px; padding:6px 12px; }
+}
+@media(max-width:480px) {
+  .fg-card { flex-direction:column; text-align:center; }
+  .fg-card-img { width:100%; min-width:unset; height:auto; aspect-ratio:16/9; }
+  .fg-card-head { align-items:center; }
+  .fg-card-title { white-space:normal; }
+}
+</style>
+
+<script is:inline>
+(function(){
+  var btns=document.querySelectorAll('.fg-filter');
+  var cards=document.querySelectorAll('.fg-card');
+  var allBtn=document.querySelector('.fg-filter[data-filter="all"]');
+  var countEl=document.getElementById('fg-count');
+  var emptyEl=document.querySelector('.fg-empty');
+  var total=cards.length;
+  var genreList=['Point & Click','Free Roam','RPG'];
+  var styleList=['2D','3D'];
+  var platformList=['PC','Android'];
+  function getGroup(f){if(genreList.indexOf(f)!==-1)return'genre';if(styleList.indexOf(f)!==-1)return'style';if(platformList.indexOf(f)!==-1)return'platform';return null;}
+  function applyFilters(){
+    var active=document.querySelectorAll('.fg-filter.active:not([data-filter="all"])');
+    if(active.length===0)allBtn.classList.add('active');else allBtn.classList.remove('active');
+    var groups={};
+    active.forEach(function(b){var f=b.getAttribute('data-filter');var g=getGroup(f);if(g){if(!groups[g])groups[g]=[];groups[g].push(f);}});
+    var shown=0;
+    cards.forEach(function(c){
+      var cTags=[];c.querySelectorAll('.fg-tag').forEach(function(t){cTags.push(t.textContent);});
+      var cGenre=c.getAttribute('data-genre')||'';
+      var pass=true;
+      if(groups.style){var m=false;groups.style.forEach(function(f){if(cTags.indexOf(f)!==-1)m=true;});if(!m)pass=false;}
+      if(groups.genre){var m=false;groups.genre.forEach(function(f){if(cGenre===f)m=true;});if(!m)pass=false;}
+      if(groups.platform){var m=false;var cPlat=c.getAttribute('data-platform')||'';groups.platform.forEach(function(f){if(cPlat.indexOf(f)!==-1)m=true;});if(!m)pass=false;}
+      if(pass){c.classList.remove('fg-hidden');shown++;}else{c.classList.add('fg-hidden');}
+    });
+    countEl.textContent='Showing '+shown+' of '+total+' games';
+    if(shown===0)emptyEl.classList.add('visible');else emptyEl.classList.remove('visible');
+  }
+  btns.forEach(function(b){
+    b.addEventListener('click',function(){
+      var f=b.getAttribute('data-filter');
+      if(f==='all'){btns.forEach(function(x){x.classList.remove('active');});allBtn.classList.add('active');cards.forEach(function(c){c.classList.remove('fg-hidden');});countEl.textContent='Showing '+total+' of '+total+' games';emptyEl.classList.remove('visible');return;}
+      b.classList.toggle('active');applyFilters();
+    });
+  });
+})();
+</script>
+
+<script is:inline>
+(function(){
+  var overlay = document.createElement('div');
+  overlay.className = 'idx-lightbox';
+  document.body.appendChild(overlay);
+
+  document.querySelectorAll('img[data-lightbox-full]').forEach(function(img){
+    img.addEventListener('click', function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      var fullSrc = img.getAttribute('data-lightbox-full');
+      var newImg = document.createElement('img');
+      newImg.src = fullSrc;
+      newImg.alt = img.alt || '';
+      overlay.innerHTML = '';
+      overlay.appendChild(newImg);
+      overlay.classList.add('active');
+    });
+  });
+
+  overlay.addEventListener('click', function(){
+    overlay.classList.remove('active');
+  });
+
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') overlay.classList.remove('active');
+  });
+})();
+</script>
+
 </Layout>

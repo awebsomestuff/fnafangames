@@ -126,4 +126,39 @@ import AdSenseAfterIntro from '../../components/AdSenseAfterIntro.astro';
 </div>
 </div>
 </div>
+
+<style>
+/* ========== INTERLINKING SECTION ========== */
+.il-heading { font-size: 24px; font-weight: 800; color: #470000; margin: 48px 0 16px; }
+.il-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 0 0 40px; }
+.il-card { background: #fff5f5; border: 1px solid #e0c8c8; border-radius: 12px; padding: 6px; text-align: center; }
+.il-card a { text-decoration: none; color: inherit; display: block; }
+.il-card a:hover { text-decoration: none; }
+.il-card:hover { border-color: #470000; }
+.il-img { width: 100%; height: 150px; object-fit: cover; border-radius: 10px; display: block; }
+.il-title { font-size: 14px; font-weight: 600; color: #1a1d2e; margin: 6px 0 2px; line-height: 1.4; }
+@media (max-width: 768px) { .il-grid { grid-template-columns: repeat(2, 1fr); } }
+</style>
+
+<!-- Related FNAF Fan Games -->
+<h2 class="il-heading">More FNAF Fan Games</h2>
+<div class="il-grid">
+<div class="il-card"><a href="/the-mind-of-a-killer/">
+<img class="il-img" src="/uploads/2024/09/FNAF-3-The-Mind-of-a-Killer.webp" alt="FNAF 3: The Mind of a Killer" loading="lazy" />
+<p class="il-title">FNAF 3: The Mind of a Killer</p></a>
+</div>
+<div class="il-card"><a href="/animatronic-memories/">
+<img class="il-img" src="/uploads/overhaul/animatronic-memories/animatronics-memories-thumb.webp" alt="Animatronic Memories" loading="lazy" />
+<p class="il-title">Animatronic Memories</p></a>
+</div>
+<div class="il-card"><a href="/return-to-bloody-nights/">
+<img class="il-img" src="/uploads/overhaul/return-to-bloody-nights/new-thub-bnaf-done-sgrezqhe-thumb.webp" alt="The Return to Bloody Nights" loading="lazy" />
+<p class="il-title">The Return to Bloody Nights</p></a>
+</div>
+<div class="il-card"><a href="/candys-3/">
+<img class="il-img" src="/uploads/overhaul/five-nights-at-candys-3/Fnac_3_icon_768-2ptwpvda-thumb.webp" alt="Five Nights at Candy's 3" loading="lazy" />
+<p class="il-title">Five Nights at Candy's 3</p></a>
+</div>
+</div>
+
 </Layout>

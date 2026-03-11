@@ -1,0 +1,774 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+<Layout title="Next Week at Freddy's - Download Free FNAF Fan Game" description="Download Next Week at Freddy's, a stunning UE5 reimagining of FNAF 1 with deep mechanics, 21 cameras, and smarter animatronic AI. Free for PC." lang="en">
+
+<style is:global>
+/* Override site-content width to match sonic-fangames.com (1200px content + 40px padding each side) */
+.site-content {
+    max-width: 1200px !important;
+    padding: 30px 40px !important;
+    box-sizing: content-box !important;
+}
+
+/* Styles for dynamically created elements (JS-created, no Astro scope attribute) */
+.post-video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+.post-lightbox-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.85);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: zoom-out;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+}
+.post-lightbox-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+.post-lightbox-overlay img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 8px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+}
+</style>
+
+<style>
+/* ========== INTERLINKING SECTION ========== */
+.il-heading { font-size: 24px; font-weight: 800; color: #470000; margin: 48px 0 16px; }
+.il-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 0 0 40px; }
+.il-card { background: #fff5f5; border: 1px solid #e0c8c8; border-radius: 12px; padding: 6px; text-align: center; }
+.il-card a { text-decoration: none; color: inherit; display: block; }
+.il-card a:hover { text-decoration: none; }
+.il-card:hover { border-color: #470000; }
+.il-img { width: 100%; height: 150px; object-fit: cover; border-radius: 10px; display: block; }
+.il-title { font-size: 14px; font-weight: 600; color: #1a1d2e; margin: 6px 0 2px; line-height: 1.4; }
+@media (max-width: 768px) { .il-grid { grid-template-columns: repeat(2, 1fr); } }
+
+/* ========== NEW POST DESIGN STYLES ========== */
+
+/* H1 - Game Title */
+.post-title {
+    text-align: center;
+    font-size: 2.8em;
+    font-weight: 800;
+    color: #470000;
+    margin: 20px 0 5px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    letter-spacing: -0.5px;
+}
+.post-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: #470000;
+    margin: 12px auto 0;
+    border-radius: 2px;
+}
+
+/* Description Section (Hero) */
+.post-description {
+    position: relative;
+    padding: 16px 20px;
+    border-radius: 16px;
+    margin: 30px auto;
+    max-width: 1200px;
+    background: linear-gradient(135deg, #f5e6e8, #ffffff);
+    color: #333;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: 0.4s;
+}
+.post-intro-layout {
+    display: flex;
+    align-items: stretch;
+    gap: 24px;
+    margin-bottom: 0;
+}
+.post-intro-layout img {
+    flex-shrink: 0;
+    align-self: flex-start;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    max-width: 330px;
+    width: 100%;
+    height: auto;
+}
+.post-intro-text {
+    flex: 1;
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+}
+.post-intro-text > p {
+    font-size: 1em;
+    line-height: 1.5;
+    margin: 0;
+    text-align: left;
+    flex: 1;
+}
+.post-intro-text > p strong:first-child {
+    color: #470000;
+    font-size: 1.05em;
+}
+
+/* Download CTA Button */
+.post-download-cta {
+    display: block;
+    text-align: center;
+    padding: 15px;
+    background: #470000;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 8px 0 0;
+    transition: background 0.2s;
+    color: #fff !important;
+}
+.post-download-cta:hover {
+    background: #5a0000;
+    text-decoration: none;
+}
+
+/* Stats Table */
+.post-stats-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 24px 0;
+    font-size: 1em;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    border: 1px solid #e0e0e0;
+}
+.post-stats-table thead tr {
+    background: #7E4955;
+}
+.post-stats-table th {
+    color: #fff;
+    font-weight: 700;
+    padding: 14px 18px;
+    text-align: left;
+    font-size: 0.95em;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.post-stats-table td {
+    padding: 12px 18px;
+    border-bottom: 1px solid #f0f0f0;
+}
+.post-stats-table td:first-child {
+    font-weight: 600;
+    color: #470000;
+    width: 35%;
+}
+.post-stats-table tbody tr:nth-child(even) {
+    background: #faf5f6;
+}
+.post-stats-table tbody tr:last-child td {
+    border-bottom: none;
+}
+.post-stats-table tbody tr:hover {
+    background: #f5e6e8;
+}
+
+/* Screenshot Gallery */
+.post-screenshot-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin: 24px 0;
+}
+.post-screenshot-gallery.gallery-2 {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 66%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.post-screenshot-gallery.gallery-1 {
+    grid-template-columns: 1fr;
+    max-width: 33%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.post-screenshot-gallery a {
+    display: block;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+}
+.post-screenshot-gallery a:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.18);
+}
+.post-screenshot-gallery img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+}
+
+/* Download Section */
+.post-download-section {
+    background: linear-gradient(135deg, #470000, #6b1a1a);
+    border-radius: 16px;
+    padding: 30px 24px;
+    text-align: center;
+    margin: 30px 0;
+    color: #fff;
+    box-shadow: 0 4px 16px rgba(71,0,0,0.25);
+}
+.post-download-section h2 {
+    color: #fff;
+    margin: 0 0 8px;
+    font-size: 1.6em;
+}
+.post-download-section .version-info {
+    color: rgba(255,255,255,0.85);
+    margin: 0 0 20px;
+    font-size: 0.95em;
+}
+.post-download-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+.post-download-btn {
+    display: inline-block;
+    padding: 12px 28px;
+    background: #fff;
+    color: #470000 !important;
+    font-weight: 700;
+    border-radius: 8px;
+    text-decoration: none !important;
+    font-size: 1em;
+    transition: all 0.2s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+.post-download-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    background: #f5e6e8;
+}
+
+/* Install Section */
+.post-install-section {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 24px auto;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.post-install-section h3 {
+    margin: 0 0 12px;
+    font-size: 1.3em;
+    color: #470000;
+}
+.post-install-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    align-items: start;
+}
+.post-install-grid details {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+.post-install-grid details:only-child {
+    grid-column: 1 / -1;
+}
+.post-install-grid summary {
+    padding: 12px 16px;
+    font-weight: 600;
+    cursor: pointer;
+    background: #faf5f6;
+    border-bottom: 1px solid #e0e0e0;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #470000;
+}
+.post-install-grid summary::before {
+    content: '▸';
+    transition: transform 0.2s;
+    font-size: 0.9em;
+}
+.post-install-grid details[open] summary::before {
+    transform: rotate(90deg);
+}
+.post-install-grid details div {
+    padding: 12px 16px;
+}
+
+/* Content Sections */
+.post-content h2 {
+    color: #470000;
+    font-size: 1.5em;
+    margin: 30px 0 12px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid #f0e0e2;
+}
+.post-content h3 {
+    color: #5a1a1a;
+    font-size: 1.2em;
+    margin: 20px 0 8px;
+}
+.post-content p {
+    margin: 10px 0;
+    line-height: 1.7;
+}
+.post-content ul {
+    margin: 10px 0 10px 20px;
+}
+.post-content li {
+    margin: 6px 0;
+    line-height: 1.6;
+}
+.post-content li strong {
+    color: #470000;
+}
+
+/* Details Grid (characters, zones, etc.) */
+.post-details-box {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 24px auto;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.post-details-box h3 {
+    margin: 0 0 12px;
+    font-size: 1.4em;
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+/* FAQ Section */
+.post-faq details {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    margin: 8px 0;
+    overflow: hidden;
+}
+.post-faq summary {
+    padding: 14px 18px;
+    font-weight: 600;
+    cursor: pointer;
+    background: #faf5f6;
+    color: #470000;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.post-faq summary::before {
+    content: '▸';
+    transition: transform 0.2s;
+}
+.post-faq details[open] summary::before {
+    transform: rotate(90deg);
+}
+.post-faq details div {
+    padding: 14px 18px;
+    line-height: 1.6;
+}
+
+/* Video Section */
+.post-video-section {
+    margin: 24px 0;
+}
+.post-video-section h2 {
+    color: #470000;
+    font-size: 1.5em;
+    margin: 30px 0 12px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid #f0e0e2;
+}
+.post-video-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    padding-top: 56.25%;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    margin-top: 12px;
+}
+.post-yt-facade {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    background: #000;
+}
+.post-yt-facade img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.post-yt-play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0,0,0,0.7);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 68px;
+    height: 68px;
+    font-size: 28px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+}
+.post-yt-facade:hover .post-yt-play {
+    background: #ff0000;
+}
+
+/* Related Games */
+.post-related-games {
+    margin: 30px 0;
+}
+.post-related-games h2 {
+    text-align: center;
+    border-bottom: none;
+}
+.post-related-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-top: 16px;
+}
+.post-related-grid a {
+    display: block;
+    text-decoration: none;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    background: #fff;
+}
+.post-related-grid a:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.18);
+    text-decoration: none;
+}
+.post-related-grid img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+.post-related-grid span {
+    display: block;
+    padding: 10px;
+    font-weight: 600;
+    text-align: center;
+    color: #333;
+    font-size: 0.9em;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .post-title { font-size: 2em; }
+    .post-intro-layout { flex-direction: column; align-items: center; }
+    .post-intro-layout img { max-width: 280px; }
+    .post-screenshot-gallery { grid-template-columns: 1fr 1fr; }
+    .post-screenshot-gallery.gallery-2 { max-width: 100%; }
+    .post-screenshot-gallery.gallery-1 { max-width: 50%; }
+    .post-install-grid { grid-template-columns: 1fr; }
+    .post-related-grid { grid-template-columns: repeat(2, 1fr); }
+    .post-download-section { padding: 20px 16px; }
+}
+@media (max-width: 480px) {
+    .post-title { font-size: 1.7em; }
+    .post-screenshot-gallery { grid-template-columns: 1fr; }
+    .post-screenshot-gallery.gallery-2 { max-width: 100%; }
+    .post-screenshot-gallery.gallery-1 { max-width: 100%; }
+    .post-related-grid { grid-template-columns: 1fr 1fr; }
+}
+</style>
+
+<!-- ========== POST CONTENT START ========== -->
+
+<h1 class="post-title">Next Week at Freddy's</h1>
+
+<!-- Hero / Intro Section -->
+<div class="post-description">
+    <div class="post-intro-layout">
+        <img src="/uploads/overhaul/next-week-at-freddys/portada-thumb.webp" alt="Next Week at Freddy's title screen with Freddy's silhouette" width="330" height="207" loading="eager" />
+        <div class="post-intro-text">
+            <p>
+                <strong>Next Week at Freddy's (NWAF)</strong> is a full reimagining of the original Five Nights at Freddy's built in Unreal Engine 5. Forget the simple door buttons and camera tablet — here you're sitting in front of an enormous control panel packed with levers, switches, and pressure gauges while monitoring 21 security cameras on a retro Windows 98 computer. Set on December 16, 2002, the game takes every mechanic from the original and amplifies it tenfold, creating one of the deepest and most immersive FNAF fan games ever made. Developed by rynfox and a dedicated team, NWAF has been praised as one of the most creative FNAF experiences from a gameplay standpoint.
+            </p>
+            <a class="post-download-cta" href="#download">Download Next Week at Freddy's Free</a>
+        </div>
+    </div>
+</div>
+
+<!-- Stats Table -->
+<table class="post-stats-table">
+    <thead>
+        <tr>
+            <th>Feature</th>
+            <th>Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr><td>Developer</td><td>rynfox (with wreck9999, MisterMacabre, MitusGame, Astildi, TheGoldenRob)</td></tr>
+        <tr><td>Engine</td><td>Unreal Engine 5</td></tr>
+        <tr><td>Platforms</td><td>Windows PC</td></tr>
+        <tr><td>Genre</td><td>Survival Horror / Strategy</td></tr>
+        <tr><td>Structure</td><td>6 Nights + Custom Night</td></tr>
+        <tr><td>Version</td><td>1.2.0</td></tr>
+        <tr><td>Price</td><td>Free</td></tr>
+    </tbody>
+</table>
+
+<!-- Screenshot Gallery #1 -->
+<div class="post-screenshot-gallery" data-lightbox-gallery>
+    <a href="/uploads/overhaul/next-week-at-freddys/office_front-hkcxghya.webp" data-lightbox>
+        <img src="/uploads/overhaul/next-week-at-freddys/office_front-hkcxghya-thumb.webp" alt="Next Week at Freddy's office with retro computer, Bonnie plushie, and Christmas decorations" loading="lazy" />
+    </a>
+    <a href="/uploads/overhaul/next-week-at-freddys/control_panel-kyipivqr.webp" data-lightbox>
+        <img src="/uploads/overhaul/next-week-at-freddys/control_panel-kyipivqr-thumb.webp" alt="Next Week at Freddy's control panel with red levers, pressure gauges, and door switches" loading="lazy" />
+    </a>
+    <a href="/uploads/overhaul/next-week-at-freddys/comcathelps-rvqesqkq.webp" data-lightbox>
+        <img src="/uploads/overhaul/next-week-at-freddys/comcathelps-rvqesqkq-thumb.webp" alt="ComCat virtual assistant on the Fazbear Enterprises desktop with animatronic photos" loading="lazy" />
+    </a>
+</div>
+
+<!-- Download Section -->
+<div id="download" class="post-download-section">
+    <h2>Download Next Week at Freddy's</h2>
+    <p class="version-info">NWAF v1.2.0 is available as a free download for <strong>Windows PC</strong> (~1 GB).</p>
+    <div class="post-download-buttons">
+        <a class="post-download-btn" href="https://mega.nz/file/bAZDyTyB#WIeS1eI2gQmr-VdMWyWwpzi5v7fWixkyRjd2EPxTEMY" target="_blank" rel="nofollow noopener">Download for PC (Mega)</a>
+    </div>
+</div>
+
+<!-- Install Instructions -->
+<div class="post-install-section">
+    <h3>How to Install Next Week at Freddy's</h3>
+    <div class="post-install-grid">
+        <details>
+            <summary>Windows</summary>
+            <div>
+                <ol>
+                    <li>Download the .zip file from the link above</li>
+                    <li>Extract the contents to a folder of your choice</li>
+                    <li>Run the .exe file to start the game</li>
+                    <li>If Windows SmartScreen blocks it, click "More info" then "Run anyway"</li>
+                </ol>
+            </div>
+        </details>
+    </div>
+</div>
+
+<div class="post-content">
+
+<h2>What Makes Next Week at Freddy's Special</h2>
+<p>Most FNAF reimaginations settle for a graphical upgrade. NWAF rebuilds the entire game from the ground up. The office alone tells the story — in front of you sits a retro computer running a custom Fazbear Enterprises operating system complete with a file manager, camera viewer, and a virtual assistant called ComCat. Behind you, an industrial-sized control panel covered in red levers, pressure indicators, and emergency switches controls every door and system in the building.</p>
+
+<p>The result is a game where every single tool matters. The 21 cameras aren't decorative — each one monitors a critical room that could be sabotaged at any moment. The levers on the control panel aren't just for show — they're your only defense when an animatronic is about to destroy the compressor or cut the power grid. This is FNAF turned into a real-time management sim, and it works brilliantly.</p>
+
+</div>
+
+<!-- Video Section -->
+<div class="post-video-section">
+    <h2>Next Week at Freddy's Gameplay</h2>
+    <div class="post-video-container">
+        <div class="post-yt-facade" data-vid="zGznp8GO7ew">
+            <img src="https://i.ytimg.com/vi/zGznp8GO7ew/hqdefault.jpg" alt="Next Week at Freddy's gameplay video" loading="lazy" />
+            <button class="post-yt-play" aria-label="Play video">&#9654;</button>
+        </div>
+    </div>
+</div>
+
+<div class="post-content">
+
+<h2>Gameplay Mechanics</h2>
+<p>Each night lasts 12 real-time minutes — double the length of a typical FNAF night. That extra time isn't padding; you need every second of it. Between monitoring cameras for red dots indicating critical rooms under threat, spinning around to pull levers on the control panel, managing your dwindling power supply, and dealing with ComCat's interruptions, NWAF keeps you in a constant state of controlled panic.</p>
+
+<h3>The Animatronics</h3>
+<ul>
+    <li><strong>Bonnie:</strong> Has four distinct attack routes. He can approach your left door directly, sabotage the compressor (disabling all remote doors in the building), attack the server room (killing your cameras), or sneak into Pirate's Cove to activate Foxy.</li>
+    <li><strong>Chica:</strong> Also four attack methods. She targets the right door, the server room, Pirate's Cove to activate Foxy, or — most dangerously — the power grid, which shuts down everything and requires a full system restart.</li>
+    <li><strong>Foxy:</strong> Doesn't act on his own. Bonnie or Chica must enter Pirate's Cove to wake him up. If Bonnie activates him, he charges left; if Chica, he goes right. Use the camera flash on Pirate's Cove to scare him back. If he reaches a closed door, he drains roughly 15% of your power.</li>
+    <li><strong>Freddy (Night 4+):</strong> The ultimate threat. He can do everything Bonnie and Chica can, attack both doors, and access a second storage room to activate Scrap Foxy. He moves faster and hides in the shadows, making him harder to track on cameras.</li>
+    <li><strong>Scrap Foxy:</strong> A deteriorated Foxy model stored in the second warehouse. When activated by another animatronic, he charges toward a random door and drains approximately 25% of your power on impact. The silver lining: he only attacks once per night.</li>
+</ul>
+
+<h3>Systems and Sabotage</h3>
+<p>The real depth of NWAF comes from its interconnected systems. The compressor controls all remote doors — if an animatronic sabotages it, every door in the building swings open. The server room powers your cameras — lose it and you're blind. The power grid runs everything — a successful attack on it means total blackout until you manually restart each system, one by one, while animatronics roam freely.</p>
+
+<p>Red dots on your camera feed warn you when an animatronic is approaching a critical room. When you spot one, you need to spin your chair around, find the correct lever on the control panel, and pull it before the sabotage succeeds. Miss the window and you're spending precious minutes on a manual restart while the others close in.</p>
+
+</div>
+
+<!-- Screenshot Gallery #2 -->
+<div class="post-screenshot-gallery gallery-2" data-lightbox-gallery>
+    <a href="/uploads/overhaul/next-week-at-freddys/chica-k2ddgtu5.webp" data-lightbox>
+        <img src="/uploads/overhaul/next-week-at-freddys/chica-k2ddgtu5-thumb.webp" alt="Chica with her LET'S EAT bib peering through the office door in Next Week at Freddy's" loading="lazy" />
+    </a>
+    <a href="/uploads/overhaul/next-week-at-freddys/freddy-uibqcqzw.webp" data-lightbox>
+        <img src="/uploads/overhaul/next-week-at-freddys/freddy-uibqcqzw-thumb.webp" alt="Freddy's silhouette visible through the office window with Christmas lights in Next Week at Freddy's" loading="lazy" />
+    </a>
+</div>
+
+<div class="post-content">
+
+<h2>Story & Lore</h2>
+<p>NWAF doesn't retell the FNAF story — it creates an entirely new one set in the same universe. Fazbear Enterprises was founded by Jacob Fasler and Marcus Reed, and the restaurant opened its doors before August 1990 to immediate success. But the partnership didn't last. Marcus walked away from the project, and by 2001 he returned demanding his share, leading to a bitter dispute.</p>
+
+<p>The real tragedy struck on June 17, 2001, when Jacob's daughter Lara was found dead in a storage room. After her death, Jacob confessed to a terrible mistake involving three missing children whose spirits appear to possess Freddy, Bonnie, and Chica. The lore unfolds through documents and files stored on the office computer, turning your downtime between animatronic attacks into detective work as you piece together what happened at this restaurant.</p>
+
+<p>The game also features post-night nightmare sequences — first-person exploration segments where you wake up trapped inside the restaurant and must find objects to escape. While these sections flesh out the guard's story, most players consider the main gameplay loop to be the real star.</p>
+
+</div>
+
+<!-- Screenshot Gallery #3 -->
+<div class="post-screenshot-gallery gallery-1" data-lightbox-gallery>
+    <a href="/uploads/overhaul/next-week-at-freddys/kids_corner-dvyhhx6f.webp" data-lightbox>
+        <img src="/uploads/overhaul/next-week-at-freddys/kids_corner-dvyhhx6f-thumb.webp" alt="Security camera view of Freddy's Kids Club play area in Next Week at Freddy's" loading="lazy" />
+    </a>
+</div>
+
+<div class="post-content">
+
+<h2>What the Community Says</h2>
+<p>NWAF has earned strong praise from FNAF reviewers for its ambition and execution. Reviewer <strong>Dexter</strong> called it <em>"one of the most creative FNAF games ever designed from a gameplay standpoint,"</em> noting that <em>"the game looks gorgeous, it functions really well and it found a way to make literally every single mechanic useful, which is something a lot of FNAF games just don't seem to be able to do."</em> He described the difficulty as <em>"that rewarding trouble where the more you practice, the more you play, the more you get scared."</em></p>
+
+<p>Spanish-language reviewer <strong>Vanny</strong> gave it an <strong>8 out of 10</strong>, calling it one of his favorite FNAF 1 reimaginations and praising its alternative story, real-time animatronic movement, atmospheric presentation, and reinvented gameplay that actually works. He noted the game <em>"deserves more recognition"</em> from the community.</p>
+
+<p>On GameJolt, the community response has been equally strong — 61% of voters gave it a perfect 5-star rating, with the game accumulating over 414,000 views and nearly 9,000 followers.</p>
+
+</div>
+
+<div class="post-content">
+<h2>Frequently Asked Questions</h2>
+</div>
+
+<div class="post-faq">
+    <details>
+        <summary>Is Next Week at Freddy's free?</summary>
+        <div>Yes, NWAF is completely free to download and play on Windows PC.</div>
+    </details>
+    <details>
+        <summary>How long are the nights?</summary>
+        <div>Each night lasts approximately 12 real-time minutes, which is double the length of most FNAF fan games. The extended duration is necessary given the depth of the gameplay mechanics.</div>
+    </details>
+    <details>
+        <summary>Is there a tutorial?</summary>
+        <div>Yes. Night 1 is a full tutorial where the virtual assistant ComCat walks you through all the mechanics — cameras, doors, control panel, and systems. No animatronics are active during this night, so you can explore freely.</div>
+    </details>
+    <details>
+        <summary>How big is the download?</summary>
+        <div>The game is approximately 1 GB. It's built in Unreal Engine 5, so make sure your PC meets the minimum requirements for UE5 games.</div>
+    </details>
+    <details>
+        <summary>What is ComCat?</summary>
+        <div>ComCat is a virtual cat assistant that lives on the office computer. It teaches you the mechanics during the tutorial, but during regular nights it can interrupt you with conversations that block access to your cameras and controls — essentially functioning as a passive threat that eats up your time.</div>
+    </details>
+    <details>
+        <summary>Is this a remake of FNAF 1?</summary>
+        <div>It's a complete reimagining rather than a straight remake. While it's set in a Freddy Fazbear's restaurant with the same cast of animatronics, the mechanics, story, setting, and lore are entirely original. Think of it as "what if FNAF 1 was a deep strategy game in Unreal Engine 5."</div>
+    </details>
+</div>
+
+<!-- Related FNAF Fan Games -->
+<h2 class="il-heading">More FNAF Fan Games</h2>
+<div class="il-grid">
+<div class="il-card"><a href="/fnafb-complete-collection/">
+<img class="il-img" src="/uploads/overhaul/five-nights-at-fboys-complete-collection/1-4hgfncgt-thumb.webp" alt="FNAFB Complete Collection" loading="lazy" />
+<p class="il-title">FNAFB Complete Collection</p></a>
+</div>
+<div class="il-card"><a href="/five-nights-at-freddys-1-remake/">
+<img class="il-img" src="/uploads/overhaul/five-nights-at-freddys-1-remake/fnaf-1-remake-thumb.webp" alt="FNAF 1 Remake" loading="lazy" />
+<p class="il-title">FNAF 1 Remake</p></a>
+</div>
+<div class="il-card"><a href="/fnaf-world-refreshed/">
+<img class="il-img" src="/uploads/overhaul/fnaf-world-refreshed/fnaf-world-refreshed-thumb.webp" alt="FNAF World Refreshed" loading="lazy" />
+<p class="il-title">FNAF World Refreshed</p></a>
+</div>
+<div class="il-card"><a href="/fazbear-entertainment-storage/">
+<img class="il-img" src="/uploads/2024/05/Fazbear-Entertainment-Storage.FanGame.webp" alt="Fazbear Entertainment Storage" loading="lazy" />
+<p class="il-title">Fazbear Entertainment Storage</p></a>
+</div>
+</div>
+
+<!-- Lightbox Script -->
+<script>
+    // Lightbox functionality
+    const overlay = document.createElement('div');
+    overlay.className = 'post-lightbox-overlay';
+    document.body.appendChild(overlay);
+
+    document.querySelectorAll('[data-lightbox]').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const img = document.createElement('img');
+            img.src = link.href;
+            img.alt = link.querySelector('img')?.alt || '';
+            overlay.innerHTML = '';
+            overlay.appendChild(img);
+            overlay.classList.add('active');
+        });
+    });
+
+    overlay.addEventListener('click', () => {
+        overlay.classList.remove('active');
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            overlay.classList.remove('active');
+        }
+    });
+
+    // YouTube facade - click to load
+    document.querySelectorAll('.post-yt-facade').forEach(el => {
+        el.addEventListener('click', () => {
+            const vid = el.dataset.vid;
+            const container = el.parentElement;
+            const iframe = document.createElement('iframe');
+            iframe.src = 'https://www.youtube-nocookie.com/embed/' + vid + '?autoplay=1';
+            iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+            iframe.setAttribute('allowfullscreen', '');
+            el.remove();
+            container.appendChild(iframe);
+        });
+    });
+</script>
+
+</Layout>

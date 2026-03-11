@@ -1,82 +1,778 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import AdSenseAfterIntro from '../../components/AdSenseAfterIntro.astro';
 ---
-<Layout title="Five Nights at Candy's 3 Fan Game [Download the Free Game] 🔥" description="👉 Dive into the chilling atmosphere of Five Nights at Candy's 3, a game that has captivated millions with its unique blend of horror and..." lang="en">
-<h1>Five Nights at Candy's 3 Fan Game</h1>
-<AdSenseAfterIntro />
-<span style="font-weight: 400;"><div class="su-row"><div class="su-column su-column-1-3"></span>
+<Layout title="Five Nights at Candy's 3 - Download Free FNAF Fan Game" description="Download Five Nights at Candy's 3 (FNAC 3), Emil Macko's most ambitious fan game. Survive nightmares with only a flashlight. Free for PC and Android." lang="en">
 
-<img class="aligncenter size-full wp-image-98" src="/uploads/2024/05/Five-Nights-at-Candys-3-Official_Fangame.webp" alt="Five Nights at Candy's 3 (Official)_Fangame" width="200" height="200" />
+<style is:global>
+/* Override site-content width to match sonic-fangames.com (1200px content + 40px padding each side) */
+.site-content {
+    max-width: 1200px !important;
+    padding: 30px 40px !important;
+    box-sizing: content-box !important;
+}
+
+/* Styles for dynamically created elements (JS-created, no Astro scope attribute) */
+.post-video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+.post-lightbox-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.85);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: zoom-out;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+}
+.post-lightbox-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+.post-lightbox-overlay img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 8px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+}
+</style>
+
+<style>
+/* ========== INTERLINKING SECTION ========== */
+.il-heading { font-size: 24px; font-weight: 800; color: #470000; margin: 48px 0 16px; }
+.il-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 0 0 40px; }
+.il-card { background: #fff5f5; border: 1px solid #e0c8c8; border-radius: 12px; padding: 6px; text-align: center; }
+.il-card a { text-decoration: none; color: inherit; display: block; }
+.il-card a:hover { text-decoration: none; }
+.il-card:hover { border-color: #470000; }
+.il-img { width: 100%; height: 150px; object-fit: cover; border-radius: 10px; display: block; }
+.il-title { font-size: 14px; font-weight: 600; color: #1a1d2e; margin: 6px 0 2px; line-height: 1.4; }
+@media (max-width: 768px) { .il-grid { grid-template-columns: repeat(2, 1fr); } }
+
+/* ========== NEW POST DESIGN STYLES ========== */
+
+/* H1 - Game Title */
+.post-title {
+    text-align: center;
+    font-size: 2.8em;
+    font-weight: 800;
+    color: #470000;
+    margin: 20px 0 5px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    letter-spacing: -0.5px;
+}
+.post-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: #470000;
+    margin: 12px auto 0;
+    border-radius: 2px;
+}
+
+/* Description Section (Hero) */
+.post-description {
+    position: relative;
+    padding: 16px 20px;
+    border-radius: 16px;
+    margin: 30px auto;
+    max-width: 1200px;
+    background: linear-gradient(135deg, #f5e6e8, #ffffff);
+    color: #333;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: 0.4s;
+}
+.post-intro-layout {
+    display: flex;
+    align-items: stretch;
+    gap: 24px;
+    margin-bottom: 0;
+}
+.post-intro-layout img {
+    flex-shrink: 0;
+    align-self: flex-start;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    max-width: 330px;
+    width: 100%;
+    height: auto;
+}
+.post-intro-text {
+    flex: 1;
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+}
+.post-intro-text > p {
+    font-size: 1em;
+    line-height: 1.5;
+    margin: 0;
+    text-align: left;
+    flex: 1;
+}
+.post-intro-text > p strong:first-child {
+    color: #470000;
+    font-size: 1.05em;
+}
+
+/* Download CTA Button */
+.post-download-cta {
+    display: block;
+    text-align: center;
+    padding: 15px;
+    background: #470000;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 8px 0 0;
+    transition: background 0.2s;
+    color: #fff !important;
+}
+.post-download-cta:hover {
+    background: #5a0000;
+    text-decoration: none;
+}
+
+/* Stats Table */
+.post-stats-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 24px 0;
+    font-size: 1em;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    border: 1px solid #e0e0e0;
+}
+.post-stats-table thead tr {
+    background: #7E4955;
+}
+.post-stats-table th {
+    color: #fff;
+    font-weight: 700;
+    padding: 14px 18px;
+    text-align: left;
+    font-size: 0.95em;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.post-stats-table td {
+    padding: 12px 18px;
+    border-bottom: 1px solid #f0f0f0;
+}
+.post-stats-table td:first-child {
+    font-weight: 600;
+    color: #470000;
+    width: 35%;
+}
+.post-stats-table tbody tr:nth-child(even) {
+    background: #faf5f6;
+}
+.post-stats-table tbody tr:last-child td {
+    border-bottom: none;
+}
+.post-stats-table tbody tr:hover {
+    background: #f5e6e8;
+}
+
+/* Screenshot Gallery */
+.post-screenshot-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin: 24px 0;
+}
+.post-screenshot-gallery.gallery-2 {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 66%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.post-screenshot-gallery.gallery-1 {
+    grid-template-columns: 1fr;
+    max-width: 33%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.post-screenshot-gallery a {
+    display: block;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+}
+.post-screenshot-gallery a:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.18);
+}
+.post-screenshot-gallery img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+}
+
+/* Download Section */
+.post-download-section {
+    background: linear-gradient(135deg, #470000, #6b1a1a);
+    border-radius: 16px;
+    padding: 30px 24px;
+    text-align: center;
+    margin: 30px 0;
+    color: #fff;
+    box-shadow: 0 4px 16px rgba(71,0,0,0.25);
+}
+.post-download-section h2 {
+    color: #fff;
+    margin: 0 0 8px;
+    font-size: 1.6em;
+}
+.post-download-section .version-info {
+    color: rgba(255,255,255,0.85);
+    margin: 0 0 20px;
+    font-size: 0.95em;
+}
+.post-download-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+.post-download-btn {
+    display: inline-block;
+    padding: 12px 28px;
+    background: #fff;
+    color: #470000 !important;
+    font-weight: 700;
+    border-radius: 8px;
+    text-decoration: none !important;
+    font-size: 1em;
+    transition: all 0.2s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+.post-download-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    background: #f5e6e8;
+}
+
+/* Install Section */
+.post-install-section {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 24px auto;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.post-install-section h3 {
+    margin: 0 0 12px;
+    font-size: 1.3em;
+    color: #470000;
+}
+.post-install-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    align-items: start;
+}
+.post-install-grid details {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+.post-install-grid details:only-child {
+    grid-column: 1 / -1;
+}
+.post-install-grid summary {
+    padding: 12px 16px;
+    font-weight: 600;
+    cursor: pointer;
+    background: #faf5f6;
+    border-bottom: 1px solid #e0e0e0;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #470000;
+}
+.post-install-grid summary::before {
+    content: '▸';
+    transition: transform 0.2s;
+    font-size: 0.9em;
+}
+.post-install-grid details[open] summary::before {
+    transform: rotate(90deg);
+}
+.post-install-grid details div {
+    padding: 12px 16px;
+}
+
+/* Content Sections */
+.post-content h2 {
+    color: #470000;
+    font-size: 1.5em;
+    margin: 30px 0 12px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid #f0e0e2;
+}
+.post-content h3 {
+    color: #5a1a1a;
+    font-size: 1.2em;
+    margin: 20px 0 8px;
+}
+.post-content p {
+    margin: 10px 0;
+    line-height: 1.7;
+}
+.post-content ul {
+    margin: 10px 0 10px 20px;
+}
+.post-content li {
+    margin: 6px 0;
+    line-height: 1.6;
+}
+.post-content li strong {
+    color: #470000;
+}
+
+/* Details Grid (characters, zones, etc.) */
+.post-details-box {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 24px auto;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.post-details-box h3 {
+    margin: 0 0 12px;
+    font-size: 1.4em;
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+/* FAQ Section */
+.post-faq details {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    margin: 8px 0;
+    overflow: hidden;
+}
+.post-faq summary {
+    padding: 14px 18px;
+    font-weight: 600;
+    cursor: pointer;
+    background: #faf5f6;
+    color: #470000;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.post-faq summary::before {
+    content: '▸';
+    transition: transform 0.2s;
+}
+.post-faq details[open] summary::before {
+    transform: rotate(90deg);
+}
+.post-faq details div {
+    padding: 14px 18px;
+    line-height: 1.6;
+}
+
+/* Video Section */
+.post-video-section {
+    margin: 24px 0;
+}
+.post-video-section h2 {
+    color: #470000;
+    font-size: 1.5em;
+    margin: 30px 0 12px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid #f0e0e2;
+}
+.post-video-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    padding-top: 56.25%;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    margin-top: 12px;
+}
+.post-yt-facade {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    background: #000;
+}
+.post-yt-facade img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.post-yt-play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0,0,0,0.7);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 68px;
+    height: 68px;
+    font-size: 28px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+}
+.post-yt-facade:hover .post-yt-play {
+    background: #ff0000;
+}
+
+/* Related Games */
+.post-related-games {
+    margin: 30px 0;
+}
+.post-related-games h2 {
+    text-align: center;
+    border-bottom: none;
+}
+.post-related-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-top: 16px;
+}
+.post-related-grid a {
+    display: block;
+    text-decoration: none;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    background: #fff;
+}
+.post-related-grid a:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.18);
+    text-decoration: none;
+}
+.post-related-grid img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+.post-related-grid span {
+    display: block;
+    padding: 10px;
+    font-weight: 600;
+    text-align: center;
+    color: #333;
+    font-size: 0.9em;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .post-title { font-size: 2em; }
+    .post-intro-layout { flex-direction: column; align-items: center; }
+    .post-intro-layout img { max-width: 280px; }
+    .post-screenshot-gallery { grid-template-columns: 1fr 1fr; }
+    .post-screenshot-gallery.gallery-2 { max-width: 100%; }
+    .post-screenshot-gallery.gallery-1 { max-width: 50%; }
+    .post-install-grid { grid-template-columns: 1fr; }
+    .post-related-grid { grid-template-columns: repeat(2, 1fr); }
+    .post-download-section { padding: 20px 16px; }
+}
+@media (max-width: 480px) {
+    .post-title { font-size: 1.7em; }
+    .post-screenshot-gallery { grid-template-columns: 1fr; }
+    .post-screenshot-gallery.gallery-2 { max-width: 100%; }
+    .post-screenshot-gallery.gallery-1 { max-width: 100%; }
+    .post-related-grid { grid-template-columns: 1fr 1fr; }
+}
+</style>
+
+<!-- ========== POST CONTENT START ========== -->
+
+<h1 class="post-title">Five Nights at Candy's 3</h1>
+
+<!-- Hero / Intro Section -->
+<div class="post-description">
+    <div class="post-intro-layout">
+        <img src="/uploads/overhaul/five-nights-at-candys-3/Fnac_3_icon_768-2ptwpvda-thumb.webp" alt="Five Nights at Candy's 3 cover art featuring Monster Rat with glowing red eyes" width="330" height="330" loading="eager" />
+        <div class="post-intro-text">
+            <p>
+                <strong>Five Nights at Candy's 3 (FNAC 3)</strong> is Emil Macko's most ambitious creation and the finale of the Candy's trilogy. Forget cameras and security offices — this time you're a child lying in bed, armed with nothing but a flashlight against the nightmares lurking in your room. Set in 1962, the game follows young Mary Schmidt as she battles monstrous versions of the Rat and Cat Theater performers during therapy sessions meant to help her recover repressed memories of a horrifying incident. With its deeply personal story about childhood trauma, innovative combat mechanics, a 16-track original soundtrack, and more extra content than Candy's 1 and 2 combined, FNAC 3 has been called Emil Macko's magnum opus and one of the most complete FNAF fan games ever made.
+            </p>
+            <a class="post-download-cta" href="#download">Download Five Nights at Candy's 3 Free</a>
+        </div>
+    </div>
+</div>
+
+<!-- Stats Table -->
+<table class="post-stats-table">
+    <thead>
+        <tr>
+            <th>Feature</th>
+            <th>Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr><td>Developer</td><td>Emil "Ace" Macko (@Emilmacko)</td></tr>
+        <tr><td>Engine</td><td>Clickteam Fusion</td></tr>
+        <tr><td>Platforms</td><td>Windows PC, Android (unofficial port)</td></tr>
+        <tr><td>Genre</td><td>Survival Horror / Point and Click</td></tr>
+        <tr><td>Structure</td><td>6 Nights + Challenge Mode + 3 Arcade Games</td></tr>
+        <tr><td>Release Date</td><td>March 3, 2017</td></tr>
+        <tr><td>Version</td><td>1.0.3</td></tr>
+        <tr><td>Price</td><td>Free</td></tr>
+    </tbody>
+</table>
+
+<!-- Screenshot Gallery #1 -->
+<div class="post-screenshot-gallery" data-lightbox-gallery>
+    <a href="/uploads/overhaul/five-nights-at-candys-3/screenshot 01-ap9pcj8t.webp" data-lightbox>
+        <img src="/uploads/overhaul/five-nights-at-candys-3/screenshot 01-ap9pcj8t-thumb.webp" alt="Mary's bedroom at 12 AM with cassette player buttons and bed check UI in Five Nights at Candy's 3" loading="lazy" />
+    </a>
+    <a href="/uploads/overhaul/five-nights-at-candys-3/screenshot 02-guw4pfu4.webp" data-lightbox>
+        <img src="/uploads/overhaul/five-nights-at-candys-3/screenshot 02-guw4pfu4-thumb.webp" alt="Close-up of the cassette tape player with colorful stickers in Five Nights at Candy's 3" loading="lazy" />
+    </a>
+    <a href="/uploads/overhaul/five-nights-at-candys-3/screenshot 03-fgqitg3d.webp" data-lightbox>
+        <img src="/uploads/overhaul/five-nights-at-candys-3/screenshot 03-fgqitg3d-thumb.webp" alt="Side view of Mary's dark bedroom showing the closet with louvered doors in Five Nights at Candy's 3" loading="lazy" />
+    </a>
+</div>
+
+<!-- Download Section -->
+<div id="download" class="post-download-section">
+    <h2>Download Five Nights at Candy's 3</h2>
+    <p class="version-info">FNAC 3 v1.0.3 is available as a free download for <strong>Windows PC</strong> and <strong>Android</strong> (unofficial port).</p>
+    <div class="post-download-buttons">
+        <a class="post-download-btn" href="https://mega.nz/file/vJw2QL6S#pfs8VOYaIaIMTwSOzpY_l1dVZysmi2gv0o1Asc4iBNQ" target="_blank" rel="nofollow noopener">Download for PC (Mega)</a>
+        <a class="post-download-btn" href="https://mega.nz/file/jdQBVCYI#pTUFu5ZbPRid5na8fhBrPOh1OyCWPwtkeaSo0EZro3k" target="_blank" rel="nofollow noopener">Download for Android (Mega)</a>
+    </div>
+</div>
+
+<!-- Install Instructions -->
+<div class="post-install-section">
+    <h3>How to Install Five Nights at Candy's 3</h3>
+    <div class="post-install-grid">
+        <details>
+            <summary>Windows</summary>
+            <div>
+                <ol>
+                    <li>Download the .zip file from the link above</li>
+                    <li>Extract the contents to a folder of your choice</li>
+                    <li>Run the .exe file to start the game</li>
+                    <li>If Windows SmartScreen blocks it, click "More info" then "Run anyway"</li>
+                </ol>
+            </div>
+        </details>
+        <details>
+            <summary>Android</summary>
+            <div>
+                <ol>
+                    <li>Download the APK file from the link above</li>
+                    <li>Enable "Install from unknown sources" in your device settings</li>
+                    <li>Open the APK file and tap "Install"</li>
+                    <li>Launch the game from your app drawer</li>
+                </ol>
+            </div>
+        </details>
+    </div>
+</div>
+
+<div class="post-content">
+
+<h2>What Makes Five Nights at Candy's 3 Special</h2>
+<p>While most FNAF fan games iterate on the security camera formula, FNAC 3 takes inspiration from FNAF 4 and transforms it into something entirely its own. You're not a night guard — you're a scared child in bed, and your only defense is a flashlight. There are no cameras to flip through, no doors to slam shut, no phone calls with hints. Just you, the darkness, and the monsters hiding in your room.</p>
+
+<p>The setting is deeply personal. Mary's bedroom feels lived-in, with pink wallpaper, childhood drawings, and a cassette player covered in colorful stickers. But once the lights go out, every shadow becomes a threat. The closet doors might creak open. Something might be lurking under the bed. And when Monster Rat finally shows himself, you don't just hide — you fight back in a multi-phase combat sequence that one reviewer described as making them think: <em>"what the hell, a fan game's supposed to be this cool?"</em></p>
+
+<p>Beyond the core gameplay, FNAC 3 is packed with content: three full arcade minigames (one lasting about an hour), pixel-art retrospective sequences that unravel the story, a secret character named Lollipop with his own unlock quest, multiple endings, and a challenge mode with Shadow Monster Rat. It's bigger than Candy's 1 and 2 combined.</p>
 
 </div>
 
-<div class="su-column su-column-2-3">
+<!-- Video Section -->
+<div class="post-video-section">
+    <h2>Five Nights at Candy's 3 Gameplay</h2>
+    <div class="post-video-container">
+        <div class="post-yt-facade" data-vid="zD1wIEj3UJA">
+            <img src="https://i.ytimg.com/vi/zD1wIEj3UJA/hqdefault.jpg" alt="Five Nights at Candy's 3 gameplay video" loading="lazy" />
+            <button class="post-yt-play" aria-label="Play video">&#9654;</button>
+        </div>
+    </div>
+</div>
 
-<strong>Dive into the chilling atmosphere of Five Nights at Candy's 3,</strong> a game that has captivated millions with its unique blend of horror and mystery. Set against the backdrop of an unsettling silence broken only by the soothing sound of rain, this game invites players to confront their deepest fears in a world where silence signals danger. Developed using the Clickteam Series engine, this installment offers an immersive experience filled with suspense and intricate gameplay.
+<div class="post-content">
 
-</div></div>
+<h2>Gameplay Mechanics</h2>
+<p>Each night takes place in Mary's bedroom. You scan the room with your flashlight, checking three possible entry points — the door, the wardrobe, and the closet — while managing a cassette player that speeds up time. The core loop is simple to learn but becomes increasingly tense as more monsters join the mix.</p>
 
-<a href="https://gamejolt.com/get/build?game=130420&amp;build=435960" target="_blank" class="su-button" style="background-color:#470000;color:#fff;padding:10px 20px;border-radius:4px;text-decoration:none;display:inline-block;font-size:16px;font-weight:600;text-align:center;width:100%;box-sizing:border-box;" rel="nofollow">⬇ Download Five Nights at Candy's 3</a>
-<table class="stats-table">
-<thead>
-<tr>
-<th><strong>Characteristic</strong></th>
-<th><strong>Data</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Development Stage</td>
-<td>Complete</td>
-</tr>
-<tr>
-<td>Engine/Language</td>
-<td>Clickteam Series</td>
-</tr>
-<tr>
-<td>Published On</td>
-<td>March 3, 2017</td>
-</tr>
-<tr>
-<td>Views</td>
-<td>4.3 million</td>
-</tr>
-<tr>
-<td>File Size</td>
-<td>482 MB</td>
-</tr>
-</tbody>
-</table>
-<h2>Download Five Nights at Candy's 3</h2>
-<strong>Embrace the eerie silence and the sound of rain in Five Nights at Candy's 3.</strong> Click the download button to immerse yourself in a game where the silence is as much your enemy as the shadows lurking in the corner. Are you ready to face the hidden dangers that come closer with every quiet moment?
-<h3>Gameplay and Features</h3>
-Five Nights at Candy's 3 offers a deep, engaging experience with various gameplay elements that will test your courage and strategic thinking:
+<h3>The Monsters</h3>
 <ul>
- 	<li><strong>Immersive Atmosphere:</strong> The game's setting, enhanced by a detailed soundtrack, plays a crucial role in creating a tense environment.</li>
- 	<li><strong>Complex Narrative:</strong> Delve into a storyline where every detail adds to the mystery and tension, compelling players to uncover the truth behind the silence.</li>
- 	<li><strong>Dynamic Soundtrack:</strong> The game features 16 original tracks that range from calming melodies to intense compositions, each designed to enhance the gameplay experience.</li>
+    <li><strong>Monster Rat (Nights 1-5):</strong> The main threat. He can appear at any of the three entry points, and if you don't spot him fast enough, he enters the room and triggers a 4-phase combat sequence: shine your light on his face as he dodges, check under the bed to find which side he's hiding on, move to the opposite side, wait for the audio cue, and blast him with your flashlight. His design has been called <em>"genuinely one of the best FNAF designs I've ever seen in anything ever."</em></li>
+    <li><strong>Monster Cat (Nights 3-5):</strong> Creeps in from the sides of the bed, approaching slowly. Repelled with the flashlight. He's more of a distraction than a real killer, but ignoring him while fighting Monster Rat can cost you.</li>
+    <li><strong>Monster Vinnie (Night 6):</strong> The final boss. An extremely aggressive version of Monster Rat with unpredictable circular movement patterns instead of triangular ones. He can sabotage the cassette tape, removing your audio cues. One reviewer called him <em>"the rat but better"</em> — another described him as <em>"Monster Rat on friggin steroids."</em> His movements even look like he's being puppeteered by a greater force, which ties directly into the story.</li>
 </ul>
-<center><div class="yt-facade" data-vid="zD1wIEj3UJA" style="max-width:560px;aspect-ratio:560/315"><img src="https://i.ytimg.com/vi/zD1wIEj3UJA/hqdefault.jpg" alt="Play video" loading="lazy" width="560" height="315"><button class="yt-play" aria-label="Play video">&#9654;</button></div></center>
-<h4>Game Soundtrack Highlights</h4>
-The soundtrack, composed by Emil Macko and Hardy Macko,<strong> is a central element of the game,</strong> creating an atmosphere that ranges from comforting to haunting:
-<ol>
- 	<li>Menu Theme</li>
- 	<li>The Rat &amp; Cat Theater</li>
- 	<li>Dreamscape</li>
- 	<li>Deepscape</li>
- 	<li>My Sleep Music</li>
- 	<li>Safety</li>
- 	<li>Forgotten</li>
- 	<li>Confrontation</li>
- 	<li>Fishing with Candy</li>
- 	<li>Cindy's Garden</li>
- 	<li>Candy's Adventure - The Adventure Begins!</li>
- 	<li>Candy's Adventure - Under-The-Ground Underground</li>
- 	<li>Candy's Adventure - The Secret Underground Lair</li>
- 	<li>Candy's Adventure - Fight Like Cat and Dog</li>
- 	<li>Extra Theme</li>
- 	<li>The End</li>
-</ol>
-<strong>Five Nights at Candy's 3 stands out as a masterful blend of horror, storytelling, and atmospheric sound design.</strong> This game not only challenges players to survive the nights but also to solve the puzzles that lie within the silence. Download it today and discover if you can withstand the quiet before the storm, unravel the mysteries, and survive the horrors that lurk in the shadows.
+
+<h3>The Cassette Player</h3>
+<p>A unique mechanic that doubles the speed of time passing. Play the tape, and nights drop from around 13 minutes to about 8. But you have to manage it — rewind when it ends, and watch out for Monster Rat jamming the tape when he's hiding under the bed. It's a clever risk-reward system: the tape makes nights shorter, but maintaining it takes attention away from watching for monsters.</p>
+
+</div>
+
+<!-- Screenshot Gallery #2 -->
+<div class="post-screenshot-gallery gallery-2" data-lightbox-gallery>
+    <a href="/uploads/overhaul/five-nights-at-candys-3/screenshot 04-tz8edxj5.webp" data-lightbox>
+        <img src="/uploads/overhaul/five-nights-at-candys-3/screenshot 04-tz8edxj5-thumb.webp" alt="Monster Rat barely visible peeking through the wardrobe doors at 4 AM in Five Nights at Candy's 3" loading="lazy" />
+    </a>
+    <a href="/uploads/overhaul/five-nights-at-candys-3/teaser 4 full-prjhavhi.webp" data-lightbox>
+        <img src="/uploads/overhaul/five-nights-at-candys-3/teaser 4 full-prjhavhi-thumb.webp" alt="Monster Cat teaser with glowing red feline eyes in complete darkness for Five Nights at Candy's 3" loading="lazy" />
+    </a>
+</div>
+
+<div class="post-content">
+
+<h2>Story and Lore</h2>
+<p>FNAC 3's story is set in 1962 and told through a combination of therapy-framed night sequences and pixel-art retrospective minigames. Young Mary Schmidt and her father were regulars at the Rat and Cat Theater — a live performance venue with costumed actors and a puppeteer who controlled a marionette named Vinnie.</p>
+
+<p>During one of her games of hide-and-seek, Mary hid in the employees' closet and witnessed something no child should see: the Rat actor arrived drunk, the Puppeteer confronted him, and a fight broke out that ended with Rat falling and hitting his head fatally on a table edge. When the Cat actor walked in on the scene, the Puppeteer strangled him to eliminate the witness, then called the police pretending to have just found the bodies.</p>
+
+<p>Mary repressed the memory, but it manifested as recurring nightmares. Each monster represents a piece of her trauma — Monster Rat embodies the violent incident, Monster Cat represents the second murder, and Monster Vinnie is the Puppeteer himself, the true threat. Through therapy, Mary gradually recovers her memories. Defeating Vinnie on Night 6 represents her final breakthrough: she remembers everything, testifies to the police, and the Puppeteer is brought to justice.</p>
+
+<p>The game also connects directly to the rest of the saga. Mary Schmidt grows up to become the night guard at Candy's Burgers and Fries — the restaurant that replaced the Rat and Cat Theater — in Five Nights at Candy's 1. The murdered actors' spirits possess the repurposed animatronics, and the Reverse Puppet from Candy's 1 is a manifestation of Vinnie.</p>
+
+<h2>What the Community Says</h2>
+<p>FNAC 3 has earned a reputation as one of the most narratively accomplished FNAF fan games ever released. Multiple reviewers consider it the peak of Emil Macko's work.</p>
+
+<p>One in-depth English review praised the combat system as genuinely innovative: <em>"what the hell, a fan game's supposed to be this cool?"</em> — while noting that the game packs <em>"more content than Candy's 1 or 2 combined"</em> and features a 16-track original soundtrack that ranges from chiptune to samba. The same reviewer called FNAC 3 <em>"definitely one of the most interesting and diverse fan games I've ever played."</em></p>
+
+<p>Another reviewer described it as <em>"Emil's magnum opus"</em>, highlighting the storytelling as <em>"some of the greatest of that in any Five Nights at Freddy's fan game."</em> They praised how the game takes the FNAF 4 bedroom concept and transforms it into something completely original.</p>
+
+<p>A Spanish-language reviewer went even further, calling the atmosphere <em>"too good... very eerie, disturbing, terrifying"</em> and comparing the flashlight mechanic to wielding <em>"an AK-47 that shoots grenades"</em> — because for once in a FNAF game, you genuinely feel like you're fighting back. They ranked FNAC 3 in their all-time top 10 FNAF fan games alongside The Joy of Creation: Story Mode and One Night at Flumpty's 3.</p>
+
+</div>
+
+<div class="post-content">
+<h2>Frequently Asked Questions</h2>
+</div>
+
+<div class="post-faq">
+    <details>
+        <summary>Is Five Nights at Candy's 3 free?</summary>
+        <div>Yes, FNAC 3 is completely free to download and play on both PC and Android. Emil Macko released it as a passion project for the FNAF community.</div>
+    </details>
+    <details>
+        <summary>Do I need to play Candy's 1 and 2 first?</summary>
+        <div>Not necessarily. FNAC 3 works as a standalone experience with its own self-contained story. However, playing the previous games will help you appreciate the connections — Mary Schmidt is the same protagonist from Candy's 1, and several plot threads tie the trilogy together.</div>
+    </details>
+    <details>
+        <summary>How long does it take to beat?</summary>
+        <div>The main 6 nights can be completed in around 3-5 hours depending on skill. Going for full completion — all endings, arcade games, challenge mode, secret character Lollipop, and collectibles — can easily take 10+ hours. The Candy's Adventure arcade game alone is about an hour long.</div>
+    </details>
+    <details>
+        <summary>How scary is it compared to other FNAF fan games?</summary>
+        <div>FNAC 3 is considered one of the more genuinely unsettling FNAF fan games. The bedroom setting creates a uniquely personal sense of vulnerability, and Monster Rat's design is widely regarded as one of the best in the entire FNAF franchise. The atmosphere has been compared favorably to FNAF 4 and The Joy of Creation.</div>
+    </details>
+    <details>
+        <summary>What engine is FNAC 3 made in?</summary>
+        <div>Like the previous Candy's games, FNAC 3 was built in Clickteam Fusion. The amount of content and polish Emil Macko achieved within the limitations of this engine is considered seriously impressive by the community.</div>
+    </details>
+    <details>
+        <summary>Are there multiple endings?</summary>
+        <div>Yes. FNAC 3 has three endings: a normal ending, a true ending (which requires replaying the game), and a hidden "forgotten ending" triggered by interacting with the origami cat in each night. The forgotten ending reveals additional lore about Mary's mother.</div>
+    </details>
+</div>
+
+<!-- Related FNAF Fan Games -->
+<h2 class="il-heading">More FNAF Fan Games</h2>
+<div class="il-grid">
+<div class="il-card"><a href="/those-nights-at-rachels/">
+<img class="il-img" src="/uploads/overhaul/those-nights-at-rachels/portada-thumb.webp" alt="Those Nights at Rachel's" loading="lazy" />
+<p class="il-title">Those Nights at Rachel's</p></a>
+</div>
+<div class="il-card"><a href="/playtime-with-percy/">
+<img class="il-img" src="/uploads/overhaul/percys-playtime/portada-thumb.webp" alt="Playtime with Percy" loading="lazy" />
+<p class="il-title">Playtime with Percy</p></a>
+</div>
+<div class="il-card"><a href="/fnaf-world-refreshed/">
+<img class="il-img" src="/uploads/overhaul/fnaf-world-refreshed/fnaf-world-refreshed-thumb.webp" alt="FNAF World Refreshed" loading="lazy" />
+<p class="il-title">FNAF World Refreshed</p></a>
+</div>
+<div class="il-card"><a href="/fnaf-urbex/">
+<img class="il-img" src="/uploads/overhaul/fnaf-urbex/urbex-thumb.webp" alt="FNAF Urbex" loading="lazy" />
+<p class="il-title">FNAF Urbex</p></a>
+</div>
+</div>
+
+<!-- Lightbox Script -->
+<script>
+    // Lightbox functionality
+    const overlay = document.createElement('div');
+    overlay.className = 'post-lightbox-overlay';
+    document.body.appendChild(overlay);
+
+    document.querySelectorAll('[data-lightbox]').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const img = document.createElement('img');
+            img.src = link.href;
+            img.alt = link.querySelector('img')?.alt || '';
+            overlay.innerHTML = '';
+            overlay.appendChild(img);
+            overlay.classList.add('active');
+        });
+    });
+
+    overlay.addEventListener('click', () => {
+        overlay.classList.remove('active');
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            overlay.classList.remove('active');
+        }
+    });
+
+    // YouTube facade - click to load
+    document.querySelectorAll('.post-yt-facade').forEach(el => {
+        el.addEventListener('click', () => {
+            const vid = el.dataset.vid;
+            const container = el.parentElement;
+            const iframe = document.createElement('iframe');
+            iframe.src = 'https://www.youtube-nocookie.com/embed/' + vid + '?autoplay=1';
+            iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+            iframe.setAttribute('allowfullscreen', '');
+            el.remove();
+            container.appendChild(iframe);
+        });
+    });
+</script>
+
 </Layout>

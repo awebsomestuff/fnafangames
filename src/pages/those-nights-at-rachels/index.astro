@@ -1,0 +1,759 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+<Layout title="Those Nights at Rachel's - Download Free FNAF Fan Game" description="Download Those Nights at Rachel's, a groundbreaking 3D FNAF fan game by Nikson in Unreal Engine. Free for PC and Android with Hard Edition included." lang="en">
+
+<style is:global>
+/* Override site-content width to match sonic-fangames.com (1200px content + 40px padding each side) */
+.site-content {
+    max-width: 1200px !important;
+    padding: 30px 40px !important;
+    box-sizing: content-box !important;
+}
+
+/* Styles for dynamically created elements (JS-created, no Astro scope attribute) */
+.post-video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+.post-lightbox-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.85);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: zoom-out;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+}
+.post-lightbox-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+.post-lightbox-overlay img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 8px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+}
+</style>
+
+<style>
+/* ========== INTERLINKING SECTION ========== */
+.il-heading { font-size: 24px; font-weight: 800; color: #470000; margin: 48px 0 16px; }
+.il-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 0 0 40px; }
+.il-card { background: #fff5f5; border: 1px solid #e0c8c8; border-radius: 12px; padding: 6px; text-align: center; }
+.il-card a { text-decoration: none; color: inherit; display: block; }
+.il-card a:hover { text-decoration: none; }
+.il-card:hover { border-color: #470000; }
+.il-img { width: 100%; height: 150px; object-fit: cover; border-radius: 10px; display: block; }
+.il-title { font-size: 14px; font-weight: 600; color: #1a1d2e; margin: 6px 0 2px; line-height: 1.4; }
+@media (max-width: 768px) { .il-grid { grid-template-columns: repeat(2, 1fr); } }
+
+/* ========== NEW POST DESIGN STYLES ========== */
+
+/* H1 - Game Title */
+.post-title {
+    text-align: center;
+    font-size: 2.8em;
+    font-weight: 800;
+    color: #470000;
+    margin: 20px 0 5px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    letter-spacing: -0.5px;
+}
+.post-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: #470000;
+    margin: 12px auto 0;
+    border-radius: 2px;
+}
+
+/* Description Section (Hero) */
+.post-description {
+    position: relative;
+    padding: 16px 20px;
+    border-radius: 16px;
+    margin: 30px auto;
+    max-width: 1200px;
+    background: linear-gradient(135deg, #f5e6e8, #ffffff);
+    color: #333;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: 0.4s;
+}
+.post-intro-layout {
+    display: flex;
+    align-items: stretch;
+    gap: 24px;
+    margin-bottom: 0;
+}
+.post-intro-layout img {
+    flex-shrink: 0;
+    align-self: flex-start;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    max-width: 330px;
+    width: 100%;
+    height: auto;
+}
+.post-intro-text {
+    flex: 1;
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+}
+.post-intro-text > p {
+    font-size: 1em;
+    line-height: 1.5;
+    margin: 0;
+    text-align: left;
+    flex: 1;
+}
+.post-intro-text > p strong:first-child {
+    color: #470000;
+    font-size: 1.05em;
+}
+
+/* Download CTA Button */
+.post-download-cta {
+    display: block;
+    text-align: center;
+    padding: 15px;
+    background: #470000;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 8px 0 0;
+    transition: background 0.2s;
+    color: #fff !important;
+}
+.post-download-cta:hover {
+    background: #5a0000;
+    text-decoration: none;
+}
+
+/* Stats Table */
+.post-stats-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 24px 0;
+    font-size: 1em;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    border: 1px solid #e0e0e0;
+}
+.post-stats-table thead tr {
+    background: #7E4955;
+}
+.post-stats-table th {
+    color: #fff;
+    font-weight: 700;
+    padding: 14px 18px;
+    text-align: left;
+    font-size: 0.95em;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.post-stats-table td {
+    padding: 12px 18px;
+    border-bottom: 1px solid #f0f0f0;
+}
+.post-stats-table td:first-child {
+    font-weight: 600;
+    color: #470000;
+    width: 35%;
+}
+.post-stats-table tbody tr:nth-child(even) {
+    background: #faf5f6;
+}
+.post-stats-table tbody tr:last-child td {
+    border-bottom: none;
+}
+.post-stats-table tbody tr:hover {
+    background: #f5e6e8;
+}
+
+/* Screenshot Gallery */
+.post-screenshot-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin: 24px 0;
+}
+.post-screenshot-gallery.gallery-2 {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 66%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.post-screenshot-gallery.gallery-1 {
+    grid-template-columns: 1fr;
+    max-width: 33%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.post-screenshot-gallery a {
+    display: block;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+}
+.post-screenshot-gallery a:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.18);
+}
+.post-screenshot-gallery img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+}
+
+/* Download Section */
+.post-download-section {
+    background: linear-gradient(135deg, #470000, #6b1a1a);
+    border-radius: 16px;
+    padding: 30px 24px;
+    text-align: center;
+    margin: 30px 0;
+    color: #fff;
+    box-shadow: 0 4px 16px rgba(71,0,0,0.25);
+}
+.post-download-section h2 {
+    color: #fff;
+    margin: 0 0 8px;
+    font-size: 1.6em;
+}
+.post-download-section .version-info {
+    color: rgba(255,255,255,0.85);
+    margin: 0 0 20px;
+    font-size: 0.95em;
+}
+.post-download-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+.post-download-btn {
+    display: inline-block;
+    padding: 12px 28px;
+    background: #fff;
+    color: #470000 !important;
+    font-weight: 700;
+    border-radius: 8px;
+    text-decoration: none !important;
+    font-size: 1em;
+    transition: all 0.2s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+.post-download-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    background: #f5e6e8;
+}
+
+/* Install Section */
+.post-install-section {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 24px auto;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.post-install-section h3 {
+    margin: 0 0 12px;
+    font-size: 1.3em;
+    color: #470000;
+}
+.post-install-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    align-items: start;
+}
+.post-install-grid details {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+.post-install-grid details:only-child {
+    grid-column: 1 / -1;
+}
+.post-install-grid summary {
+    padding: 12px 16px;
+    font-weight: 600;
+    cursor: pointer;
+    background: #faf5f6;
+    border-bottom: 1px solid #e0e0e0;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #470000;
+}
+.post-install-grid summary::before {
+    content: '▸';
+    transition: transform 0.2s;
+    font-size: 0.9em;
+}
+.post-install-grid details[open] summary::before {
+    transform: rotate(90deg);
+}
+.post-install-grid details div {
+    padding: 12px 16px;
+}
+
+/* Content Sections */
+.post-content h2 {
+    color: #470000;
+    font-size: 1.5em;
+    margin: 30px 0 12px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid #f0e0e2;
+}
+.post-content h3 {
+    color: #5a1a1a;
+    font-size: 1.2em;
+    margin: 20px 0 8px;
+}
+.post-content p {
+    margin: 10px 0;
+    line-height: 1.7;
+}
+.post-content ul {
+    margin: 10px 0 10px 20px;
+}
+.post-content li {
+    margin: 6px 0;
+    line-height: 1.6;
+}
+.post-content li strong {
+    color: #470000;
+}
+
+/* Details Grid (characters, zones, etc.) */
+.post-details-box {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 24px auto;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.post-details-box h3 {
+    margin: 0 0 12px;
+    font-size: 1.4em;
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+/* FAQ Section */
+.post-faq details {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    margin: 8px 0;
+    overflow: hidden;
+}
+.post-faq summary {
+    padding: 14px 18px;
+    font-weight: 600;
+    cursor: pointer;
+    background: #faf5f6;
+    color: #470000;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.post-faq summary::before {
+    content: '▸';
+    transition: transform 0.2s;
+}
+.post-faq details[open] summary::before {
+    transform: rotate(90deg);
+}
+.post-faq details div {
+    padding: 14px 18px;
+    line-height: 1.6;
+}
+
+/* Video Section */
+.post-video-section {
+    margin: 24px 0;
+}
+.post-video-section h2 {
+    color: #470000;
+    font-size: 1.5em;
+    margin: 30px 0 12px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid #f0e0e2;
+}
+.post-video-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    padding-top: 56.25%;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    margin-top: 12px;
+}
+.post-yt-facade {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    background: #000;
+}
+.post-yt-facade img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.post-yt-play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0,0,0,0.7);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 68px;
+    height: 68px;
+    font-size: 28px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+}
+.post-yt-facade:hover .post-yt-play {
+    background: #ff0000;
+}
+
+/* Related Games */
+.post-related-games {
+    margin: 30px 0;
+}
+.post-related-games h2 {
+    text-align: center;
+    border-bottom: none;
+}
+.post-related-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-top: 16px;
+}
+.post-related-grid a {
+    display: block;
+    text-decoration: none;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    background: #fff;
+}
+.post-related-grid a:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.18);
+    text-decoration: none;
+}
+.post-related-grid img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+.post-related-grid span {
+    display: block;
+    padding: 10px;
+    font-weight: 600;
+    text-align: center;
+    color: #333;
+    font-size: 0.9em;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .post-title { font-size: 2em; }
+    .post-intro-layout { flex-direction: column; align-items: center; }
+    .post-intro-layout img { max-width: 280px; }
+    .post-screenshot-gallery { grid-template-columns: 1fr 1fr; }
+    .post-screenshot-gallery.gallery-2 { max-width: 100%; }
+    .post-screenshot-gallery.gallery-1 { max-width: 50%; }
+    .post-install-grid { grid-template-columns: 1fr; }
+    .post-related-grid { grid-template-columns: repeat(2, 1fr); }
+    .post-download-section { padding: 20px 16px; }
+}
+@media (max-width: 480px) {
+    .post-title { font-size: 1.7em; }
+    .post-screenshot-gallery { grid-template-columns: 1fr; }
+    .post-screenshot-gallery.gallery-2 { max-width: 100%; }
+    .post-screenshot-gallery.gallery-1 { max-width: 100%; }
+    .post-related-grid { grid-template-columns: 1fr 1fr; }
+}
+</style>
+
+<!-- ========== POST CONTENT START ========== -->
+
+<h1 class="post-title">Those Nights at Rachel's</h1>
+
+<!-- Hero / Intro Section -->
+<div class="post-description">
+    <div class="post-intro-layout">
+        <img src="/uploads/overhaul/those-nights-at-rachels/portada-thumb.webp" alt="Those Nights at Rachel's cover art featuring the animatronics Doug, Rachel, Pete, Bane, Ray and The Thing" width="330" height="207" loading="eager" />
+        <div class="post-intro-text">
+            <p>
+                <strong>Those Nights at Rachel's</strong> is a landmark FNAF fan game by Nikson — the developer behind The Joy of Creation. Released in December 2015, it was one of the first fan games built in Unreal Engine with real-time 3D graphics, setting a new visual standard for the entire community. You take on the role of a night guard at "Doug and Rachel's," a family entertainment restaurant where six animatronics roam after hours. With a complex office to navigate, multiple defense mechanics, and an atmosphere that still holds up years later, TNaR is widely regarded as one of the best FNAF fan games available on Android and an essential piece of fan game history.
+            </p>
+            <a class="post-download-cta" href="#download">Download Those Nights at Rachel's Free</a>
+        </div>
+    </div>
+</div>
+
+<!-- Stats Table -->
+<table class="post-stats-table">
+    <thead>
+        <tr>
+            <th>Feature</th>
+            <th>Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr><td>Developer</td><td>Nikson (with Smashing_Renders, Expand, Kane Carter)</td></tr>
+        <tr><td>Engine</td><td>Unreal Engine</td></tr>
+        <tr><td>Platforms</td><td>Windows PC, Android</td></tr>
+        <tr><td>Genre</td><td>Survival Horror</td></tr>
+        <tr><td>Structure</td><td>5 Nights + Hard Edition (separate download)</td></tr>
+        <tr><td>Release Date</td><td>December 15, 2015</td></tr>
+        <tr><td>Price</td><td>Free</td></tr>
+    </tbody>
+</table>
+
+<!-- Download Section -->
+<div id="download" class="post-download-section">
+    <h2>Download Those Nights at Rachel's</h2>
+    <p class="version-info">Available as a free download for <strong>Windows PC</strong> (Normal + Hard Edition) and <strong>Android</strong>.</p>
+    <div class="post-download-buttons">
+        <a class="post-download-btn" href="https://mega.nz/file/DBoEwBTI#CldtJSbn31cdduR8j15pOA9bCWQsusZpApw3UC79ikk" target="_blank" rel="nofollow noopener">Download for PC (Mega)</a>
+        <a class="post-download-btn" href="https://mega.nz/file/XUpzkLhR#5A-AxzTt1ej7P3aIYKas1ZVQBm3slf9fzHeWPeaueKI" target="_blank" rel="nofollow noopener">Download Hard Edition PC (Mega)</a>
+        <a class="post-download-btn" href="https://mega.nz/file/zBpCnR4S#Q_grpDWsZbYNJpsuUTB-NEPojcyFJ9WXcYFdNuLPs1c" target="_blank" rel="nofollow noopener">Download for Android (Mega)</a>
+    </div>
+</div>
+
+<!-- Install Instructions -->
+<div class="post-install-section">
+    <h3>How to Install Those Nights at Rachel's</h3>
+    <div class="post-install-grid">
+        <details>
+            <summary>Windows</summary>
+            <div>
+                <ol>
+                    <li>Download the .zip file from the link above (Normal or Hard Edition)</li>
+                    <li>Extract the contents to a folder of your choice</li>
+                    <li>Run the .exe file to start the game</li>
+                    <li>If Windows SmartScreen blocks it, click "More info" then "Run anyway"</li>
+                    <li>Requires a 64-bit system with Windows 7 or later</li>
+                </ol>
+            </div>
+        </details>
+        <details>
+            <summary>Android</summary>
+            <div>
+                <ol>
+                    <li>Download the .apk file from the link above</li>
+                    <li>On your device, go to Settings &gt; Security and enable "Unknown sources"</li>
+                    <li>Open the downloaded .apk file and tap "Install"</li>
+                    <li>Once installed, open the game from your app drawer</li>
+                </ol>
+            </div>
+        </details>
+    </div>
+</div>
+
+<div class="post-content">
+
+<h2>What Makes Those Nights at Rachel's Special</h2>
+<p>Back in 2015, nearly every FNAF fan game was a 2D point-and-click experience built in Clickteam Fusion. Those Nights at Rachel's shattered that mold entirely. Nikson built the game in Unreal Engine, delivering fully rendered 3D environments with real-time lighting, animated camera feeds, and animatronics that react to your flashlight beam. The result was a level of immersion that no other fan game had achieved at the time.</p>
+
+<p>The office isn't a static screen — it's a 3D space you physically navigate, peeking around corners, ducking under a desk, and moving between stations to manage threats from every direction. This design philosophy would later evolve into The Joy of Creation: Story Mode, making TNaR a direct stepping stone to one of the most acclaimed FNAF fan games ever made. You can even trace specific elements — Doug's iconic punch jumpscare is a clear precursor to Ignited Bonnie's attack in TJOC.</p>
+
+</div>
+
+<!-- Video Section -->
+<div class="post-video-section">
+    <h2>Those Nights at Rachel's Gameplay</h2>
+    <div class="post-video-container">
+        <div class="post-yt-facade" data-vid="383EkMwPU9c">
+            <img src="https://i.ytimg.com/vi/383EkMwPU9c/hqdefault.jpg" alt="Those Nights at Rachel's gameplay video" loading="lazy" />
+            <button class="post-yt-play" aria-label="Play video">&#9654;</button>
+        </div>
+    </div>
+</div>
+
+<div class="post-content">
+
+<h2>Gameplay Mechanics</h2>
+<p>TNaR takes place in a complex 3D office with multiple interactive elements. Unlike traditional FNAF games where you sit in one spot, here you need to physically move around your workspace to survive.</p>
+
+<ul>
+    <li><strong>Office Navigation:</strong> Move around using W/A/D or on-screen arrows. Press E to peek around corners and check the doors.</li>
+    <li><strong>Two Doors:</strong> Close them with Z and X respectively — but only one can be shut at a time. When animatronics are approaching from both sides, you need to prioritize.</li>
+    <li><strong>The Desk:</strong> You can hide underneath it, which acts like having both doors closed simultaneously. It's the safest spot, but if an animatronic is waiting at the door when you come out, it's instant death. Listen for footsteps to know when they've left.</li>
+    <li><strong>Security Cameras:</strong> Activated with the spacebar, they show real-time 3D animations of the building. Their main purpose is keeping Ray (the Foxy equivalent) from charging toward your office.</li>
+    <li><strong>Flashlight:</strong> Right-click to toggle. The real-time lighting interaction with the dark environment and roaming animatronics is one of the game's most immersive features.</li>
+    <li><strong>The Curtain:</strong> A back room contains a curtain hiding a giant box. If the curtain opens completely, The Thing escapes and kills you no matter where you are — even hiding under the desk won't save you. You need to periodically leave your post to close it, which means exposing yourself to other threats.</li>
+    <li><strong>Energy Monitor:</strong> A screen on the desk shows remaining power and which door is currently closed.</li>
+</ul>
+
+<h2>The Animatronics</h2>
+<p>Doug and Rachel's restaurant features six animatronics plus a hidden easter egg, each with distinct behaviors:</p>
+
+<ul>
+    <li><strong>Doug (Dog):</strong> The most active animatronic. Approaches from the left door and delivers an iconic punch jumpscare — the same attack that would later inspire Ignited Bonnie's signature move in TJOC.</li>
+    <li><strong>Rachel (Rabbit):</strong> Also uses the left door but is far less aggressive. Ironically, the game's titular character barely shows up past Night 2.</li>
+    <li><strong>Pete (Pig):</strong> Mirrors Doug's behavior but attacks from the right door. More aggressive than his counterpart Bane.</li>
+    <li><strong>Bane (Bull):</strong> Similar to Pete on the right side, but makes no sound when arriving or leaving — you have to count the seconds to know when it's safe.</li>
+    <li><strong>Ray (Raccoon):</strong> The Foxy equivalent. Advances through stages visible on cameras before charging at the office. Keep watching him through the security feed to reset his progress.</li>
+    <li><strong>The Thing:</strong> A sinister version of the Puppet concept. Hides behind a curtain in the back room. If it fully opens, The Thing escapes and kills you instantly regardless of your position. The most dangerous threat in the game.</li>
+    <li><strong>Shadow Rachel:</strong> A rare easter egg. Appears briefly on screen when you turn around — purely visual with no gameplay impact.</li>
+</ul>
+
+</div>
+
+<div class="post-content">
+
+<h2>The Story of Doug and Rachel's</h2>
+<p>The narrative unfolds through nightly phone calls that gradually reveal a darker picture behind the family-friendly restaurant:</p>
+
+<p>On your first night, a teenage employee welcomes you and hands the phone to the manager, who explains the basic mechanics. It seems like a straightforward security gig. But as the nights progress, things get strange — the restaurant's owner, Phil, has mysteriously disappeared, and without him, no one can approve promotions or raises.</p>
+
+<p>By Night 5, the phone calls take a sinister turn. The Phone Guy reveals he's been in contact with Phil despite his supposed disappearance. He hints at plans to sabotage the competing Freddy Fazbear's Pizza and confesses that the player has been strung along — they were never going to get the promised promotion. After surviving the final night, a cinematic shows the player in their bedroom surrounded by Rachel posters. Someone knocks on the door, The Thing attacks, and you wake up back in the office — leaving it ambiguous whether it was a nightmare or something worse.</p>
+
+<h2>What the Community Says</h2>
+<p>TNaR occupies a unique space in community opinion — praised for its technical achievements while criticized for some gameplay decisions.</p>
+
+<p>On the positive side, the game consistently ranks as one of the best FNAF fan games on Android, earning <strong>Top 1 positions in multiple fan-made rankings</strong>. Reviewers praise the 3D immersion as genuinely frightening: <em>"The added layer of immersion that the real-time 3D elements add really freaks me out in a lot of ways that most other FNAF fan games just haven't before."</em> The curtain mechanic with The Thing is singled out as an evolution of the music box concept, and the connection to Nikson's later work adds historical value.</p>
+
+<p>However, critics point out that the animatronics move too infrequently — some players report entire nights without being attacked. The mechanics can also cancel each other out: hiding under the desk makes both doors irrelevant, and the keyboard shortcuts make the door monitor redundant. Rachel, despite being the title character, almost never reaches the office after Night 2. One reviewer summed it up bluntly: <em>"It's the shadow of The Joy of Creation"</em> — impressive for its time, but showing its age compared to what Nikson built afterwards.</p>
+
+</div>
+
+<div class="post-content">
+<h2>Frequently Asked Questions</h2>
+</div>
+
+<div class="post-faq">
+    <details>
+        <summary>Is Those Nights at Rachel's free?</summary>
+        <div>Yes, TNaR is completely free to download and play on both PC and Android. The Hard Edition is also free as a separate download.</div>
+    </details>
+    <details>
+        <summary>What is the Hard Edition?</summary>
+        <div>The Hard Edition is a separate download that features redesigned, more frightening versions of the animatronics along with increased difficulty. It's essentially a harder version of the same game with alternate character designs. Note: there's a known bug where Rachel and Ray cannot attack unless energy runs out, making cameras useless in this mode.</div>
+    </details>
+    <details>
+        <summary>Who made Those Nights at Rachel's?</summary>
+        <div>The game was created by Nikson, the same developer behind The Joy of Creation and The Joy of Creation: Story Mode. He was assisted by Smashing_Renders (character modeling), Expand (story writing), Kane Carter (general help), and Patrick Richards (voice acting).</div>
+    </details>
+    <details>
+        <summary>Is there a sequel?</summary>
+        <div>A sequel was teased with destroyed versions of the characters and a new abandoned setting featuring Fredbear and Spring Bonnie, but it was never officially released. Nikson chose to focus on The Joy of Creation instead. However, Those Nights at Rachel's 2: Reloaded exists as a joke game released on April Fools 2018 — a horde shooter where you gun down the animatronics. It was endorsed by Nikson despite being made by another developer.</div>
+    </details>
+    <details>
+        <summary>What are the minimum system requirements?</summary>
+        <div>For PC, you need a 64-bit Windows 7 or later system with a quad-core Intel or AMD processor at 2.5 GHz, an NVIDIA GeForce 470 GTX or AMD Radeon 6870 HD graphics card, and 4 GB of RAM. The download is approximately 500 MB.</div>
+    </details>
+</div>
+
+<!-- Related FNAF Fan Games -->
+<h2 class="il-heading">More FNAF Fan Games</h2>
+<div class="il-grid">
+<div class="il-card"><a href="/after-fright/">
+<img class="il-img" src="/uploads/overhaul/after-fright/portada-thumb.webp" alt="After Fright" loading="lazy" />
+<p class="il-title">After Fright</p></a>
+</div>
+<div class="il-card"><a href="/return-to-bloody-nights/">
+<img class="il-img" src="/uploads/overhaul/return-to-bloody-nights/new-thub-bnaf-done-sgrezqhe-thumb.webp" alt="The Return to Bloody Nights" loading="lazy" />
+<p class="il-title">The Return to Bloody Nights</p></a>
+</div>
+<div class="il-card"><a href="/tyke-and-sons-lumber-co/">
+<img class="il-img" src="/uploads/overhaul/tyke-and-sons-lumber-co/tyke-and-sons-thumb.webp" alt="Tyke and Sons Lumber Co." loading="lazy" />
+<p class="il-title">Tyke and Sons Lumber Co.</p></a>
+</div>
+<div class="il-card"><a href="/five-nights-with-mac-tonight/">
+<img class="il-img" src="/uploads/overhaul/five-nights-with-mac-tonight/portada-thumb.webp" alt="Five Nights with Mac Tonight" loading="lazy" />
+<p class="il-title">Five Nights with Mac Tonight</p></a>
+</div>
+</div>
+
+<!-- Lightbox Script -->
+<script>
+    // Lightbox functionality
+    const overlay = document.createElement('div');
+    overlay.className = 'post-lightbox-overlay';
+    document.body.appendChild(overlay);
+
+    document.querySelectorAll('[data-lightbox]').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const img = document.createElement('img');
+            img.src = link.href;
+            img.alt = link.querySelector('img')?.alt || '';
+            overlay.innerHTML = '';
+            overlay.appendChild(img);
+            overlay.classList.add('active');
+        });
+    });
+
+    overlay.addEventListener('click', () => {
+        overlay.classList.remove('active');
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            overlay.classList.remove('active');
+        }
+    });
+
+    // YouTube facade - click to load
+    document.querySelectorAll('.post-yt-facade').forEach(el => {
+        el.addEventListener('click', () => {
+            const vid = el.dataset.vid;
+            const container = el.parentElement;
+            const iframe = document.createElement('iframe');
+            iframe.src = 'https://www.youtube-nocookie.com/embed/' + vid + '?autoplay=1';
+            iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+            iframe.setAttribute('allowfullscreen', '');
+            el.remove();
+            container.appendChild(iframe);
+        });
+    });
+</script>
+
+</Layout>

@@ -1,0 +1,774 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+<Layout title="FNAF Rewritten 87 - Download Free FNAF 2 Remake" description="Download FNAF Rewritten '87, the best FNAF 2 remake. Reimagined animatronics, rewritten lore, real-time animations, and a stunning Night 6 escape. Free for PC." lang="en">
+
+<style is:global>
+/* Override site-content width to match sonic-fangames.com (1200px content + 40px padding each side) */
+.site-content {
+    max-width: 1200px !important;
+    padding: 30px 40px !important;
+    box-sizing: content-box !important;
+}
+
+/* Styles for dynamically created elements (JS-created, no Astro scope attribute) */
+.post-video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+.post-lightbox-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.85);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: zoom-out;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+}
+.post-lightbox-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+.post-lightbox-overlay img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 8px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+}
+</style>
+
+<style>
+/* ========== INTERLINKING SECTION ========== */
+.il-heading { font-size: 24px; font-weight: 800; color: #470000; margin: 48px 0 16px; }
+.il-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 0 0 40px; }
+.il-card { background: #fff5f5; border: 1px solid #e0c8c8; border-radius: 12px; padding: 6px; text-align: center; }
+.il-card a { text-decoration: none; color: inherit; display: block; }
+.il-card a:hover { text-decoration: none; }
+.il-card:hover { border-color: #470000; }
+.il-img { width: 100%; height: 150px; object-fit: cover; border-radius: 10px; display: block; }
+.il-title { font-size: 14px; font-weight: 600; color: #1a1d2e; margin: 6px 0 2px; line-height: 1.4; }
+@media (max-width: 768px) { .il-grid { grid-template-columns: repeat(2, 1fr); } }
+
+/* ========== NEW POST DESIGN STYLES ========== */
+
+/* H1 - Game Title */
+.post-title {
+    text-align: center;
+    font-size: 2.8em;
+    font-weight: 800;
+    color: #470000;
+    margin: 20px 0 5px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    letter-spacing: -0.5px;
+}
+.post-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: #470000;
+    margin: 12px auto 0;
+    border-radius: 2px;
+}
+
+/* Description Section (Hero) */
+.post-description {
+    position: relative;
+    padding: 16px 20px;
+    border-radius: 16px;
+    margin: 30px auto;
+    max-width: 1200px;
+    background: linear-gradient(135deg, #f5e6e8, #ffffff);
+    color: #333;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: 0.4s;
+}
+.post-intro-layout {
+    display: flex;
+    align-items: stretch;
+    gap: 24px;
+    margin-bottom: 0;
+}
+.post-intro-layout img {
+    flex-shrink: 0;
+    align-self: flex-start;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    max-width: 330px;
+    width: 100%;
+    height: auto;
+}
+.post-intro-text {
+    flex: 1;
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+}
+.post-intro-text > p {
+    font-size: 1em;
+    line-height: 1.5;
+    margin: 0;
+    text-align: left;
+    flex: 1;
+}
+.post-intro-text > p strong:first-child {
+    color: #470000;
+    font-size: 1.05em;
+}
+
+/* Download CTA Button */
+.post-download-cta {
+    display: block;
+    text-align: center;
+    padding: 15px;
+    background: #470000;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 8px 0 0;
+    transition: background 0.2s;
+    color: #fff !important;
+}
+.post-download-cta:hover {
+    background: #5a0000;
+    text-decoration: none;
+}
+
+/* Stats Table */
+.post-stats-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 24px 0;
+    font-size: 1em;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    border: 1px solid #e0e0e0;
+}
+.post-stats-table thead tr {
+    background: #7E4955;
+}
+.post-stats-table th {
+    color: #fff;
+    font-weight: 700;
+    padding: 14px 18px;
+    text-align: left;
+    font-size: 0.95em;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.post-stats-table td {
+    padding: 12px 18px;
+    border-bottom: 1px solid #f0f0f0;
+}
+.post-stats-table td:first-child {
+    font-weight: 600;
+    color: #470000;
+    width: 35%;
+}
+.post-stats-table tbody tr:nth-child(even) {
+    background: #faf5f6;
+}
+.post-stats-table tbody tr:last-child td {
+    border-bottom: none;
+}
+.post-stats-table tbody tr:hover {
+    background: #f5e6e8;
+}
+
+/* Screenshot Gallery */
+.post-screenshot-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin: 24px 0;
+}
+.post-screenshot-gallery.gallery-2 {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 66%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.post-screenshot-gallery.gallery-1 {
+    grid-template-columns: 1fr;
+    max-width: 33%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.post-screenshot-gallery a {
+    display: block;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+}
+.post-screenshot-gallery a:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.18);
+}
+.post-screenshot-gallery img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+}
+
+/* Download Section */
+.post-download-section {
+    background: linear-gradient(135deg, #470000, #6b1a1a);
+    border-radius: 16px;
+    padding: 30px 24px;
+    text-align: center;
+    margin: 30px 0;
+    color: #fff;
+    box-shadow: 0 4px 16px rgba(71,0,0,0.25);
+}
+.post-download-section h2 {
+    color: #fff;
+    margin: 0 0 8px;
+    font-size: 1.6em;
+}
+.post-download-section .version-info {
+    color: rgba(255,255,255,0.85);
+    margin: 0 0 20px;
+    font-size: 0.95em;
+}
+.post-download-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+.post-download-btn {
+    display: inline-block;
+    padding: 12px 28px;
+    background: #fff;
+    color: #470000 !important;
+    font-weight: 700;
+    border-radius: 8px;
+    text-decoration: none !important;
+    font-size: 1em;
+    transition: all 0.2s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+.post-download-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    background: #f5e6e8;
+}
+
+/* Install Section */
+.post-install-section {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 24px auto;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.post-install-section h3 {
+    margin: 0 0 12px;
+    font-size: 1.3em;
+    color: #470000;
+}
+.post-install-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    align-items: start;
+}
+.post-install-grid details {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+.post-install-grid details:only-child {
+    grid-column: 1 / -1;
+}
+.post-install-grid summary {
+    padding: 12px 16px;
+    font-weight: 600;
+    cursor: pointer;
+    background: #faf5f6;
+    border-bottom: 1px solid #e0e0e0;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #470000;
+}
+.post-install-grid summary::before {
+    content: '▸';
+    transition: transform 0.2s;
+    font-size: 0.9em;
+}
+.post-install-grid details[open] summary::before {
+    transform: rotate(90deg);
+}
+.post-install-grid details div {
+    padding: 12px 16px;
+}
+
+/* Content Sections */
+.post-content h2 {
+    color: #470000;
+    font-size: 1.5em;
+    margin: 30px 0 12px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid #f0e0e2;
+}
+.post-content h3 {
+    color: #5a1a1a;
+    font-size: 1.2em;
+    margin: 20px 0 8px;
+}
+.post-content p {
+    margin: 10px 0;
+    line-height: 1.7;
+}
+.post-content ul {
+    margin: 10px 0 10px 20px;
+}
+.post-content li {
+    margin: 6px 0;
+    line-height: 1.6;
+}
+.post-content li strong {
+    color: #470000;
+}
+
+/* Details Grid (characters, zones, etc.) */
+.post-details-box {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 24px auto;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.post-details-box h3 {
+    margin: 0 0 12px;
+    font-size: 1.4em;
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+/* FAQ Section */
+.post-faq details {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    margin: 8px 0;
+    overflow: hidden;
+}
+.post-faq summary {
+    padding: 14px 18px;
+    font-weight: 600;
+    cursor: pointer;
+    background: #faf5f6;
+    color: #470000;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.post-faq summary::before {
+    content: '▸';
+    transition: transform 0.2s;
+}
+.post-faq details[open] summary::before {
+    transform: rotate(90deg);
+}
+.post-faq details div {
+    padding: 14px 18px;
+    line-height: 1.6;
+}
+
+/* Video Section */
+.post-video-section {
+    margin: 24px 0;
+}
+.post-video-section h2 {
+    color: #470000;
+    font-size: 1.5em;
+    margin: 30px 0 12px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid #f0e0e2;
+}
+.post-video-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    padding-top: 56.25%;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    margin-top: 12px;
+}
+.post-yt-facade {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    background: #000;
+}
+.post-yt-facade img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.post-yt-play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0,0,0,0.7);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 68px;
+    height: 68px;
+    font-size: 28px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+}
+.post-yt-facade:hover .post-yt-play {
+    background: #ff0000;
+}
+
+/* Related Games */
+.post-related-games {
+    margin: 30px 0;
+}
+.post-related-games h2 {
+    text-align: center;
+    border-bottom: none;
+}
+.post-related-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-top: 16px;
+}
+.post-related-grid a {
+    display: block;
+    text-decoration: none;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    background: #fff;
+}
+.post-related-grid a:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.18);
+    text-decoration: none;
+}
+.post-related-grid img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+.post-related-grid span {
+    display: block;
+    padding: 10px;
+    font-weight: 600;
+    text-align: center;
+    color: #333;
+    font-size: 0.9em;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .post-title { font-size: 2em; }
+    .post-intro-layout { flex-direction: column; align-items: center; }
+    .post-intro-layout img { max-width: 280px; }
+    .post-screenshot-gallery { grid-template-columns: 1fr 1fr; }
+    .post-screenshot-gallery.gallery-2 { max-width: 100%; }
+    .post-screenshot-gallery.gallery-1 { max-width: 50%; }
+    .post-install-grid { grid-template-columns: 1fr; }
+    .post-related-grid { grid-template-columns: repeat(2, 1fr); }
+    .post-download-section { padding: 20px 16px; }
+}
+@media (max-width: 480px) {
+    .post-title { font-size: 1.7em; }
+    .post-screenshot-gallery { grid-template-columns: 1fr; }
+    .post-screenshot-gallery.gallery-2 { max-width: 100%; }
+    .post-screenshot-gallery.gallery-1 { max-width: 100%; }
+    .post-related-grid { grid-template-columns: 1fr 1fr; }
+}
+</style>
+
+<!-- ========== POST CONTENT START ========== -->
+
+<h1 class="post-title">FNAF Rewritten '87</h1>
+
+<!-- Hero / Intro Section -->
+<div class="post-description">
+    <div class="post-intro-layout">
+        <img src="/uploads/overhaul/fnaf-rewritten-87/portada-thumb.webp" alt="FNAF Rewritten 87 cover art featuring redesigned Freddy with neon logo" width="330" height="207" loading="eager" />
+        <div class="post-intro-text">
+            <p>
+                <strong>FNAF Rewritten '87</strong> is widely considered the best Five Nights at Freddy's 2 remake ever made. Developed by Dot-e, this reimagining puts you in the shoes of Jeremy Fitzgerald during the summer of 1987 at a renovated Freddy Fazbear's Pizza. Every animatronic has been redesigned, every mechanic reworked, and the entire FNAF 2 story has been rewritten into a coherent narrative with Michael Afton at its center. With real-time animatronic animations, explorable 3D environments between nights, and a climactic escape sequence that reviewers say surpasses anything the official FNAF movie attempted, this is a fan game that elevates the source material in every way.
+            </p>
+            <a class="post-download-cta" href="#download">Download FNAF Rewritten '87 Free</a>
+        </div>
+    </div>
+</div>
+
+<!-- Stats Table -->
+<table class="post-stats-table">
+    <thead>
+        <tr>
+            <th>Feature</th>
+            <th>Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr><td>Developer</td><td>Dot-e</td></tr>
+        <tr><td>Engine</td><td>Unity</td></tr>
+        <tr><td>Platforms</td><td>Windows PC</td></tr>
+        <tr><td>Genre</td><td>Survival Horror</td></tr>
+        <tr><td>Version</td><td>2.2.2 (Full Game)</td></tr>
+        <tr><td>Rating</td><td>4.8/5 (114 ratings)</td></tr>
+        <tr><td>Price</td><td>Free</td></tr>
+    </tbody>
+</table>
+
+<!-- Screenshot Gallery #1 -->
+<div class="post-screenshot-gallery" data-lightbox-gallery>
+    <a href="/uploads/overhaul/fnaf-rewritten-87/UWZ9gi.webp" data-lightbox>
+        <img src="/uploads/overhaul/fnaf-rewritten-87/UWZ9gi-thumb.webp" alt="Toy Bonnie redesigned with 80s aesthetic and glowing green eyes peering through a vent in FNAF Rewritten 87" loading="lazy" />
+    </a>
+    <a href="/uploads/overhaul/fnaf-rewritten-87/9l8hUP.webp" data-lightbox>
+        <img src="/uploads/overhaul/fnaf-rewritten-87/9l8hUP-thumb.webp" alt="The Puppet emerging from the music box surrounded by colorful balloons in FNAF Rewritten 87" loading="lazy" />
+    </a>
+    <a href="/uploads/overhaul/fnaf-rewritten-87/+ufR2J.webp" data-lightbox>
+        <img src="/uploads/overhaul/fnaf-rewritten-87/+ufR2J-thumb.webp" alt="Withered Chica with exposed endoskeleton jaw in a dark room in FNAF Rewritten 87" loading="lazy" />
+    </a>
+</div>
+
+<!-- Download Section -->
+<div id="download" class="post-download-section">
+    <h2>Download FNAF Rewritten '87</h2>
+    <p class="version-info">Version 2.2.2 Full Game — Free download for <strong>Windows PC</strong> (1.9 GB).</p>
+    <div class="post-download-buttons">
+        <a class="post-download-btn" href="https://mega.nz/file/3EQTmTRR#HRlCpRG-xdldEmG4Ugy6eCF6ZEs3COO43wGcfevJeZ8" target="_blank" rel="nofollow noopener">Download for PC (Mega)</a>
+    </div>
+</div>
+
+<!-- Install Instructions -->
+<div class="post-install-section">
+    <h3>How to Install FNAF Rewritten '87</h3>
+    <div class="post-install-grid">
+        <details>
+            <summary>Windows</summary>
+            <div>
+                <ol>
+                    <li>Download the file from the link above</li>
+                    <li>Extract the contents to a folder of your choice</li>
+                    <li>Run the .exe file to start the game</li>
+                    <li>If Windows SmartScreen blocks it, click "More info" then "Run anyway"</li>
+                </ol>
+            </div>
+        </details>
+    </div>
+</div>
+
+<div class="post-content">
+
+<h2>What Makes FNAF Rewritten '87 Special</h2>
+<p>This isn't a simple texture swap or a FNAF 2 reskin. FNAF Rewritten '87 is a ground-up reimagining that treats the original as a starting point rather than a blueprint. Every animatronic has been visually redesigned — Toy Bonnie and Toy Chica sport a distinct '80s aesthetic, while the Withered models look genuinely deteriorated and menacing. The environments have been completely rebuilt with modern lighting and detail that make the pizzeria feel like a real, lived-in space.</p>
+
+<p>What sets this remake apart is its ambition. Before each night, you can walk through the entire pizzeria in first-person 3D, exploring rooms, discovering secrets, finding Faz Tokens for Candy Cadet, and playing arcade machines that advance the narrative. It's a layer of immersion that the original never had, and it transforms the game from a simple survival experience into something closer to an interactive story.</p>
+
+<p>The animatronics don't just teleport between rooms anymore. They move in real time with full animations, which means you can actually watch them approach through cameras, giving you more time to react but also building significantly more tension. The pacing is deliberately slower than the original — fewer attacks, but each one lasts longer and demands more of your attention.</p>
+
+</div>
+
+<!-- Video Section -->
+<div class="post-video-section">
+    <h2>FNAF Rewritten '87 Gameplay</h2>
+    <div class="post-video-container">
+        <div class="post-yt-facade" data-vid="ci2JYAODcLI">
+            <img src="https://i.ytimg.com/vi/ci2JYAODcLI/hqdefault.jpg" alt="FNAF Rewritten 87 gameplay video" loading="lazy" />
+            <button class="post-yt-play" aria-label="Play video">&#9654;</button>
+        </div>
+    </div>
+</div>
+
+<div class="post-content">
+
+<h2>Gameplay Mechanics</h2>
+<p>The core structure follows FNAF 2 — survive the night in your security office using cameras, a flashlight, and the Freddy mask. But nearly every mechanic has been reworked to create a more strategic and visually dynamic experience.</p>
+
+<h3>The Animatronics</h3>
+<ul>
+    <li><strong>Toy Bonnie & Toy Chica:</strong> They approach through the vents, just like the original. Put on the mask when they enter the office — but now you get animated entry sequences that give you a slightly larger window to react. Wait until they lock eyes with you before reaching for the mask.</li>
+    <li><strong>Toy Freddy:</strong> Completely reworked. He laughs and heads for one of 4 fuse boxes marked with green circles on the cameras. Find him and hit him with the camera flashlight. If he reaches a box, the lights go out and the Puppet's music box gets locked. You'll need to solve a quick mini-puzzle on the cameras to restore power.</li>
+    <li><strong>The Puppet:</strong> The music box mechanic returns, but with slower drain to account for Toy Freddy's interference. Keep it wound or face the consequences.</li>
+    <li><strong>Withered Foxy:</strong> Appears in the hallway. Flash him repeatedly with your mouse — same principle as the original, but the animations make him far more intimidating.</li>
+    <li><strong>Mangle:</strong> Enters through the main hallway, climbs to the ceiling causing camera static, then drops her head down twice — requiring the mask each time. She's one of the most stressful encounters because her static noise drowns out Toy Freddy's laugh, making multitasking a nightmare.</li>
+    <li><strong>Withered Bonnie, Chica & Freddy:</strong> They come down the hallway with intimidating new animations. Mask up when they enter the office.</li>
+    <li><strong>Balloon Boy:</strong> Can appear through either vent. Shine your light on him to scare him away. If he gets in, he steals your batteries and Foxy becomes an instant kill.</li>
+</ul>
+
+<h3>Later Night Threats</h3>
+<ul>
+    <li><strong>Shadow Bonnie (Night 5+):</strong> Shadows appear on camera feeds blocking essential buttons — camera switches, flashlight, and the music box. Click them to clear them. They represent the Puppet actively trying to stop you from uncovering the truth.</li>
+    <li><strong>Golden Freddy (Night 5):</strong> When he appears, look away to the cameras. Stare too long and the hallucinations begin.</li>
+</ul>
+
+</div>
+
+<!-- Screenshot Gallery #2 -->
+<div class="post-screenshot-gallery gallery-2" data-lightbox-gallery>
+    <a href="/uploads/overhaul/fnaf-rewritten-87/Vmh8CL.webp" data-lightbox>
+        <img src="/uploads/overhaul/fnaf-rewritten-87/Vmh8CL-thumb.webp" alt="Redesigned Balloon Boy with sinister appearance holding an orange balloon in a red-lit corridor in FNAF Rewritten 87" loading="lazy" />
+    </a>
+    <a href="/uploads/overhaul/fnaf-rewritten-87/ipSj2S.webp" data-lightbox>
+        <img src="/uploads/overhaul/fnaf-rewritten-87/ipSj2S-thumb.webp" alt="Withered Foxy standing tall in a star-decorated room showing full deteriorated body in FNAF Rewritten 87" loading="lazy" />
+    </a>
+</div>
+
+<div class="post-content">
+
+<h2>A Reimagined Story</h2>
+<p>FNAF Rewritten '87 doesn't just retell the FNAF 2 story — it rewrites it entirely as part of a coherent trilogy. This is the second entry in the Rewritten saga, following the FNAF 1 remake, and the narrative threads connect directly.</p>
+
+<p>The setup: after five children disappeared at the original Freddy Fazbear's Pizza, a massive corporation bought the franchise and built a new location with redesigned animatronics and upgraded security systems. You play as Jeremy Fitzgerald, a summer employee in 1987 who quickly realizes something is deeply wrong.</p>
+
+<p>Between nights, cinematic cutscenes show the perspective of the child who possesses Freddy — from the moment of death through decades of existence trapped inside an animatronic. It's a haunting portrayal of what the "haunted robots" concept actually means for the souls inside them.</p>
+
+<p>The Puppet takes on a far more complex role here. Rather than a straightforward villain, Charlie (the Puppet) is a grey antagonist — she gave the dead children life inside the animatronics and genuinely believes she's protecting them. She opposes anyone trying to uncover the truth because doing so would mean the children "truly die." The arcade minijuegos between nights show the souls' attempts at freedom while the Puppet works to keep them bound.</p>
+
+<p>Night 6 shifts the perspective to Michael Afton, who infiltrates the pizzeria after the Bite of '87. Through Candy Cadet, it's confirmed that Michael has been the protagonist of the entire Rewritten saga. He endures hallucinations of William Afton blaming him for the Crying Child's death, and the night culminates in an intense escape sequence through the entire pizzeria, pursued by every animatronic. He escapes with Jeremy's logbook — a key item for the saga's conclusion.</p>
+
+<h2>What the Community Says</h2>
+<p>FNAF Rewritten '87 has earned near-universal praise, sitting at 4.8 out of 5 on itch.io with over 100 ratings.</p>
+
+<p><strong>BNY</strong> called it <em>"the best FNAF 2 remake of these times, with astonishing quality"</em> and gave it an 8/10. He noted that it works as <em>"a 'what if' FNAF had its lore planned from day one"</em> and found it more enjoyable than the original. On the Night 6 escape sequence: <em>"It's scarier than anything the FNAF 2 movie tried to do."</em></p>
+
+<p>Another reviewer highlighted the narrative as the game's greatest strength: <em>"Very few manage to give you a new and rewarding experience from already-known stories and mechanics."</em> He praised the real-time animations and the reworked Mangle and Toy Freddy mechanics specifically.</p>
+
+<p><strong>Dexter White</strong> went further: <em>"This game is nothing short of a masterpiece."</em> He praised how it makes FNAF 2 feel like <em>"the overwhelming game Scott originally wanted it to be,"</em> calling the graphics, animations, and storytelling <em>"phenomenal."</em></p>
+
+</div>
+
+<div class="post-content">
+<h2>Frequently Asked Questions</h2>
+</div>
+
+<div class="post-faq">
+    <details>
+        <summary>Is FNAF Rewritten '87 free?</summary>
+        <div>Yes, it's completely free to download and play. The full game (version 2.2.2) is available as a single download.</div>
+    </details>
+    <details>
+        <summary>Do I need to play FNAF Rewritten 1 first?</summary>
+        <div>It's recommended but not required. FNAF Rewritten '87 is the second entry in the Rewritten trilogy and builds on the first game's story, especially regarding Michael Afton's role. However, the game stands on its own as a FNAF 2 reimagining.</div>
+    </details>
+    <details>
+        <summary>How big is the download?</summary>
+        <div>The full game is approximately 1.9 GB. There's also an older pre-Night 6 demo (1 GB), but the full release is recommended since it contains the complete experience including the Night 6 escape sequence.</div>
+    </details>
+    <details>
+        <summary>Is there a Custom Night?</summary>
+        <div>No. Unlike the original FNAF 2, Rewritten '87 does not include a Custom Night or additional challenges. The developer focused on the 6-night story campaign and the explorable 3D environments instead.</div>
+    </details>
+    <details>
+        <summary>Is there an Android or Mac version?</summary>
+        <div>No, FNAF Rewritten '87 is currently only available for Windows PC. There are no official plans for ports to other platforms.</div>
+    </details>
+    <details>
+        <summary>Will there be a third Rewritten game?</summary>
+        <div>Yes. The trilogy will conclude with "Missing Children," which is planned for 2028. The original plan for 6 games was scrapped in favor of a tighter trilogy. The final entry will not include Elizabeth or the Funtime animatronics.</div>
+    </details>
+</div>
+
+<!-- Related FNAF Fan Games -->
+<h2 class="il-heading">More FNAF Fan Games</h2>
+<div class="il-grid">
+<div class="il-card"><a href="/tyke-and-sons-lumber-co/">
+<img class="il-img" src="/uploads/overhaul/tyke-and-sons-lumber-co/tyke-and-sons-thumb.webp" alt="Tyke and Sons Lumber Co." loading="lazy" />
+<p class="il-title">Tyke and Sons Lumber Co.</p></a>
+</div>
+<div class="il-card"><a href="/showmans-the-awakening/">
+<img class="il-img" src="/uploads/overhaul/showman-the-awakening/coverch1_5-9iercv37-thumb.webp" alt="Showman's: The Awakening" loading="lazy" />
+<p class="il-title">Showman's: The Awakening</p></a>
+</div>
+<div class="il-card"><a href="/fredbear-and-friends-left-to-rot/">
+<img class="il-img" src="/uploads/overhaul/fredbear-and-friends-left-to-rot/a7vz6hudd6451-thumb.webp" alt="Fredbear &amp; Friends: Left to Rot" loading="lazy" />
+<p class="il-title">Fredbear &amp; Friends: Left to Rot</p></a>
+</div>
+<div class="il-card"><a href="/candys-3/">
+<img class="il-img" src="/uploads/overhaul/five-nights-at-candys-3/Fnac_3_icon_768-2ptwpvda-thumb.webp" alt="Five Nights at Candy's 3" loading="lazy" />
+<p class="il-title">Five Nights at Candy's 3</p></a>
+</div>
+</div>
+
+<!-- Lightbox Script -->
+<script>
+    // Lightbox functionality
+    const overlay = document.createElement('div');
+    overlay.className = 'post-lightbox-overlay';
+    document.body.appendChild(overlay);
+
+    document.querySelectorAll('[data-lightbox]').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const img = document.createElement('img');
+            img.src = link.href;
+            img.alt = link.querySelector('img')?.alt || '';
+            overlay.innerHTML = '';
+            overlay.appendChild(img);
+            overlay.classList.add('active');
+        });
+    });
+
+    overlay.addEventListener('click', () => {
+        overlay.classList.remove('active');
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            overlay.classList.remove('active');
+        }
+    });
+
+    // YouTube facade - click to load
+    document.querySelectorAll('.post-yt-facade').forEach(el => {
+        el.addEventListener('click', () => {
+            const vid = el.dataset.vid;
+            const container = el.parentElement;
+            const iframe = document.createElement('iframe');
+            iframe.src = 'https://www.youtube-nocookie.com/embed/' + vid + '?autoplay=1';
+            iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+            iframe.setAttribute('allowfullscreen', '');
+            el.remove();
+            container.appendChild(iframe);
+        });
+    });
+</script>
+
+</Layout>

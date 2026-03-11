@@ -1,0 +1,742 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+<Layout title="Animatronic Memories - Download Free FNAF Fan Game" description="Download Animatronic Memories, a FNAF fan game set in 1989 with realistic Chuck E. Cheese-style animatronics and a fuse-based power system. Free for PC." lang="en">
+
+<style is:global>
+.site-content {
+    max-width: 1200px !important;
+    padding: 30px 40px !important;
+    box-sizing: content-box !important;
+}
+.post-video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+.post-lightbox-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.85);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: zoom-out;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+}
+.post-lightbox-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+.post-lightbox-overlay img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 8px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+}
+</style>
+
+<style>
+.post-title {
+    text-align: center;
+    font-size: 2.8em;
+    font-weight: 800;
+    color: #470000;
+    margin: 20px 0 5px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    letter-spacing: -0.5px;
+}
+.post-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: #470000;
+    margin: 12px auto 0;
+    border-radius: 2px;
+}
+.post-description {
+    position: relative;
+    padding: 16px 20px;
+    border-radius: 16px;
+    margin: 30px auto;
+    max-width: 1200px;
+    background: linear-gradient(135deg, #f5e6e8, #ffffff);
+    color: #333;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: 0.4s;
+}
+.post-intro-layout {
+    display: flex;
+    align-items: stretch;
+    gap: 24px;
+    margin-bottom: 0;
+}
+.post-intro-layout img {
+    flex-shrink: 0;
+    align-self: flex-start;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    max-width: 330px;
+    width: 100%;
+    height: auto;
+}
+.post-intro-text {
+    flex: 1;
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+}
+.post-intro-text > p {
+    font-size: 1em;
+    line-height: 1.5;
+    margin: 0;
+    text-align: left;
+    flex: 1;
+}
+.post-intro-text > p strong:first-child {
+    color: #470000;
+    font-size: 1.05em;
+}
+.post-download-cta {
+    display: block;
+    text-align: center;
+    padding: 15px;
+    background: #470000;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 8px 0 0;
+    transition: background 0.2s;
+    color: #fff !important;
+}
+.post-download-cta:hover {
+    background: #5a0000;
+    text-decoration: none;
+}
+.post-stats-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 24px 0;
+    font-size: 1em;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    border: 1px solid #e0e0e0;
+}
+.post-stats-table thead tr {
+    background: #7E4955;
+}
+.post-stats-table th {
+    color: #fff;
+    font-weight: 700;
+    padding: 14px 18px;
+    text-align: left;
+    font-size: 0.95em;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.post-stats-table td {
+    padding: 12px 18px;
+    border-bottom: 1px solid #f0f0f0;
+}
+.post-stats-table td:first-child {
+    font-weight: 600;
+    color: #470000;
+    width: 35%;
+}
+.post-stats-table tbody tr:nth-child(even) {
+    background: #faf5f6;
+}
+.post-stats-table tbody tr:last-child td {
+    border-bottom: none;
+}
+.post-stats-table tbody tr:hover {
+    background: #f5e6e8;
+}
+.post-screenshot-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin: 24px 0;
+}
+.post-screenshot-gallery.gallery-2 {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 66%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.post-screenshot-gallery.gallery-1 {
+    grid-template-columns: 1fr;
+    max-width: 33%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.post-screenshot-gallery a {
+    display: block;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+}
+.post-screenshot-gallery a:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.18);
+}
+.post-screenshot-gallery img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+}
+.post-download-section {
+    background: linear-gradient(135deg, #470000, #6b1a1a);
+    border-radius: 16px;
+    padding: 30px 24px;
+    text-align: center;
+    margin: 30px 0;
+    color: #fff;
+    box-shadow: 0 4px 16px rgba(71,0,0,0.25);
+}
+.post-download-section h2 {
+    color: #fff;
+    margin: 0 0 8px;
+    font-size: 1.6em;
+}
+.post-download-section .version-info {
+    color: rgba(255,255,255,0.85);
+    margin: 0 0 20px;
+    font-size: 0.95em;
+}
+.post-download-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+.post-download-btn {
+    display: inline-block;
+    padding: 12px 28px;
+    background: #fff;
+    color: #470000 !important;
+    font-weight: 700;
+    border-radius: 8px;
+    text-decoration: none !important;
+    font-size: 1em;
+    transition: all 0.2s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+.post-download-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    background: #f5e6e8;
+}
+.post-install-section {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 24px auto;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.post-install-section h3 {
+    margin: 0 0 12px;
+    font-size: 1.3em;
+    color: #470000;
+}
+.post-install-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    align-items: start;
+}
+.post-install-grid details {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+.post-install-grid details:only-child {
+    grid-column: 1 / -1;
+}
+.post-install-grid summary {
+    padding: 12px 16px;
+    font-weight: 600;
+    cursor: pointer;
+    background: #faf5f6;
+    border-bottom: 1px solid #e0e0e0;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #470000;
+}
+.post-install-grid summary::before {
+    content: '▸';
+    transition: transform 0.2s;
+    font-size: 0.9em;
+}
+.post-install-grid details[open] summary::before {
+    transform: rotate(90deg);
+}
+.post-install-grid details div {
+    padding: 12px 16px;
+}
+.post-content h2 {
+    color: #470000;
+    font-size: 1.5em;
+    margin: 30px 0 12px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid #f0e0e2;
+}
+.post-content h3 {
+    color: #5a1a1a;
+    font-size: 1.2em;
+    margin: 20px 0 8px;
+}
+.post-content p {
+    margin: 10px 0;
+    line-height: 1.7;
+}
+.post-content ul {
+    margin: 10px 0 10px 20px;
+}
+.post-content li {
+    margin: 6px 0;
+    line-height: 1.6;
+}
+.post-content li strong {
+    color: #470000;
+}
+.post-details-box {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 24px auto;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.post-details-box h3 {
+    margin: 0 0 12px;
+    font-size: 1.4em;
+    border-bottom: none;
+    padding-bottom: 0;
+}
+.post-faq details {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    margin: 8px 0;
+    overflow: hidden;
+}
+.post-faq summary {
+    padding: 14px 18px;
+    font-weight: 600;
+    cursor: pointer;
+    background: #faf5f6;
+    color: #470000;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.post-faq summary::before {
+    content: '▸';
+    transition: transform 0.2s;
+}
+.post-faq details[open] summary::before {
+    transform: rotate(90deg);
+}
+.post-faq details div {
+    padding: 14px 18px;
+    line-height: 1.6;
+}
+.post-video-section {
+    margin: 24px 0;
+}
+.post-video-section h2 {
+    color: #470000;
+    font-size: 1.5em;
+    margin: 30px 0 12px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid #f0e0e2;
+}
+.post-video-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    padding-top: 56.25%;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    margin-top: 12px;
+}
+.post-yt-facade {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    background: #000;
+}
+.post-yt-facade img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.post-yt-play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0,0,0,0.7);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 68px;
+    height: 68px;
+    font-size: 28px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+}
+.post-yt-facade:hover .post-yt-play {
+    background: #ff0000;
+}
+.post-related-games {
+    margin: 30px 0;
+}
+.post-related-games h2 {
+    text-align: center;
+    border-bottom: none;
+}
+.post-related-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-top: 16px;
+}
+.post-related-grid a {
+    display: block;
+    text-decoration: none;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    background: #fff;
+}
+.post-related-grid a:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.18);
+    text-decoration: none;
+}
+.post-related-grid img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+.post-related-grid span {
+    display: block;
+    padding: 10px;
+    font-weight: 600;
+    text-align: center;
+    color: #333;
+    font-size: 0.9em;
+}
+@media (max-width: 768px) {
+    .post-title { font-size: 2em; }
+    .post-intro-layout { flex-direction: column; align-items: center; }
+    .post-intro-layout img { max-width: 280px; }
+    .post-screenshot-gallery { grid-template-columns: 1fr 1fr; }
+    .post-screenshot-gallery.gallery-2 { max-width: 100%; }
+    .post-screenshot-gallery.gallery-1 { max-width: 50%; }
+    .post-install-grid { grid-template-columns: 1fr; }
+    .post-related-grid { grid-template-columns: repeat(2, 1fr); }
+    .post-download-section { padding: 20px 16px; }
+}
+@media (max-width: 480px) {
+    .post-title { font-size: 1.7em; }
+    .post-screenshot-gallery { grid-template-columns: 1fr; }
+    .post-screenshot-gallery.gallery-2 { max-width: 100%; }
+    .post-screenshot-gallery.gallery-1 { max-width: 100%; }
+    .post-related-grid { grid-template-columns: 1fr 1fr; }
+}
+</style>
+
+<!-- ========== POST CONTENT START ========== -->
+
+<h1 class="post-title">Animatronic Memories</h1>
+
+<!-- Hero / Intro Section -->
+<div class="post-description">
+    <div class="post-intro-layout">
+        <img src="/uploads/overhaul/animatronic-memories/animatronics-memories-thumb.webp" alt="Animatronic Memories main menu showing Freddy in the darkness next to a CRT monitor" width="330" height="207" loading="eager" />
+        <div class="post-intro-text">
+            <p>
+                <strong>Animatronic Memories</strong> reimagines the original Five Nights at Freddy's in an alternate 1989 timeline where the animatronics look like real Chuck E. Cheese robots and the gameplay goes far beyond watching cameras. As a night guard at Freddy Fazbear's Pizza, you'll manage a fuse-based power system, repair broken animatronics in a basement workshop, uncover the story of murdered children through pixel art minigames, and face two completely different final nights depending on your choices. Created by a two-person team (Inksstuff and Anikeev), this fan game packs a stunning visual presentation and a cinematic narrative into one of the most ambitious FNAF reimaginings out there.
+            </p>
+            <a class="post-download-cta" href="#download">Download Animatronic Memories Free</a>
+        </div>
+    </div>
+</div>
+
+<!-- Stats Table -->
+<table class="post-stats-table">
+    <thead>
+        <tr>
+            <th>Feature</th>
+            <th>Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr><td>Developer</td><td>Inksstuff &amp; Anikeev</td></tr>
+        <tr><td>Engine</td><td>Not specified</td></tr>
+        <tr><td>Platforms</td><td>Windows PC</td></tr>
+        <tr><td>Genre</td><td>Survival Horror / Point &amp; Click</td></tr>
+        <tr><td>Structure</td><td>5 Nights + Night 6 (two routes) + Minigames + Parts &amp; Service</td></tr>
+        <tr><td>Release Date</td><td>February 15, 2025</td></tr>
+        <tr><td>Price</td><td>Free</td></tr>
+    </tbody>
+</table>
+
+<!-- Screenshot Gallery #1 -->
+<div class="post-screenshot-gallery" data-lightbox-gallery>
+    <a href="/uploads/overhaul/animatronic-memories/2-tngbd6ar.webp" data-lightbox>
+        <img src="/uploads/overhaul/animatronic-memories/2-tngbd6ar-thumb.webp" alt="Animatronic Memories camera view of the Show Stage with Bonnie and Chica on stage" loading="lazy" />
+    </a>
+    <a href="/uploads/overhaul/animatronic-memories/3-zxncd4tx.webp" data-lightbox>
+        <img src="/uploads/overhaul/animatronic-memories/3-zxncd4tx-thumb.webp" alt="Animatronic Memories camera view of Party Room 2 with static interference and radio controls" loading="lazy" />
+    </a>
+    <a href="/uploads/overhaul/animatronic-memories/7-6nq4ytqc.webp" data-lightbox>
+        <img src="/uploads/overhaul/animatronic-memories/7-6nq4ytqc-thumb.webp" alt="Tootsie the damaged clown animatronic in the Parts and Service basement" loading="lazy" />
+    </a>
+</div>
+
+<!-- Download Section -->
+<div id="download" class="post-download-section">
+    <h2>Download Animatronic Memories</h2>
+    <p class="version-info">Version 0.1.0 — Free download for <strong>Windows PC</strong> (573 MB).</p>
+    <div class="post-download-buttons">
+        <a class="post-download-btn" href="https://mega.nz/file/bBA3DJyD#FsogPUr13KSr2E-_1i2hKNkY_t3hNjtH0Jnu_vVrZhQ" target="_blank" rel="nofollow noopener">Download for PC (Mega)</a>
+    </div>
+</div>
+
+<!-- Install Instructions -->
+<div class="post-install-section">
+    <h3>How to Install Animatronic Memories</h3>
+    <div class="post-install-grid">
+        <details>
+            <summary>Windows</summary>
+            <div>
+                <ol>
+                    <li>Download the .zip file from the link above</li>
+                    <li>Extract the contents to a folder of your choice</li>
+                    <li>Run the .exe file to start the game</li>
+                    <li>If Windows SmartScreen blocks it, click "More info" then "Run anyway"</li>
+                </ol>
+            </div>
+        </details>
+    </div>
+</div>
+
+<div class="post-content">
+
+<h2>What Makes Animatronic Memories Stand Out</h2>
+<p>Most FNAF fan games give you a camera feed, a couple of doors, and a power meter. Animatronic Memories throws that formula into a blender. Every night is split into three distinct phases: the main night shift where you guard your office, a Parts & Service segment where you physically repair animatronics in a dark basement, and a pixel art minigame that peels back another layer of the game's story. This three-layer structure means the experience never feels monotonous — you're constantly switching between tension, action, and exploration.</p>
+
+<p>The visual design is where this game truly shines. The animatronics look like authentic 1980s restaurant robots — think Showbiz Pizza and Chuck E. Cheese at their peak. They're detailed, slightly uncanny, and manage to look both endearing and terrifying at the same time. The pizzeria itself is one of the most colorful and richly decorated environments in any FNAF fan game, packed with small details that reward paying attention.</p>
+
+</div>
+
+<!-- Video Section -->
+<div class="post-video-section">
+    <h2>Animatronic Memories Gameplay</h2>
+    <div class="post-video-container">
+        <div class="post-yt-facade" data-vid="XoFl181hiD0">
+            <img src="https://i.ytimg.com/vi/XoFl181hiD0/hqdefault.jpg" alt="Animatronic Memories gameplay video" loading="lazy" />
+            <button class="post-yt-play" aria-label="Play video">&#9654;</button>
+        </div>
+    </div>
+</div>
+
+<div class="post-content">
+
+<h2>Gameplay Mechanics</h2>
+
+<h3>The Fuse System</h3>
+<p>Forget the classic FNAF power bar. Animatronic Memories replaces it with a fuse-based system that fundamentally changes how you manage resources. Your office door has a meter that fills up while it's closed. Let it max out and a fuse blows. Lose three fuses and the door is permanently stuck open — which means certain death. This prevents the old strategy of just camping the door shut until 6 AM, forcing you to time your closures carefully and take calculated risks.</p>
+
+<h3>The Animatronics</h3>
+<ul>
+    <li><strong>Bonnie &amp; Chica</strong> (Night 1+): The classic duo attacks through the right door. Close it when you spot them, but watch that fuse meter.</li>
+    <li><strong>Freddy</strong> (Night 2+): Hides in the darkness and targets the fuse box directly. If he reaches it, total blackout — instant death. He also attacks through the door, making him a double threat.</li>
+    <li><strong>Foxy &amp; Anne</strong> (Night 3+): Attack from Pirate Cove through the left window, which you close manually by holding it shut. Foxy is slow (peg leg), but Anne is significantly faster. Both are loud enough to hear coming.</li>
+    <li><strong>Harley the Puppet</strong> (Night 4+): The most complex animatronic. She can jam your cameras with interference — find her and hit the radio button to drive her away, or lose a fuse. She can also crawl through the kitchen ventilation duct, and if you don't catch her in time, it's an instant kill.</li>
+</ul>
+
+</div>
+
+<!-- Screenshot Gallery #2 -->
+<div class="post-screenshot-gallery gallery-2" data-lightbox-gallery>
+    <a href="/uploads/overhaul/animatronic-memories/4-be5mid2r.webp" data-lightbox>
+        <img src="/uploads/overhaul/animatronic-memories/4-be5mid2r-thumb.webp" alt="Bonnie with his face open showing the endoskeleton during a Parts and Service repair segment" loading="lazy" />
+    </a>
+    <a href="/uploads/overhaul/animatronic-memories/5-jpimkqcf.webp" data-lightbox>
+        <img src="/uploads/overhaul/animatronic-memories/5-jpimkqcf-thumb.webp" alt="Pixel art minigame showing Freddy talking to Bonnie in the pizzeria" loading="lazy" />
+    </a>
+</div>
+
+<div class="post-content">
+
+<h3>Parts &amp; Service</h3>
+<p>After each night, you descend into the basement to repair one of the animatronics — Bonnie, then Chica, Freddy, and finally Foxy. You hold the mouse to fix broken components while keeping one eye on the dark corridor behind you. Tootsie, a half-burned clown animatronic, charges at you from the darkness at terrifying speed. Your only defense is a stun baton that needs to be charged before each use — hold the button to charge, then fire when Tootsie gets close. It's a nerve-wracking balancing act between repair progress and self-preservation.</p>
+
+<h3>Pixel Art Minigames</h3>
+<p>After Parts & Service, you play a charming pixel art minigame as a different animatronic each night: Freddy socializes with the crew, Bonnie cleans the pizzeria, Chica gathers baking ingredients, Anne decorates rooms for a party, and Foxy rounds everyone up for Harley's birthday celebration. These aren't just filler — each one hides a corrupted, glitched object. Finding it transports you to a dark void where you discover a plush toy and deliver it to the spirit of a murdered child, witnessing how Spring Bonnie (William Afton) lured them to their death. The recurring phrase "I remember" marks each devastating revelation.</p>
+
+<p>Finding all hidden objects across every minigame unlocks the good ending. Missing even one locks you into the bad ending — and there's no way to go back without replaying the entire game.</p>
+
+<h2>Two Radically Different Endings</h2>
+
+<h3>The Good Ending</h3>
+<p>Night 6 on this route is the hardest night in the game, though it doesn't introduce new mechanics — just the full roster at maximum aggression. What makes it worth the effort is the cinematic payoff: a pre-rendered cutscene where the children's spirits reveal themselves, the animatronics come alive to confront William Afton, and Spring Bonnie's attempt to fight back with an electric device fails catastrophically. William suffers the spring lock failure and dies. The spirit of Freddy thanks the protagonist as the souls finally find peace. Multiple reviewers have compared this sequence's quality to an actual movie.</p>
+
+<h3>The Bad Ending (Purgatory)</h3>
+<p>This is where Animatronic Memories truly goes off the rails — in the best way possible. After discovering children's corpses in garbage bags during Parts & Service, Spring Bonnie stabs and kills the night guard. Your soul is trapped in a purgatory version of the pizzeria that looks nothing like the original: the monitor has teeth, the walls are covered in disturbing drawings, and the building is in ruins on the cameras.</p>
+
+<p>The mechanics are completely overhauled for this single night. Shadow Rabbit causes hallucinations through the cameras and must be found and dispersed with a red button. The spirits of Baby and Ballora appear on side monitors and require specific masks to ward off. Bonnie's spirit tries to force the door open while Chica climbs onto your desk. Foxy and Anne pound on the window. Each hour adds a new threat, escalating the chaos until you finally break free from purgatory and your soul finds rest.</p>
+
+</div>
+
+<!-- Screenshot Gallery #3 -->
+<div class="post-screenshot-gallery gallery-1" data-lightbox-gallery>
+    <a href="/uploads/overhaul/animatronic-memories/6-p7kaptjx.webp" data-lightbox>
+        <img src="/uploads/overhaul/animatronic-memories/6-p7kaptjx-thumb.webp" alt="Pixel art minigame with Chica collecting ingredients in the arcade room" loading="lazy" />
+    </a>
+</div>
+
+<div class="post-content">
+
+<h2>What the Community Says</h2>
+<p>Animatronic Memories has left a strong impression on reviewers and content creators, though opinions on the early-game pacing are divided.</p>
+
+<p>One reviewer called it <em>"a straight-up movie that I personally enjoyed every second of,"</em> praising the diverse gameplay across nights, post-night tasks, and minigames, as well as the <em>"top-notch storytelling with a cohesive narrative and really well done cutscenes."</em></p>
+
+<p><strong>Vanny</strong> gave it a 7.5/10, noting it's <em>"sin dudas una muy buena reinterpretación del primer FNAF"</em> and singling out the pizzeria's design as <em>"one of the most beautiful, colorful and best decorated I've ever seen."</em> The animatronic designs hit a sweet spot: <em>"They manage to look both terrifying and endearing at the same time."</em></p>
+
+<p><strong>Glamrock Dusky</strong> had a mixed-positive take: <em>"It's a pretty flawed game, but one with a great coat of auditory and visual paint that almost makes up for it."</em> The consensus? The purgatory night is the best part of the entire game, and the visual quality is exceptional for a two-person team.</p>
+
+<p>Multiple top-list creators have called Animatronic Memories <em>"the definition of art"</em> and placed it among their all-time favorite FNAF fan games, with the good ending's cinematic described as <em>"absolute cinema."</em></p>
+
+</div>
+
+<div class="post-content">
+<h2>Frequently Asked Questions</h2>
+</div>
+
+<div class="post-faq">
+    <details>
+        <summary>Is Animatronic Memories free?</summary>
+        <div>Yes, Animatronic Memories is completely free to download and play on Windows PC.</div>
+    </details>
+    <details>
+        <summary>How do I get the good ending vs. the bad ending?</summary>
+        <div>During each post-night pixel art minigame, there's a hidden glitched/corrupted object. Finding all of them across every minigame unlocks the good ending. If you miss any, you'll get the bad ending. There's no way to change your path mid-game — you'd need to replay from the start.</div>
+    </details>
+    <details>
+        <summary>Is there an Android or Mac version?</summary>
+        <div>Currently, Animatronic Memories is only available for Windows PC. There is no official Android or Mac port.</div>
+    </details>
+    <details>
+        <summary>Who is Tootsie?</summary>
+        <div>Tootsie is an original animatronic — a damaged, half-burned clown robot that lurks in the Parts & Service basement. She serves as the antagonist during the repair segments between nights, charging at you from the darkness while you fix the main animatronics.</div>
+    </details>
+    <details>
+        <summary>Is the purgatory night worth playing?</summary>
+        <div>Absolutely. Almost every reviewer considers the purgatory night (bad ending route) the best part of the entire game. It features completely unique mechanics, a redesigned office, and an escalating difficulty that's unlike anything in the main game. Many players recommend experiencing both endings.</div>
+    </details>
+    <details>
+        <summary>Will there be a sequel?</summary>
+        <div>The developer has announced "Animatronic Memories: The Final Laugh" as a sequel, with a page already published. Development is underway.</div>
+    </details>
+</div>
+
+<!-- Related FNAF Fan Games -->
+<h2 class="il-heading">More FNAF Fan Games</h2>
+<div class="il-grid">
+<div class="il-card"><a href="/fnaf-world-refreshed/">
+<img class="il-img" src="/uploads/overhaul/fnaf-world-refreshed/fnaf-world-refreshed-thumb.webp" alt="FNAF World Refreshed" loading="lazy" />
+<p class="il-title">FNAF World Refreshed</p></a>
+</div>
+<div class="il-card"><a href="/candys-3/">
+<img class="il-img" src="/uploads/overhaul/five-nights-at-candys-3/Fnac_3_icon_768-2ptwpvda-thumb.webp" alt="Five Nights at Candy's 3" loading="lazy" />
+<p class="il-title">Five Nights at Candy's 3</p></a>
+</div>
+<div class="il-card"><a href="/fnaf-urbex/">
+<img class="il-img" src="/uploads/overhaul/fnaf-urbex/urbex-thumb.webp" alt="FNAF Urbex" loading="lazy" />
+<p class="il-title">FNAF Urbex</p></a>
+</div>
+<div class="il-card"><a href="/fnaf-rewritten-87/">
+<img class="il-img" src="/uploads/overhaul/fnaf-rewritten-87/portada-thumb.webp" alt="FNAF Rewritten '87" loading="lazy" />
+<p class="il-title">FNAF Rewritten '87</p></a>
+</div>
+</div>
+
+<!-- Lightbox Script -->
+<script>
+    const overlay = document.createElement('div');
+    overlay.className = 'post-lightbox-overlay';
+    document.body.appendChild(overlay);
+
+    document.querySelectorAll('[data-lightbox]').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const img = document.createElement('img');
+            img.src = link.href;
+            img.alt = link.querySelector('img')?.alt || '';
+            overlay.innerHTML = '';
+            overlay.appendChild(img);
+            overlay.classList.add('active');
+        });
+    });
+
+    overlay.addEventListener('click', () => {
+        overlay.classList.remove('active');
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            overlay.classList.remove('active');
+        }
+    });
+
+    document.querySelectorAll('.post-yt-facade').forEach(el => {
+        el.addEventListener('click', () => {
+            const vid = el.dataset.vid;
+            const container = el.parentElement;
+            const iframe = document.createElement('iframe');
+            iframe.src = 'https://www.youtube-nocookie.com/embed/' + vid + '?autoplay=1';
+            iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+            iframe.setAttribute('allowfullscreen', '');
+            el.remove();
+            container.appendChild(iframe);
+        });
+    });
+</script>
+
+</Layout>
